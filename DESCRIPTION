@@ -2,7 +2,7 @@ Package: radsafer
 Type: Package
 Title: Radiation Safety 
 Version: 0.1.0
-Authors@R: Mark Hogue <mark.hogue@srs.gov>
+Author: Mark Hogue <mark.hogue@srs.gov>
 Maintainer: Mark Hogue <mark.hogue@srs.gov>
 Description: Functions for health physics and radiological engineering.
 License: GPL-3
