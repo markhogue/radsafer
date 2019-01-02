@@ -2,7 +2,7 @@ Package: radsafer
 Type: Package
 Title: Functions for Radiation Safety
 Version: 0.1.0
-Author: Mark Hogue <mark.hogue@srs.gov>
+Authors@R: Mark Hogue <mark.hogue@srs.gov>
 Maintainer: Mark Hogue <mark.hogue@srs.gov>
 Description: Functions are provided that are useful for health 
   physics and radiological engineering. This is far from a complete 
