@@ -6,7 +6,10 @@
 
 #' @param time_unit, acceptable values are years, days, hours, and minutes.
 #'   These may be shortened to y, d, h and m. Must be entered in quotes.
-#' @return The decay correction factor from the reference date to the date of interest. ' @examples ' dk_cf(5.27,"2010-12-01", "2018-12-01", "y") ' dk_cf(24, "2018-10-01-08:15","2018-10-01-09:15", "m")
+#' @return The decay correction factor from the reference date to the date of interest. 
+#' @examples 
+#' dk_cf(5.27,"2010-12-01", "2018-12-01", "y")
+#' dk_cf(24, "2018-10-01-08:15","2018-10-01-09:15", "m")
 #' @export
 dk_cf <- function(t_h, date1, date2, time_unit) {
   if(time_unit == "year" | time_unit == "y") {

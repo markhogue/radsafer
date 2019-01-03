@@ -4,7 +4,7 @@
 #' 
 #' @docType package
 #' 
-#' @author Mark Hogue \email{mark.hogue@srs.gov}
+#' @author Mark Hogue \email{mark.hogue.chp@gmail.com}
 #' 
 #' @name radsafer
 NULL
