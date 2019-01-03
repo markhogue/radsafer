@@ -1,8 +1,7 @@
 #' Correction factor for a decayed source - to update expected readings. '
 #' @description Compute correction value for decay of a single-isotope source. '
 #' @param t_h The half-life numeric value
-#' @param date1 Source reference date. If units are hours or shorter, include time. Format is
-#  "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".
+#' @param date1 Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".
 #' @param date2 Date of interest. Format is same as date1.
 
 #' @param time_unit, acceptable values are years, days, hours, and minutes.
