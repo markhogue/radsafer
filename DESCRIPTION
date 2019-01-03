@@ -4,7 +4,7 @@ Title: Radiation Safety
 Version: 0.1.0
 Author: Mark Hogue <mark.hogue@srs.gov>
 Maintainer: Mark Hogue <mark.hogue@srs.gov>
-Description: Functions for health physics and radiological engineering.
+Description: Functions for health physics and radiological engineering. Functions include source decay (including Cf-252 sources), analog meter simulation, disk to disk solid angle, and utilities to make MCNP model building simpler.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
