@@ -9,7 +9,7 @@ dk_cf(t_h, date1, date2, time_unit)
 \arguments{
 \item{t_h}{The half-life numeric value}
 
-\item{date1}{Source reference date. If units are hours or shorter, include time. Format is}
+\item{date1}{Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".}
 
 \item{date2}{Date of interest. Format is same as date1.}
 
