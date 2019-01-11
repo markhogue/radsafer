@@ -9,5 +9,5 @@
 Functions for Radiation Safety
 }
 \author{
-Mark Hogue \email{mark.hogue@srs.gov}
+Mark Hogue \email{mark.hogue.chp@gmail.com}
 }

@@ -1,3 +1,5 @@
-# load data for radsafer hist_to_spec.plot
-photons_cs137_hist <- read.table("T:/mark/R_radsafer/data-raw/well.irradiator.cs137.dat")
-usethis::use_data(photons_cs137_hist, overwrite = T, compress = "xz")
+bet.df <- readr::read_tsv("C:/R/radsafer/data-raw/bet.dat.tsv")
+usethis::use_data(bet.df, compress = "xz")
+
+RN.df <- readr::read_tsv("C:/R/radsafer/data-raw/RN.dat.tsv")
+usethis::use_data(RN.df, compress = "xz")
