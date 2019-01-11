@@ -9,12 +9,12 @@
 #'   contains an energy distribution in a format compliant with MCNP. New data
 #'   is appended to any exising data in the file if it already exists.
 #' @examples
-#' beta.si.sp("Sr-90", erg.dist = 11)
-#' beta.si.sp("Y-90",  erg.dist = 13)
-#' beta.si.sp("C-14",  erg.dist = 15)
+#' beta.si.sp("Sr-90", erg_dist = 11)
+#' beta.si.sp("Y-90",  erg_dist = 13)
+#' beta.si.sp("C-14",  erg_dist = 15)
 #' @export 
 beta.si.sp <- function(desired_RN, 
-                  erg.dist = 1) {
+                  erg_dist = 1) {
   si.sp <- bet.df[bet.df$RN == desired_RN,]
   # How many blanks are there if we put this in a matrix?
   # Assume 6 columns of data plus the si with &
@@ -38,7 +38,7 @@ beta.si.sp <- function(desired_RN,
               "si.sp.dat",
               col.names = FALSE, row.names = FALSE,
               append = TRUE, quote = FALSE)
-  write.table(data.frame("text" = paste0("si", erg.dist,
+  write.table(data.frame("text" = paste0("si", erg_dist,
               " A & ","$ ", desired_RN,
               ", radiation type = beta")),
               "si.sp.dat",
@@ -52,7 +52,7 @@ beta.si.sp <- function(desired_RN,
               "si.sp.dat",
               col.names = FALSE, row.names = FALSE,
               append = TRUE, quote = FALSE)
-  write.table(data.frame("text" = paste0("sp", erg.dist, " D & ","$ ", desired_RN,
+  write.table(data.frame("text" = paste0("sp", erg_dist, " D & ","$ ", desired_RN,
               ", radiation type = beta")),
               "si.sp.dat",
               col.names = FALSE, row.names = FALSE,

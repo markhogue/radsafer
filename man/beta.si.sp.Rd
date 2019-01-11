@@ -4,7 +4,7 @@
 \alias{beta.si.sp}
 \title{beta input for MCNP  '}
 \usage{
-beta.si.sp(desired_RN, erg.dist = 1)
+beta.si.sp(desired_RN, erg_dist = 1)
 }
 \arguments{
 \item{desired_RN}{The radionuclide of interest in format element-isotope, 
@@ -23,7 +23,7 @@ A text file, si.sp.dat, is written to the user's working file. It
 Make beta energy distribution for MCNP input '
 }
 \examples{
-beta.si.sp("Sr-90", erg.dist = 11)
-beta.si.sp("Y-90",  erg.dist = 13)
-beta.si.sp("C-14",  erg.dist = 15)
+beta.si.sp("Sr-90", erg_dist = 11)
+beta.si.sp("Y-90",  erg_dist = 13)
+beta.si.sp("C-14",  erg_dist = 15)
 }
