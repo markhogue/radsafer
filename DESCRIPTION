@@ -1,7 +1,7 @@
 Package: radsafer
 Type: Package
 Title: Radiation Safety 
-Version: 0.1.0.0
+Version: 0.1.0.9000
 Author: Mark Hogue <mark.hogue.chp@gmail.com>
 Maintainer: Mark Hogue <mark.hogue.chp@gmail.com>
 Description: Functions for health physics and radiological engineering. Functions include source decay (including Cf-252 sources), analog meter simulation, disk to disk solid angle, and utilities to make MCNP model building simpler.
