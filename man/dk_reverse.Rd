@@ -4,13 +4,13 @@
 \alias{dk_reverse}
 \title{Reverse decay}
 \usage{
-dk_reverse(t, t_h, A1)
+dk_reverse(t, half_life, A1)
 }
 \arguments{
 \item{t}{Time past since activity of interest. Units are arbitrary, but must
 match half-life.}
 
-\item{t_h}{Half-life. Units are arbitrary, but must match time past.}
+\item{half_life}{Half-life. Units are arbitrary, but must match time past.}
 
 \item{A1}{The target activity or related parameter, such as dose rate.}
 }

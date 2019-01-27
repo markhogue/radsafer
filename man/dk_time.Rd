@@ -4,10 +4,10 @@
 \alias{dk_time}
 \title{Time to decay.}
 \usage{
-dk_time(t_h, A0, A1)
+dk_time(half_life, A0, A1)
 }
 \arguments{
-\item{t_h, }{Half-life. Units are arbitrary, but must match time past.}
+\item{half_life, }{Half-life. Units are arbitrary, but must match time past.}
 
 \item{A0}{The original activity, or related parameter.}
 

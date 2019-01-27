@@ -4,10 +4,10 @@
 \alias{dk_cf}
 \title{Correction factor for a decayed source - to update expected readings. '}
 \usage{
-dk_cf(t_h, date1, date2, time_unit)
+dk_cf(half_life, date1, date2, time_unit)
 }
 \arguments{
-\item{t_h}{The half-life numeric value}
+\item{half_life}{The half-life numeric value}
 
 \item{date1}{Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".}
 
