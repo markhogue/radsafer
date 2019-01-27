@@ -5,13 +5,13 @@
 #'   half-life must be in consistent units.
 #' @param t Time past since activity of interest. Units are arbitrary, but must
 #'   match half-life.
-#' @param t_h Half-life. Units are arbitrary, but must match time past.
+#' @param half_life Half-life. Units are arbitrary, but must match time past.
 #' @param A1 The target activity or related parameter, such as dose rate.
 #' @return The original activity or related parameter.
 #' @examples
 #' dk_reverse(80, 8, 1)
 #' @export
-dk_reverse <- function(t, t_h, A1) {
-    A1 * 2^(t / t_h)
+dk_reverse <- function(t, half_life, A1) {
+    A1 * 2^(t / half_life)
 }
 
