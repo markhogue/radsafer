@@ -2,7 +2,7 @@
 % Please edit documentation in R/dk_time.R
 \name{dk_time}
 \alias{dk_time}
-\title{Time to decay.}
+\title{Time to decay to target radioactivity.}
 \usage{
 dk_time(half_life, A0, A1)
 }

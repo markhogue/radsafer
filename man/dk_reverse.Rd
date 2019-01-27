@@ -2,7 +2,7 @@
 % Please edit documentation in R/dk_reverse.R
 \name{dk_reverse}
 \alias{dk_reverse}
-\title{Reverse decay}
+\title{Calculate amount of radioactivity given interval.}
 \usage{
 dk_reverse(t, half_life, A1)
 }

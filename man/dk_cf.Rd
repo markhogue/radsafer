@@ -2,7 +2,7 @@
 % Please edit documentation in R/dk_cf.R
 \name{dk_cf}
 \alias{dk_cf}
-\title{Correction factor for a decayed source - to update expected readings. '}
+\title{Correction factor for source decay.}
 \usage{
 dk_cf(half_life, date1, date2, time_unit)
 }
@@ -20,7 +20,7 @@ These may be shortened to y, d, h and m. Must be entered in quotes.}
 The decay correction factor from the reference date to the date of interest.
 }
 \description{
-Compute correction value for decay of a single-isotope source. '
+Compute correction value for decay of a single-isotope source.
 }
 \examples{
 dk_cf(5.27,"2010-12-01", "2018-12-01", "y")

@@ -1,4 +1,4 @@
-#' Time to decay.
+#' Time to decay to target radioactivity.
 #' @description Calculate time for a radionuclide to decay to a target activity.
 #' @param half_life, Half-life. Units are arbitrary, but must match time past.
 #' @param A0 The original activity, or related parameter.

@@ -1,4 +1,4 @@
-#' Reverse decay
+#' Calculate amount of radioactivity given interval. 
 #' @description Calculate the activity at an earlier time, given the time past,
 #'   the half-life, and the activity at time, t. The result will provide
 #'   activity in the same units as provided for present activity. Time past and
