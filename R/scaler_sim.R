@@ -24,27 +24,26 @@ scaler_sim <- function(true_bkg, true_samp, runs, trials) {
         mean(sample(gross, counts, replace = T))
     range_param <- 0.2 #how much under and over true gross
     par(bg = "ivory")
-    hist(result, main = paste("distribution with ", counts,
-                              " minute counts"),
+    hist(result, main = paste("distribution with ", 
+        counts,
+        " minute counts"),
          col = "skyblue",
          col.main = tcol, col.axis = tcol, col.lab = tcol,
          xlab = "net counts", freq = F, breaks = 50,
          sub = paste0("result of ",
-                      format(trials,  big.mark=",", digits = 0,
-                             scientific = F),
-                      " trials"),
+         format(trials,  big.mark=",", digits = 0,
+                scientific = F),
+                " trials"),
          xlim = c((1 - range_param) * (true_samp + true_bkg),
                   (1 + range_param) * (true_samp + true_bkg)))
     abline(v = c(mean(result) + sd(result), mean(result) -
                    sd(result)), col = "blue",lty = 2)
-    abline(v= c(mean(result) + 2 * sd(result), mean(result) -
-                  2 * sd(result)), col = "firebrick1", lty = 3)
+    abline(v= c(mean(result) + 2 * 
+        sd(result), mean(result) -
+        2 * sd(result)), col = "firebrick1", lty = 3)
     mtext(paste("true net = ", net,
-                "cpm, true bkg = ", true_bkg, " cpm"),
+        "cpm, true bkg = ", true_bkg, " cpm"),
           col = tcol)
     abline(v = 0, lty = 1, col = tcol)
   }
 }
-
-scaler_sim(true_bkg = 50, true_samp = 10,
-             runs = c(1, 10, 50, 100), trials = 1e5)

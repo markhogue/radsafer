@@ -21,10 +21,10 @@
 #'                          r.detector = 10)
 #' @export
 disk_to_disk_solid_angle  <-  function(r.source,
-                                     gap,
-                                     r.detector,
-                                     show_plot = TRUE,
-                                     runs = 1e4) {
+                                       gap,
+                                       r.detector,
+                                       show_plot = TRUE,
+                                       runs = 1e4) {
   r.s <- 0; x.s <- 0; y.s <- 0; radius <- 100; u <- 0;
   v <- 0; w <- 0
   x.d <- 0; y.d <- 0; counts <- rep(0, length(r.source))
@@ -94,8 +94,91 @@ disk_to_disk_solid_angle  <-  function(r.source,
          bty = "n",
          horiz = TRUE)
   mtext(paste0("fract. solid angle = ",
-         format(count / runs, digits = 3)), side = 1)
+      format(count / runs, digits = 3)), side = 1)
   count / runs
 }
 
 
+#' Disk to disk solid angle with 3D perspective view
+#' 
+#' @inheritParams disk_to_disk_solid_angle
+#' 
+#' @examples 
+#' disk_to_disk_3d(10, 5, 20)
+#' 
+#' @export
+#' 
+
+disk_to_disk_3d  <-  function(r.source,
+                              gap,
+                              r.detector,
+                              show_plot = TRUE,
+                              runs = 1e4) {
+  # You need the scatterplot3d package for this function      
+  if (!requireNamespace("scatterplot3d", quietly = TRUE)) {
+    stop("Package \"scatterplot3d\" needed for this function to work. Please install it.",
+         call. = FALSE)
+  }
+  
+  r.s <- 0; x.s <- 0; y.s <- 0; radius <- 1e6; u <- 0;
+  v <- 0; w <- 0
+  x.d <- 0; y.d <- 0; counts <- rep(0, length(r.source))
+  # <<- means create in global environment
+  rand.xy <- function(a) runif(1, min = -1, max = 1) * a
+  rand.z <- function() runif(1, min = -1, max = 1)
+  rand.t <- function() runif(1, min = 0, max = 2 * pi)
+  r <- function(z) sqrt(1 - z^2)
+  rand.x <- function(r) r * cos(t)
+  rand.y <- function(r) r * sin(t)
+  srss <- function(l) sqrt(sum(l^2)) 
+# The reset_sim function works in script form before
+# the disk_to_disk_3d function def, but will not 
+# build package this way. Trying here:
+  reset_sim <- function() {
+    sim_set <- data.frame("x" = 0, "y" = 0, "z" = 0, 
+                          "tag" = as.character("tag"), stringsAsFactors = FALSE)
+    sim_set <<- sim_set[-1, ]
+  }
+  
+  reset_sim()
+  # count <- 0
+  for(j in 1:runs) {
+    radius <- r.source + 1
+    while(radius > r.source) {
+      x.s <- rand.xy(r.source)
+      y.s <- rand.xy(r.source)
+      radius <- srss(c(x.s, y.s))
+    }
+    sim_set <<- rbind(sim_set, 
+                      data.frame("x" = x.s, "y" = y.s, "z" = -gap/2, "tag" = "firebrick1"))
+    
+    w <- rand.z()
+    t <- rand.t()
+    r1 <- r(w)
+    u <- rand.x(r1)
+    v <- rand.y(r1)
+    x.d <- x.s + u * gap / w
+    y.d <- y.s + v * gap / w
+    if(srss(c(x.d, y.d)) < r.detector & w > 0) {
+      
+      sim_set <<- rbind(sim_set, 
+                        data.frame("x" = x.d, "y" = y.d, "z" = gap/2, "tag" = "cornflowerblue"))
+    }
+    rel_solid_angle <- length(sim_set$tag[sim_set$tag == "cornflowerblue"]) / 
+      length(sim_set$tag[sim_set$tag == "firebrick1"])
+    print(paste0("The relative solid angle is: ", 
+                 signif(rel_solid_angle, 3)))
+    
+  }
+  
+  scatterplot3d::scatterplot3d(sim_set$x, sim_set$y,
+                               sim_set$z, main = "radiation disk source to detector surface",
+        axis = FALSE, #highlight.3d = TRUE,
+        color = sim_set$tag,
+        cex.symbols = 1000 / runs, pch = 8,
+        grid = FALSE, angle = 90, asp = 1.5)
+  mtext(paste0("The relative solid angle is: ", 
+       signif(rel_solid_angle, 3)), adj = 0.5, 
+       col = "darkblue",
+        line = 1, side = 1)
+}
