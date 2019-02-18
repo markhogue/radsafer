@@ -13,8 +13,8 @@
 
 
 scaler_sim <- function(true_bkg, true_samp, runs, trials) {
-  bkg <- rpois(1000, true_bkg)
-  samp <- rpois(1000, true_samp)
+  bkg <- stats::rpois(1000, true_bkg)
+  samp <- stats::rpois(1000, true_samp)
   gross <- bkg + samp
   net <- format(true_samp, digits = 4)
   tcol <- "darkblue" #color of text
@@ -23,8 +23,8 @@ scaler_sim <- function(true_bkg, true_samp, runs, trials) {
     for(i in 1 : trials) result[i] <-
         mean(sample(gross, counts, replace = T))
     range_param <- 0.2 #how much under and over true gross
-    par(bg = "ivory")
-    hist(result, main = paste("distribution with ", 
+    graphics::par(bg = "ivory")
+    graphics::hist(result, main = paste("distribution with ", 
         counts,
         " minute counts"),
          col = "skyblue",
@@ -36,14 +36,14 @@ scaler_sim <- function(true_bkg, true_samp, runs, trials) {
                 " trials"),
          xlim = c((1 - range_param) * (true_samp + true_bkg),
                   (1 + range_param) * (true_samp + true_bkg)))
-    abline(v = c(mean(result) + sd(result), mean(result) -
-                   sd(result)), col = "blue",lty = 2)
-    abline(v= c(mean(result) + 2 * 
-        sd(result), mean(result) -
-        2 * sd(result)), col = "firebrick1", lty = 3)
-    mtext(paste("true net = ", net,
+    graphics::abline(v = c(mean(result) + stats::sd(result), mean(result) -
+                   stats::sd(result)), col = "blue",lty = 2)
+    graphics::abline(v= c(mean(result) + 2 * 
+        stats::sd(result), mean(result) -
+        2 * stats::sd(result)), col = "firebrick1", lty = 3)
+    graphics::mtext(paste("true net = ", net,
         "cpm, true bkg = ", true_bkg, " cpm"),
           col = tcol)
-    abline(v = 0, lty = 1, col = tcol)
+    graphics::abline(v = 0, lty = 1, col = tcol)
   }
 }

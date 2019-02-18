@@ -28,14 +28,14 @@ disk_to_disk_solid_angle  <-  function(r.source,
   r.s <- 0; x.s <- 0; y.s <- 0; radius <- 100; u <- 0;
   v <- 0; w <- 0
   x.d <- 0; y.d <- 0; counts <- rep(0, length(r.source))
-  rand.xy <- function(a) runif(1, min = -1, max = 1) * a
-  rand.z <- function() runif(1, min = -1, max = 1)
-  rand.t <- function() runif(1, min = 0, max = 2 * pi)
+  rand.xy <- function(a) stats::runif(1, min = -1, max = 1) * a
+  rand.z <- function() stats::runif(1, min = -1, max = 1)
+  rand.t <- function() stats::runif(1, min = 0, max = 2 * pi)
   r <- function(z) sqrt(1 - z^2)
   rand.x <- function(r) r * cos(t)
   rand.y <- function(r) r * sin(t)
   lims  <-  floor(1.1 * max(r.source, r.detector, gap))
-  plot(x = -lims:lims, y = -lims:lims,
+  graphics::plot(x = -lims:lims, y = -lims:lims,
        xlab = "", ylab = "",
        xlim = c(-lims, lims),
        ylim = c(-lims, lims),
@@ -47,16 +47,16 @@ disk_to_disk_solid_angle  <-  function(r.source,
        font.main = 3, bg = "beige",
        pty = "s",
        mar = c(2, 2, 4, 2) + 0.1)
-  lines(x = (-100:100) * r.detector / 100,
+  graphics::lines(x = (-100:100) * r.detector / 100,
         y = sqrt(r.detector^2 - ((-100:100) * r.detector / 100)^2),
         col = "firebrick1")
-  lines(x = (-100:100) * r.detector / 100,
+  graphics::lines(x = (-100:100) * r.detector / 100,
         y = -sqrt(r.detector^2 - ((-100:100) * r.detector/100)^2),
         col = "firebrick1")
-  lines(x = (-100:100) * r.source / 100,
+  graphics::lines(x = (-100:100) * r.source / 100,
         y = sqrt(r.source^2 - ((-100:100) * r.source / 100)^2),
         col = "blue", lty = 2)
-  lines(x = (-100:100) * r.source / 100,
+  graphics::lines(x = (-100:100) * r.source / 100,
         y = -sqrt(r.source^2 - ((-100:100) * r.source / 100)^2),
         col = "blue", lty = 2)
   count <- 0
@@ -77,23 +77,23 @@ disk_to_disk_solid_angle  <-  function(r.source,
     count <- count + (w > 0) * (sqrt(x.d^2 + y.d^2) <= r.detector)
     if(show_plot == TRUE &
        count < max_pts) {
-      points(x.s, y.s, col = "cornflowerblue", cex = 0.5, pch = 10)
+      graphics::points(x.s, y.s, col = "cornflowerblue", cex = 0.5, pch = 10)
     }
     if(show_plot == TRUE &
        count < max_pts &
        sqrt(x.d^2 + y.d^2) <= r.detector) {
-      points(x.d, y.d,
+      graphics::points(x.d, y.d,
              col = "darkviolet", cex = 0.8, pch = 23,
              bg = "orange")
     }
   }
-  legend("bottom", c("detector hits", "source"),
+  graphics::legend("bottom", c("detector hits", "source"),
          pch = c(23, 10, NA),
          col = c("darkviolet", "cornflowerblue", NA),
          pt.bg = c("orange", NA, NA),
          bty = "n",
          horiz = TRUE)
-  mtext(paste0("fract. solid angle = ",
+  graphics::mtext(paste0("fract. solid angle = ",
       format(count / runs, digits = 3)), side = 1)
   count / runs
 }
@@ -124,9 +124,9 @@ disk_to_disk_3d  <-  function(r.source,
   v <- 0; w <- 0
   x.d <- 0; y.d <- 0; counts <- rep(0, length(r.source))
   # <<- means create in global environment
-  rand.xy <- function(a) runif(1, min = -1, max = 1) * a
-  rand.z <- function() runif(1, min = -1, max = 1)
-  rand.t <- function() runif(1, min = 0, max = 2 * pi)
+  rand.xy <- function(a) stats::runif(1, min = -1, max = 1) * a
+  rand.z <- function() stats::runif(1, min = -1, max = 1)
+  rand.t <- function() stats::runif(1, min = 0, max = 2 * pi)
   r <- function(z) sqrt(1 - z^2)
   rand.x <- function(r) r * cos(t)
   rand.y <- function(r) r * sin(t)
@@ -177,7 +177,7 @@ disk_to_disk_3d  <-  function(r.source,
         color = sim_set$tag,
         cex.symbols = 1000 / runs, pch = 8,
         grid = FALSE, angle = 90, asp = 1.5)
-  mtext(paste0("The relative solid angle is: ", 
+  graphics::mtext(paste0("The relative solid angle is: ", 
        signif(rel_solid_angle, 3)), adj = 0.5, 
        col = "darkblue",
         line = 1, side = 1)

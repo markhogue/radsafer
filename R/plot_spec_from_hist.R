@@ -20,8 +20,8 @@ plot_spec_from_hist <- function(spec.df, title) {
   spec.df$E.avg <- spec.df$E.avg - c(spec.df$E.avg[1], diff(spec.df$E.avg)) / 2
   spec.df$fraction <- spec.df$fraction / sum(spec.df$fraction)
 
-  ggplot2::ggplot(data = spec.df, aes(E.avg, fraction)) +  geom_line() +
-    ggtitle(paste0(title))
+  ggplot2::ggplot(data = spec.df, ggplot2::aes(E.avg, fraction)) +  ggplot2::geom_line() +
+    ggplot2::ggtitle(paste0(title))
 }
 
 

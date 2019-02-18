@@ -40,7 +40,7 @@ rate_meter_sim <- function(cpm_equilibrium,
                            "cpm" = rep(0, trials))
   for(j in 2:max(runtime_df$sec)) {
     #first_past <- ifelse(j > 60, j - 60, 1) #use at most last 60 new cps
-    runtime_df$new_cps[j] <- rpois(1, cpm_equilibrium / 60) * exp(-1 / tau)
+    runtime_df$new_cps[j] <- stats::rpois(1, cpm_equilibrium / 60) * exp(-1 / tau)
     runtime_df$cpm[j] <- cps_cpm_adj * length(1:j) *
       mean(runtime_df$new_cps[1:j] *
              exp(-(j - (1:j)) / tau))
@@ -51,7 +51,7 @@ rate_meter_sim <- function(cpm_equilibrium,
                           length(runtime_df$cpm)])
   tcol <-  "darkblue"
   # set up plot range and draw cpm_equilibrium line
-  plot(x = runtime_df$sec,
+  graphics::plot(x = runtime_df$sec,
        y = runtime_df$cpm,
        col = "blue",
        xlab = "time, s",
@@ -60,6 +60,6 @@ rate_meter_sim <- function(cpm_equilibrium,
        type = "p",
        ylim = ylim,
        log = log_opt)
-  abline(h = meter_scale_increments, col = "gray")
-  abline(h = cpm_equilibrium, col = "lightcoral", lty = 2)
+  graphics::abline(h = meter_scale_increments, col = "gray")
+  graphics::abline(h = cpm_equilibrium, col = "lightcoral", lty = 2)
 }
