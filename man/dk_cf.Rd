@@ -4,14 +4,14 @@
 \alias{dk_cf}
 \title{Correction factor for source decay.}
 \usage{
-dk_cf(half_life, date1, date2, time_unit)
+dk_cf(half_life, date1, date2 = Sys.Date(), time_unit)
 }
 \arguments{
 \item{half_life}{The half-life numeric value}
 
 \item{date1}{Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".}
 
-\item{date2}{Date of interest. Format is same as date1.}
+\item{date2}{Date of interest. Format is same as date1. Default is today's date, obtained from system.}
 
 \item{time_unit, }{acceptable values are years, days, hours, and minutes.
 These may be shortened to y, d, h and m. Must be entered in quotes.}
