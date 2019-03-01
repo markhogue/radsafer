@@ -4,7 +4,7 @@
 \alias{disk_to_disk_solid_angle}
 \title{Calculate fractional solid angle for disk to disk}
 \usage{
-disk_to_disk_solid_angle(r.source, gap, r.detector, show_plot = TRUE,
+disk_to_disk_solid_angle(r.source, gap, r.detector, plot.opt,
   runs = 10000)
 }
 \arguments{
@@ -14,8 +14,7 @@ disk_to_disk_solid_angle(r.source, gap, r.detector, show_plot = TRUE,
 
 \item{r.detector}{detector radius}
 
-\item{show_plot}{A plot of the results will be displayed by default. Set to
-FALSE if this is not desired.}
+\item{plot.opt}{plot options - "2d", "3d" or "n".}
 
 \item{runs}{Number of particles to simulate. Running more particles improves
 accuracy. Default = 1e4.}
@@ -32,9 +31,9 @@ Returns fractional solid angle for a geometry frequently
   fraction of the total field of view.
 }
 \examples{
-disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60)
+disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60, plot.opt = "2d")
 disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60,
-                         runs = 1e3)
+runs = 1e3, plot.opt = "3d")
 disk_to_disk_solid_angle(r.source = 15, gap = 20,
-                         r.detector = 10)
+r.detector = 10, plot.opt = "n")
 }

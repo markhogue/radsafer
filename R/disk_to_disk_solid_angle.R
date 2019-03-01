@@ -8,177 +8,118 @@
 #' @param r.source  source radius (all units must be consistent)
 #' @param gap distance between source and detector
 #' @param r.detector detector radius
-#' @param show_plot A plot of the results will be displayed by default. Set to
-#'   FALSE if this is not desired.
+#' @param plot.opt plot options - "2d", "3d" or "n".
 #' @param runs Number of particles to simulate. Running more particles improves
 #'   accuracy. Default = 1e4.
 #' @return Fractional solid angle and plot of simulation.
 #' @examples
-#' disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60)
+#' disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60, plot.opt = "2d")
 #' disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60,
-#'                          runs = 1e3)
+#' runs = 1e3, plot.opt = "3d")
 #' disk_to_disk_solid_angle(r.source = 15, gap = 20,
-#'                          r.detector = 10)
+#' r.detector = 10, plot.opt = "n")
 #' @export
 disk_to_disk_solid_angle  <-  function(r.source,
                                        gap,
                                        r.detector,
-                                       show_plot = TRUE,
+                                       plot.opt,
                                        runs = 1e4) {
-  r.s <- 0; x.s <- 0; y.s <- 0; radius <- 100; u <- 0;
-  v <- 0; w <- 0
-  x.d <- 0; y.d <- 0; counts <- rep(0, length(r.source))
-  rand.xy <- function(a) stats::runif(1, min = -1, max = 1) * a
-  rand.z <- function() stats::runif(1, min = -1, max = 1)
-  rand.t <- function() stats::runif(1, min = 0, max = 2 * pi)
-  r <- function(z) sqrt(1 - z^2)
-  rand.x <- function(r) r * cos(t)
-  rand.y <- function(r) r * sin(t)
-  lims  <-  floor(1.1 * max(r.source, r.detector, gap))
-  graphics::plot(x = -lims:lims, y = -lims:lims,
-       xlab = "", ylab = "",
-       xlim = c(-lims, lims),
-       ylim = c(-lims, lims),
+  # Make source df
+  #adjust runs for losses due to start position = random point on square
+  # (2 * radius)^2 vs (pi * radius^2)
+  num <- floor(runs * 4 / pi) 
+  source.df <- data.frame("x" = stats::runif(num, min = -r.source, max = r.source),
+                          "y" = stats::runif(num, min = -r.source, max = r.source),
+                          "z" = -gap / 2)
+  on_disk <- function(a) sqrt(sum(a^2)) < r.source
+  source.df$on <- apply(source.df[1:2], 1, on_disk)
+  source.df <- source.df[which(source.df$on == TRUE), ]
+  # color for plot
+  source.df$color <- "firebrick1"
+  
+  # Make detector df
+  n <- length(source.df$x)
+  t <- stats::runif(n, min = 0, max = 2 * pi)
+  # vector on x, y, z axes => {u, v, w}
+  w <- stats::runif(n) #min 0, max 1 - all up
+  r1 <- sqrt(1 - w^2)
+  u <- r1 * cos(t)
+  v <- r1 * sin(t)
+  x.d <- source.df$x + u * gap / w
+  y.d <- source.df$y + v * gap / w
+  on_det <- function(a) sqrt(sum(a^2)) < r.detector
+  det.df <- data.frame("x" = x.d, "y" = y.d, "z" = gap / 2)
+  det.df$on <- apply(det.df[1:2], 1, on_det)
+  det.df <- det.df[which(det.df$on == TRUE), ]
+  # Relative solid angle is divided by two to account for only positive
+  # z-directions modeled.
+  rel_solid_angle <- length(det.df$x) / length(source.df$x) / 2
+  print(paste0("The relative solid angle estimate: ",
+               signif(rel_solid_angle, 4)))
+  det.df$color <- "cornflowerblue"
+  # combine source and detector data for plotting together
+  sim_set <- rbind(source.df, det.df)
+  
+  
+if(plot.opt == "3d")  {
+  scatterplot3d::scatterplot3d(sim_set$x, sim_set$y,
+                               sim_set$z, main = "radiation disk source to detector surface",
+                               axis = FALSE,
+                               color = sim_set$color,
+                               cex.symbols = 1000 / runs, pch = 8,
+                               grid = FALSE, angle = 90) #, asp = 0.5 * gap / r.source)
+  graphics::mtext(paste0("The relative solid angle is: ", 
+                         signif(rel_solid_angle, 3)), adj = 0.5, 
+                  col = "darkblue",
+                  line = 1, side = 1)
+}
+
+  if(plot.opt == "2d") {
+  graphics::plot(x = source.df$x, 
+                 y = source.df$y,
+                 col = "firebrick1",
+                 cex = 1000 / runs,
+                 pch = 1, 
+                 xlim = range(source.df$x, det.df$x),
+                 ylim = range(source.df$y, det.df$y),
        xaxt = "n", yaxt = "n",
-       main = paste("concentric disk fractional solid angle: r source = ",
+       xlab = NA, ylab = NA,
+       main = paste("disk - disk fractional solid angle: r source = ",
                     r.source, " r detector  =",
                     r.detector, " gap =", gap),
-       type = "n", bty = "n",
+       bty = "n",
        font.main = 3, bg = "beige",
        pty = "s",
        mar = c(2, 2, 4, 2) + 0.1)
+    graphics::points(det.df$x, det.df$y, 
+      col = "steelblue2", pch = 8, cex = 1000 / runs)
+    
   graphics::lines(x = (-100:100) * r.detector / 100,
         y = sqrt(r.detector^2 - ((-100:100) * r.detector / 100)^2),
-        col = "firebrick1")
+        col = "steelblue2")
   graphics::lines(x = (-100:100) * r.detector / 100,
         y = -sqrt(r.detector^2 - ((-100:100) * r.detector/100)^2),
-        col = "firebrick1")
+        col = "steelblue2")
   graphics::lines(x = (-100:100) * r.source / 100,
         y = sqrt(r.source^2 - ((-100:100) * r.source / 100)^2),
-        col = "blue", lty = 2)
+        col = "firebrick1", lty = 2)
   graphics::lines(x = (-100:100) * r.source / 100,
         y = -sqrt(r.source^2 - ((-100:100) * r.source / 100)^2),
-        col = "blue", lty = 2)
-  count <- 0
-  for(j in 1:runs) {
-    radius <- r.source + 1
-    while(radius>r.source) {x.s <- rand.xy(r.source)
-    y.s <- rand.xy(r.source)
-    radius <- sqrt(x.s^2 + y.s^2)}
-    w <- rand.z()
-    t <- rand.t()
-    r1 <- r(w)
-    u <- rand.x(r1)
-    v <- rand.y(r1)
-    x.d <- x.s + u * gap / w
-    y.d <- y.s + v * gap / w
-    # add up hits
-    max_pts <- floor(500 * r.detector^2 / 3600)
-    count <- count + (w > 0) * (sqrt(x.d^2 + y.d^2) <= r.detector)
-    if(show_plot == TRUE &
-       count < max_pts) {
-      graphics::points(x.s, y.s, col = "cornflowerblue", cex = 0.5, pch = 10)
-    }
-    if(show_plot == TRUE &
-       count < max_pts &
-       sqrt(x.d^2 + y.d^2) <= r.detector) {
-      graphics::points(x.d, y.d,
-             col = "darkviolet", cex = 0.8, pch = 23,
-             bg = "orange")
-    }
+        col = "firebrick1", lty = 2)
+  graphics::mtext(paste0("The relative solid angle is: ",      signif(rel_solid_angle, 3)), adj = 0.5, 
+     col = "darkblue",
+     line = 1, side = 1)
+  graphics::legend("topleft",
+         "detector",
+         col = "steelblue2",
+         pch = 8, pt.cex = 0.5,
+         text.col = "blue",
+         horiz = FALSE, bty = "n")
+  graphics::legend("bottomleft",
+         "source",
+          col = "firebrick1",
+          text.col = "firebrick1",
+          pch = 1, pt.cex = 0.5,
+          horiz = FALSE, bty = "n")
   }
-  graphics::legend("bottom", c("detector hits", "source"),
-         pch = c(23, 10, NA),
-         col = c("darkviolet", "cornflowerblue", NA),
-         pt.bg = c("orange", NA, NA),
-         bty = "n",
-         horiz = TRUE)
-  graphics::mtext(paste0("fract. solid angle = ",
-      format(count / runs, digits = 3)), side = 1)
-  count / runs
-}
-
-
-#' Disk to disk solid angle with 3D perspective view
-#' 
-#' @inheritParams disk_to_disk_solid_angle
-#' 
-#' @examples 
-#' disk_to_disk_3d(10, 5, 20)
-#' 
-#' @export
-#' 
-
-disk_to_disk_3d  <-  function(r.source,
-                              gap,
-                              r.detector,
-                              show_plot = TRUE,
-                              runs = 1e4) {
-  # You need the scatterplot3d package for this function      
-  if (!requireNamespace("scatterplot3d", quietly = TRUE)) {
-    stop("Package \"scatterplot3d\" needed for this function to work. Please install it.",
-         call. = FALSE)
-  }
-  
-  r.s <- 0; x.s <- 0; y.s <- 0; radius <- 1e6; u <- 0;
-  v <- 0; w <- 0
-  x.d <- 0; y.d <- 0; counts <- rep(0, length(r.source))
-  # <<- means create in global environment
-  rand.xy <- function(a) stats::runif(1, min = -1, max = 1) * a
-  rand.z <- function() stats::runif(1, min = -1, max = 1)
-  rand.t <- function() stats::runif(1, min = 0, max = 2 * pi)
-  r <- function(z) sqrt(1 - z^2)
-  rand.x <- function(r) r * cos(t)
-  rand.y <- function(r) r * sin(t)
-  srss <- function(l) sqrt(sum(l^2)) 
-# The reset_sim function works in script form before
-# the disk_to_disk_3d function def, but will not 
-# build package this way. Trying here:
-  reset_sim <- function() {
-    sim_set <- data.frame("x" = 0, "y" = 0, "z" = 0, 
-                          "tag" = as.character("tag"), stringsAsFactors = FALSE)
-    sim_set <<- sim_set[-1, ]
-  }
-  
-  reset_sim()
-  # count <- 0
-  for(j in 1:runs) {
-    radius <- r.source + 1
-    while(radius > r.source) {
-      x.s <- rand.xy(r.source)
-      y.s <- rand.xy(r.source)
-      radius <- srss(c(x.s, y.s))
-    }
-    sim_set <<- rbind(sim_set, 
-                      data.frame("x" = x.s, "y" = y.s, "z" = -gap/2, "tag" = "firebrick1"))
-    
-    w <- rand.z()
-    t <- rand.t()
-    r1 <- r(w)
-    u <- rand.x(r1)
-    v <- rand.y(r1)
-    x.d <- x.s + u * gap / w
-    y.d <- y.s + v * gap / w
-    if(srss(c(x.d, y.d)) < r.detector & w > 0) {
-      
-      sim_set <<- rbind(sim_set, 
-                        data.frame("x" = x.d, "y" = y.d, "z" = gap/2, "tag" = "cornflowerblue"))
-    }
-    rel_solid_angle <- length(sim_set$tag[sim_set$tag == "cornflowerblue"]) / 
-      length(sim_set$tag[sim_set$tag == "firebrick1"])
-    print(paste0("The relative solid angle is: ", 
-                 signif(rel_solid_angle, 3)))
-    
-  }
-  
-  scatterplot3d::scatterplot3d(sim_set$x, sim_set$y,
-                               sim_set$z, main = "radiation disk source to detector surface",
-        axis = FALSE, #highlight.3d = TRUE,
-        color = sim_set$tag,
-        cex.symbols = 1000 / runs, pch = 8,
-        grid = FALSE, angle = 90, asp = 1.5)
-  graphics::mtext(paste0("The relative solid angle is: ", 
-       signif(rel_solid_angle, 3)), adj = 0.5, 
-       col = "darkblue",
-        line = 1, side = 1)
 }
