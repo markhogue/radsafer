@@ -11,6 +11,9 @@
 #' @export
 #  ------------------------# 
 rot_fun <- function(rot.axis, angle_degrees) {
+  if(!requireNamespace("dplyr", quietly = TRUE)) {
+    stop("The dplyr package is needed for this function to work. Please install it.", call. = FALSE)
+  }
   rot.angle <- pi / 180 * angle_degrees
 
   ax.num <- dplyr::case_when(rot.axis == "x" ~ 1,
