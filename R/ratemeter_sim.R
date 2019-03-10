@@ -17,7 +17,7 @@
 #'   of equilibrium in some time, use tau.estimate.
 #' @param trials Number of seconds to run simulation. Default = 600.
 #' @param log_opt If logarithmic scale is needed, set to "y". If set to anything
-#'   but blank (default), scale will be lograrithmic.
+#'   but blank (default), scale will be logarithmic.
 #' @return Plot of simulated meter reading every second..
 #' @examples
 #' rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20))

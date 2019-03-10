@@ -11,7 +11,7 @@ dk_activity(A0, half_life, t)
 
 \item{half_life, }{Half-life. Units are arbitrary, but must match time past.}
 
-\item{t}{The time past since origional activity.}
+\item{t}{The time past since original activity.}
 }
 \value{
 Time, in same units as half-life, to decay to target activity.

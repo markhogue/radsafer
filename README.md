@@ -41,7 +41,7 @@ dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = 
 #> [1] 0.3491632
 ```
 
-Use this functin to correct for the value needed today. Say, a disk source originally had a target count rate of 3000 cpm:
+Use this function to correct for the value needed today. Say, a disk source originally had a target count rate of 3000 cpm:
 
 ``` r
 3000 * dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = "y")

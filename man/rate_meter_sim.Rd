@@ -20,7 +20,7 @@ seconds. If the user does not know the time constant, but has an estimate
 of equilibrium in some time, use tau.estimate.}
 
 \item{log_opt}{If logarithmic scale is needed, set to "y". If set to anything
-but blank (default), scale will be lograrithmic.}
+but blank (default), scale will be logarithmic.}
 }
 \value{
 Plot of simulated meter reading every second..
