@@ -1,4 +1,4 @@
-^README\.Rmd$
+^README.Rmd$
 ^data-raw$
 ^\.travis\.yml$
 ^.*\.Rproj$

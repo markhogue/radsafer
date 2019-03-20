@@ -122,4 +122,5 @@ if(plot.opt == "3d")  {
           pch = 1, pt.cex = 0.5,
           horiz = FALSE, bty = "n")
   }
+  rel_solid_angle
 }
