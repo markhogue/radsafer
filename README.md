@@ -90,34 +90,34 @@ Example: You are counting an air sample with an active collection diameter of 45
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] "The relative solid angle estimate: 0.04652"
-#> [1] 0.04652444
+#> [1] "The relative solid angle estimate: 0.04647"
+#> [1] 0.04647195
 ```
 
 An optional plot is available in 2D or 3D:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "3d")))
-#> [1] "The relative solid angle estimate: 0.04832"
+#> [1] "The relative solid angle estimate: 0.05059"
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #> [1] 0.04832121
+    #> [1] 0.05059375
 
 Continuing the example: the only calibration source you had available with the appropriate isotope has an active diameter of 20 mm. Is this a big deal? Let's estimate the relative solid angle of the calibration, then take a ratio of the two.
 
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
-#> [1] "The relative solid angle estimate: 0.05304"
-#> [1] 0.0530447
+#> [1] "The relative solid angle estimate: 0.05354"
+#> [1] 0.05354127
 ```
 
 Correct for the mismatch:
 
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
-#> [1] 1.097752
+#> [1] 1.058259
 ```
 
 This makes sense - the air sample has particles originating outside the source radius, so more of them will be lost, thus an adjustment is needed for the activity measurement.

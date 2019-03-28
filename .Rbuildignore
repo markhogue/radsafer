@@ -1,7 +1,8 @@
+^CRAN-RELEASE$
 ^News\.md$
-^README.Rmd$
 ^data-raw$
 ^\.travis\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^cran-comments.md$
+^README.Rmd$
