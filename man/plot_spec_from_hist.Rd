@@ -4,12 +4,12 @@
 \alias{plot_spec_from_hist}
 \title{Convert histogram data to average points and plot as spectrum.}
 \usage{
-plot_spec_from_hist(spec.df, units, title)
+plot_spec_from_hist(spec.df, rad_units, title)
 }
 \arguments{
 \item{spec.df}{A data frame with no header. Maximum energy in MeV should be in the first column, binned results in the second column, uncertainty (optionally) in the third column.}
 
-\item{units}{Result units}
+\item{rad_units}{Result units}
 
 \item{title}{Title for chart}
 }
