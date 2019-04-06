@@ -4,6 +4,8 @@
 radsafer (version 1.0.0)
 ========================
 
+***2019-04-06***
+
 Big news! **radsafer** is now available from CRAN! So, we should be announcing the grand opening, right?
 
 But wait. **RadData** (<https://github.com/markhogue/RadData>) has also just been issued by CRAN. So, this is the soft opening for just a few close friends because a much more compelling version of **radsafer** will be out soon. It is going to have some really helpful functions for accessing, screening, plotting, and making inputs from **RadData**.
