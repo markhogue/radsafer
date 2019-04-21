@@ -1,16 +1,5 @@
-#' MCNP Cone Opening Parameter
+#' Copy and paste MCNP output spectral data for use with [mcnp_plot_out_spec()]
 #' @family mcnp tools
-#' @description MCNP cone surface requires a term, t^2, which is the tangent of
-#'   the cone angle, in radians, squared. This function takes an input in
-#'   degrees and provides the parameter needed by MCNP.
-#' @param d The cone angle in degrees.
-#' @return The ratio of actual to reference air density.
-#' @examples
-#' mcnp_cone_angle(45)
-#' @export
-mcnp_cone_angle <- function(d) tan(d * pi/180)^2
-
-#' Copy and paste MCNP output spectral data for use with `mcnp_plot_out_spec.R`
 #' @description Provides quick copy-and-paste conversion to data frame.
 #' Conversion is based on the three columns with 
 #' results from MCNP output in energy bins with
@@ -24,7 +13,7 @@ mcnp_cone_angle <- function(d) tan(d * pi/180)^2
 #' # is set up to provide data for this purpose.
 #' # To run the example, copy and paste the following
 #' # into an input file and delete the hash tags to run.
-#' # my_hist_data <- my_scan_fun()
+#' # my_hist_data <- scan()
 #' # 0.1000000 3.133122e-05 0.3348260
 #' # 0.4222222 6.731257e-05 0.2017546
 #' # 0.7444444 5.249198e-05 0.4524577
@@ -38,12 +27,11 @@ mcnp_cone_angle <- function(d) tan(d * pi/180)^2
 #' 
 #'
 #' @export 
-scan2spec.df <- function() {
+mcnp_scan2spec <- function() {
   print("copy and paste MCNP three column")
   print("binned-by-energy tally results (no header)")
   print("then hit [enter] twice")
   raw_scan <- scan()
   mtrx <- matrix(raw_scan, ncol = 3, byrow = TRUE)
-  spec.df <- data.frame(E.avg = mtrx[, 1], fraction = mtrx[, 2], unc = mtrx[, 
-                                                                            3])
+  spec.df <- data.frame(E.avg = mtrx[, 1], fraction = mtrx[, 2], unc = mtrx[, 3])
 }

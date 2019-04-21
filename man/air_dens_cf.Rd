@@ -26,3 +26,8 @@ Obtain a correction factor for ion chamber temperature and
 air_dens_cf(20, 760)
 air_dens_cf(30, 750)
 }
+\seealso{
+Other rad_measurements: \code{\link{disk_to_disk_solid_angle}},
+  \code{\link{rate_meter_sim}}, \code{\link{scaler_sim}}
+}
+\concept{rad_measurements}

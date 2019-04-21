@@ -1,4 +1,5 @@
 #' Correction factor for source decay.
+#' @family decay corrections
 #' @description Compute correction value for decay of a single-isotope source.
 #' @param half_life The half-life numeric value
 #' @param date1 Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".

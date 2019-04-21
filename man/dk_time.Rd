@@ -22,3 +22,10 @@ Calculate time for a radionuclide to decay to a target activity.
 \examples{
 dk_time(5770, 200, 1)
 }
+\seealso{
+Other decay corrections: \code{\link{dk_activity}},
+  \code{\link{dk_cf}},
+  \code{\link{dk_pct_to_num_half_life}},
+  \code{\link{dk_pct_to_num_t_h}}, \code{\link{dk_reverse}}
+}
+\concept{decay corrections}

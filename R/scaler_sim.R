@@ -1,6 +1,7 @@
 #' Count Room Scaler Simulation
 #' @description Returns a plotted distribution of results for a scaler model
 #'   based on the Poisson distribution. Inputs and outputs in counts per minute.
+#' @family rad measurements
 #' @param true_bkg  True background count rate in counts per minute.
 #' @param true_samp True sample count rate in counts per minute.
 #' @param ct_time How many iterations of counting are performed.

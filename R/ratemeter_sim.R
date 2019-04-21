@@ -15,6 +15,7 @@
 #'   Units = seconds. Default set to 9.5, which provides 90% equilibrium in 22
 #'   seconds. If the user does not know the time constant, but has an estimate
 #'   of equilibrium in some time, use tau.estimate.
+#' @family rad_measurements
 #' @param trials Number of seconds to run simulation. Default = 600.
 #' @param log_opt If logarithmic scale is needed, set to "y". If set to anything
 #'   but blank (default), scale will be logarithmic.

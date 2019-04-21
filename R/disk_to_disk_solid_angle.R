@@ -5,6 +5,7 @@
 #'   calibration (by ratioing the respective fractional solid angles). While
 #'   units of steridian are used for solid angle, this function only uses a
 #'   fraction of the total field of view.
+#' @family rad measurements
 #' @param r.source  source radius (all units must be consistent)
 #' @param gap distance between source and detector
 #' @param r.detector detector radius

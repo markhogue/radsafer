@@ -1,6 +1,7 @@
 #' Calculate half-life based on two data points
 #' @description Estimate half-life from two data points. Half-life units are
 #'   consistent with time units of input.
+#'   @family rad measurements
 #' @param time1 First time: Must be numeric with no formatting.
 #' @param time2 Second time: Must be numeric with no formatting.
 #' @param N1 First measurement - can be count rate, dose rate, etc.

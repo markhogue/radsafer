@@ -4,6 +4,7 @@
 #'   is per ISO ISO 8529-2-2000 section 6.2. Note, however, that the ISO formula
 #'   predicts the response. The formula used here takes the inverse to correct
 #'   for the over-response.
+#' @family rad measurements
 #' @param l The distance from the center of the detector to the center of the
 #'   source. Units of l and r.d must be consistent.
 #' @param r.d The detector radius. Value for typical NRD is 11 cm. An example is

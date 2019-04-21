@@ -44,3 +44,9 @@ rate_meter_sim(cpm_equilibrium = 500, log = "y",
 rate_meter_sim(cpm_equilibrium = 2.7e5, meter_scale_increments = seq(2e5, 1e6, 2e4))
 rate_meter_sim(450, seq(20, 1000, 20), trials = 1200, tau = 24.8534)
 }
+\seealso{
+Other rad_measurements: \code{\link{air_dens_cf}},
+  \code{\link{disk_to_disk_solid_angle}},
+  \code{\link{scaler_sim}}
+}
+\concept{rad_measurements}

@@ -1,4 +1,5 @@
 #' Number of half-lives past
+#' @family decay corrections
 #' @description Given a percentage reduction in activity, calculate how many
 #'   half-lives have passed.
 #' @param pct_lost Percentage of activity lost since reference time.

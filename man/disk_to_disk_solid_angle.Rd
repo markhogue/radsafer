@@ -37,3 +37,8 @@ runs = 1e3, plot.opt = "3d")
 disk_to_disk_solid_angle(r.source = 15, gap = 20,
 r.detector = 10, plot.opt = "n")
 }
+\seealso{
+Other rad_measurements: \code{\link{air_dens_cf}},
+  \code{\link{rate_meter_sim}}, \code{\link{scaler_sim}}
+}
+\concept{rad_measurements}

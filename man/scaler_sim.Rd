@@ -27,3 +27,9 @@ Returns a plotted distribution of results for a scaler model
 scaler_sim(true_bkg = 50, true_samp = 10, ct_time = 1, trials = 1e5)
 scaler_sim(true_bkg = 50, true_samp = 30, ct_time = 1, trials = 1e5)
 }
+\seealso{
+Other rad_measurements: \code{\link{air_dens_cf}},
+  \code{\link{disk_to_disk_solid_angle}},
+  \code{\link{rate_meter_sim}}
+}
+\concept{rad_measurements}

@@ -26,3 +26,10 @@ Calculate the activity at an earlier time, given the time past,
 \examples{
 dk_reverse(80, 8, 1)
 }
+\seealso{
+Other decay corrections: \code{\link{dk_activity}},
+  \code{\link{dk_cf}},
+  \code{\link{dk_pct_to_num_half_life}},
+  \code{\link{dk_pct_to_num_t_h}}, \code{\link{dk_time}}
+}
+\concept{decay corrections}
