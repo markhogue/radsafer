@@ -1,6 +1,15 @@
 
 <!-- News.md is generated from News.Rmd. Please edit that file -->
 
+# radsafer (version 1.0.9000)
+
+***2019-04-21***
+
+New functions have been added to the development version, 1.0.0.9000.
+Several of the existing functions have had slight changes, including
+name changes that will help make the package easier to use going
+forward.
+
 # radsafer (version 1.0.0)
 
 ***2019-04-06***
@@ -27,8 +36,3 @@ the same time on both projects\! We’re so psyched\!
 
 So, stay tuned, friends. **radsafer** will be out with version 1.1.0
 probably around early May 2019. Then we’ll announce it to all the world.
-
-***2019-04-21*** New functions have been added to the development
-version, 1.0.0.9000. Several of the existing functions have had slight
-changes, including name changes that will help make the package easier
-to use going forward.

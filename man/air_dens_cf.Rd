@@ -27,7 +27,8 @@ air_dens_cf(20, 760)
 air_dens_cf(30, 750)
 }
 \seealso{
-Other rad_measurements: \code{\link{disk_to_disk_solid_angle}},
-  \code{\link{rate_meter_sim}}, \code{\link{scaler_sim}}
+Other rad measurements: \code{\link{disk_to_disk_solid_angle}},
+  \code{\link{neutron_geom_cf}}, \code{\link{scaler_sim}},
+  \code{\link{tau_estimate}}
 }
-\concept{rad_measurements}
+\concept{rad measurements}

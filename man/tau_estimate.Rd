@@ -2,7 +2,7 @@
 % Please edit documentation in R/tau_estimate.R
 \name{tau_estimate}
 \alias{tau_estimate}
-\title{Estimate tau parameter for ratemeter_sim}
+\title{Estimate tau parameter for [ratemeter_sim]}
 \usage{
 tau_estimate(pct_eq, t_eq)
 }
@@ -22,3 +22,9 @@ If the time constant is not known, but the vendor specifies that
 \examples{
 tau_estimate(90, 22)
 }
+\seealso{
+Other rad measurements: \code{\link{air_dens_cf}},
+  \code{\link{disk_to_disk_solid_angle}},
+  \code{\link{neutron_geom_cf}}, \code{\link{scaler_sim}}
+}
+\concept{rad measurements}

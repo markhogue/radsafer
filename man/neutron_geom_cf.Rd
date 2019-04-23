@@ -30,3 +30,9 @@ neutron_geom_cf(11.1, 11)
 neutron_geom_cf(30, 11)
 neutron_geom_cf(5, 4.5)
 }
+\seealso{
+Other rad measurements: \code{\link{air_dens_cf}},
+  \code{\link{disk_to_disk_solid_angle}},
+  \code{\link{scaler_sim}}, \code{\link{tau_estimate}}
+}
+\concept{rad measurements}

@@ -21,6 +21,7 @@ The calculated half-life in units of time input.
 \description{
 Estimate half-life from two data points. Half-life units are
   consistent with time units of input.
+  @family rad measurements
 }
 \examples{
 half_life_2pt(2015, 2016, 45, 30)

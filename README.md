@@ -117,8 +117,8 @@ is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] "The relative solid angle estimate: 0.0463"
-#> [1] 0.04629907
+#> [1] "The relative solid angle estimate: 0.04825"
+#> [1] 0.04824782
 ```
 
 An optional plot is available in 2D or
@@ -131,7 +131,7 @@ An optional plot is available in 2D or
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #> [1] 0.04656814
+    #> [1] 0.04657206
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -141,15 +141,15 @@ two.
 
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
-#> [1] "The relative solid angle estimate: 0.05185"
-#> [1] 0.05185371
+#> [1] "The relative solid angle estimate: 0.04874"
+#> [1] 0.04873899
 ```
 
 Correct for the mismatch:
 
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
-#> [1] 1.113502
+#> [1] 1.046529
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -238,23 +238,45 @@ mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 
 ### radionuclides
 
-The `RN_screen` function helps find a radionuclide of interest based on
-decay mode, half-life, and total emission
-energy.
+Search by alpha, beta, photon or use the general screen option.
+
+`search_phot_by_E` allows screening based on energy, half-life, and
+minimum probability.
+
+Here’s a search for photon energy between 0.99 and 1.01 MeV, half-life
+between 13 and 15 minutes, and probability at least
+1e-4
 
 ``` r
-RNs_selected <- RN_screen(dk_mode = "A", min_half_life_seconds = 15 * 60, max_half_life_seconds = 30 * 60)
-head(RNs_selected[, c(1:3)])
-#> # A tibble: 6 x 3
-#>   RN     half_life units
-#>   <chr>      <dbl> <chr>
-#> 1 At-205      26.2 m    
-#> 2 Bi-214      19.9 m    
-#> 3 Cf-244      19.4 m    
-#> 4 Dy-151      17.9 m    
-#> 5 Fr-212      20   m    
-#> 6 Fr-223      22   m
+search_results <- search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 ```
+
+| RN     | code\_AN |  E\_MeV |      prob | half\_life | units | decay\_constant |
+| :----- | :------- | ------: | --------: | ---------: | :---- | --------------: |
+| Pr-136 | G        | 0.99100 | 0.0016768 |      13.10 | m     |       0.0008819 |
+| Pr-136 | G        | 1.00070 | 0.0503040 |      13.10 | m     |       0.0008819 |
+| Re-178 | G        | 1.00440 | 0.0057600 |      13.20 | m     |       0.0008752 |
+| Pr-147 | G        | 0.99597 | 0.0083220 |      13.40 | m     |       0.0008621 |
+| Xe-138 | G        | 0.99680 | 0.0006300 |      14.08 | m     |       0.0008205 |
+| Nb-88  | G        | 0.99760 | 0.0041000 |      14.50 | m     |       0.0007967 |
+| Mo-101 | G        | 1.00740 | 0.0017300 |      14.61 | m     |       0.0007907 |
+| Sm-140 | G        | 0.99990 | 0.0012000 |      14.82 | m     |       0.0007795 |
+
+The `RN_screen` function helps find a radionuclide of interest based on
+decay mode, half-life, and total emission energy.
+
+In this example, we search for radionuclides decaying by spontaneous
+fission with half-lives between 6 months and 2
+years.
+
+``` r
+RNs_selected <- RN_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
+```
+
+| RN     | half\_life | units |
+| :----- | ---------: | :---- |
+| Es-254 |      275.7 | d     |
+| Cf-248 |      334.0 | d     |
 
 Other radionuclides family functions provide specific activity and short
 tables of decay data.
