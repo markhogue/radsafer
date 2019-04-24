@@ -19,4 +19,5 @@ RN_Spec_Act <- function(RN_select) {
   SA <- RadData::ICRP_07.NDX$decay_constant[i] * 6.0221409e+23 / 
     RadData::ICRP_07.NDX$AMU[i] 
   print(paste0(signif(SA, 6), " Bq / g"))
+  SA
 }

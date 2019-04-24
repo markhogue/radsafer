@@ -4,15 +4,15 @@
 \alias{dk_reverse}
 \title{Calculate amount of radioactivity given interval.}
 \usage{
-dk_reverse(t, half_life, A1)
+dk_reverse(A1, half_life, t)
 }
 \arguments{
-\item{t}{Time past since activity of interest. Units are arbitrary, but must
-match half-life.}
+\item{A1}{The target activity or related parameter, such as dose rate.}
 
 \item{half_life}{Half-life. Units are arbitrary, but must match time past.}
 
-\item{A1}{The target activity or related parameter, such as dose rate.}
+\item{t}{Time past since activity of interest. Units are arbitrary, but must
+match half-life.}
 }
 \value{
 The original activity or related parameter.
@@ -24,7 +24,11 @@ Calculate the activity at an earlier time, given the time past,
   half-life must be in consistent units.
 }
 \examples{
-dk_reverse(80, 8, 1)
+# A Sr-90 Radioisotope thermoelectric generator is discovered and measured. 
+# The activity is estimated to be around 400 TBq. Original RTG's of this 
+# type contained 1480 TBq when built 50 years earlier. We're wondering if 
+# much has leaked. So, we compute the original from what we have. 
+dk_reverse(400, 28.79, 50)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},

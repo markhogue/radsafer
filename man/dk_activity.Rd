@@ -4,23 +4,25 @@
 \alias{dk_activity}
 \title{Time for a radionuclide to decay to a target activity.}
 \usage{
-dk_activity(A0, half_life, t)
+dk_activity(A0, half_life, target)
 }
 \arguments{
 \item{A0}{The original activity, or related parameter.}
 
 \item{half_life, }{Half-life. Units are arbitrary, but must match time past.}
 
-\item{t}{The time past since original activity.}
+\item{target}{The target activity.}
 }
 \value{
-Time, in same units as half-life, to decay to target activity.
+time, in same units as half-life, to decay to target activity.
 }
 \description{
 Calculate time for a radionuclide to decay to a target activity.
 }
 \examples{
-dk_activity(10, 8, 60)
+# How long does it take for original activity of 10 to decay to 2.5 
+# if half-life is 5? (All time units consistent)
+dk_activity(10, 5, 2.5)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_cf}},

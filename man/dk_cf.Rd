@@ -4,17 +4,17 @@
 \alias{dk_cf}
 \title{Correction factor for source decay.}
 \usage{
-dk_cf(half_life, date1, date2 = Sys.Date(), time_unit)
+dk_cf(half_life, time_unit, date1, date2 = Sys.Date())
 }
 \arguments{
 \item{half_life}{The half-life numeric value}
 
+\item{time_unit, }{acceptable values are years, days, hours, and minutes.
+These may be shortened to y, d, h and m. Must be entered in quotes.}
+
 \item{date1}{Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".}
 
 \item{date2}{Date of interest. Format is same as date1. Default is today's date, obtained from system.}
-
-\item{time_unit, }{acceptable values are years, days, hours, and minutes.
-These may be shortened to y, d, h and m. Must be entered in quotes.}
 }
 \value{
 The decay correction factor from the reference date to the date of interest.
@@ -23,8 +23,8 @@ The decay correction factor from the reference date to the date of interest.
 Compute correction value for decay of a single-isotope source.
 }
 \examples{
-dk_cf(5.27,"2010-12-01", "2018-12-01", "y")
-dk_cf(24, "2018-10-01-08:15","2018-10-01-09:15", "m")
+dk_cf(5.27, "y","2010-12-01", "2018-12-01")
+dk_cf(24, "m", "2018-10-01-08:15")
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},

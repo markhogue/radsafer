@@ -2,16 +2,30 @@
 #' @family decay corrections
 #' @description Compute correction value for decay of a single-isotope source.
 #' @param half_life The half-life numeric value
-#' @param date1 Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".
-#' @param date2 Date of interest. Format is same as date1. Default is today's date, obtained from system.
 #' @param time_unit, acceptable values are years, days, hours, and minutes.
 #'   These may be shortened to y, d, h and m. Must be entered in quotes.
+#' @param date1 Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".
+#' @param date2 Date of interest. Format is same as date1. Default is today's date, obtained from system.
+
 #' @return The decay correction factor from the reference date to the date of interest. 
 #' @examples 
-#' dk_cf(5.27,"2010-12-01", "2018-12-01", "y")
-#' dk_cf(24, "2018-10-01-08:15","2018-10-01-09:15", "m")
+#' dk_cf(5.27, "y","2010-12-01", "2018-12-01")
+#' dk_cf(24, "m", "2018-10-01-08:15")
 #' @export
-dk_cf <- function(half_life, date1, date2 = Sys.Date(), time_unit) {
+dk_cf <- function(half_life, time_unit, date1, date2 = Sys.Date()) {
+  # arg checks
+  if(!is.numeric(half_life)) 
+    stop("half_life must be a number.")
+  if(!is.character(date1)) 
+    stop("dates must be in format 'YYYY-MM-DD'")
+  if(!is.character(date1)) 
+    stop("dates must be in format 'YYYY-MM-DD'")
+  if(!time_unit %in% c("years", "days", "hours","minutes", 
+                       "y", "d", "h", "m"))
+    stop("time unit must be one of these: 
+       'years', 'days', 'hours','minutes', 
+        'y', 'd', 'h', 'm'")
+  # end of arg checks
   if(time_unit == "year" | time_unit == "y") {
     2^(-as.numeric(difftime(strptime(date2, "%Y-%m-%d"),
                             strptime(date1, "%Y-%m-%d"),
@@ -36,5 +50,5 @@ dk_cf <- function(half_life, date1, date2 = Sys.Date(), time_unit) {
     2^(-as.numeric(difftime(strptime(date2, "%Y-%m-%d-%H:%M"),
                             strptime(date1, "%Y-%m-%d-%H:%M"),
                             units = "mins") / half_life))  }
-
+  
 }
