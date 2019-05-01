@@ -4,8 +4,8 @@
 \alias{disk_to_disk_solid_angle}
 \title{Calculate fractional solid angle for disk to disk}
 \usage{
-disk_to_disk_solid_angle(r.source, gap, r.detector, plot.opt,
-  runs = 10000)
+disk_to_disk_solid_angle(r.source, gap, r.detector, plot.opt = "n",
+  runs = 10000, off_center = 0, beep = "off")
 }
 \arguments{
 \item{r.source}{source radius (all units must be consistent)}
@@ -16,8 +16,11 @@ disk_to_disk_solid_angle(r.source, gap, r.detector, plot.opt,
 
 \item{plot.opt}{plot options - "2d", "3d" or "n".}
 
-\item{runs}{Number of particles to simulate. Running more particles improves
-accuracy. Default = 1e4.}
+\item{runs}{Number of particles to simulate. Running more particles improves accuracy. Default = 1e4.}
+
+\item{off_center}{measure of eccentricity between the center of the source and the center of the disk. This is applied to the x-dimension of the source.}
+
+\item{beep}{Set to "on" if desired. Default is "off". Alerts to end of run if runs is set to a high number.}
 }
 \value{
 Fractional solid angle and plot of simulation.
@@ -31,11 +34,13 @@ Returns fractional solid angle for a geometry frequently
   fraction of the total field of view.
 }
 \examples{
-disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60, plot.opt = "2d")
-disk_to_disk_solid_angle(r.source = 50, gap = 20, r.detector = 60,
-runs = 1e3, plot.opt = "3d")
-disk_to_disk_solid_angle(r.source = 15, gap = 20,
-r.detector = 10, plot.opt = "n")
+disk_to_disk_solid_angle(r.source = 15, gap = 20, r.detector = 10, plot.opt = "n", runs = 1e3)
+ 
+
+}
+\references{
+\url{https://karthikkaranth.me/blog/generating-random-points-in-a-sphere/}
+\url{https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance}
 }
 \seealso{
 Other rad measurements: \code{\link{air_dens_cf}},

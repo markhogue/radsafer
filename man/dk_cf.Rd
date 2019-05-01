@@ -24,7 +24,6 @@ Compute correction value for decay of a single-isotope source.
 }
 \examples{
 dk_cf(5.27, "y","2010-12-01", "2018-12-01")
-dk_cf(24, "m", "2018-10-01-08:15")
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},

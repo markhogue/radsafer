@@ -10,7 +10,6 @@
 #'   the third column.
 #' @param title Title for chart
 #' @examples
-#' library(ggplot2)
 #' mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 #' @export
 mcnp_plot_out_spec <- function(spec.df, title) {

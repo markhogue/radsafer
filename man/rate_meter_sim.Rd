@@ -39,8 +39,6 @@ Plot simulated ratemeter readings once per second for 600
 }
 \examples{
 rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20))
-rate_meter_sim(cpm_equilibrium = 500, log = "y",
-               meter_scale_increments = c(seq(10, 100, 10), seq(100, 1000, 100)))
 rate_meter_sim(cpm_equilibrium = 2.7e5, meter_scale_increments = seq(2e5, 1e6, 2e4))
 rate_meter_sim(450, seq(20, 1000, 20), trials = 1200, tau = 24.8534)
 }

@@ -10,7 +10,6 @@
 #' @return The decay correction factor from the reference date to the date of interest. 
 #' @examples 
 #' dk_cf(5.27, "y","2010-12-01", "2018-12-01")
-#' dk_cf(24, "m", "2018-10-01-08:15")
 #' @export
 dk_cf <- function(half_life, time_unit, date1, date2 = Sys.Date()) {
   # arg checks

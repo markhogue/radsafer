@@ -14,10 +14,9 @@
 #' RN_Spec_Act("Te-117")
 #' RN_Spec_Act("Ba-137m")
 #' @export
+
 RN_Spec_Act <- function(RN_select) {
-  i <- which(RadData::ICRP_07.NDX$RN == RN_select) 
-  SA <- RadData::ICRP_07.NDX$decay_constant[i] * 6.0221409e+23 / 
-    RadData::ICRP_07.NDX$AMU[i] 
-  print(paste0(signif(SA, 6), " Bq / g"))
-  SA
+  i <- which(RadData::ICRP_07.NDX$RN == RN_select)
+  SA <- RadData::ICRP_07.NDX$decay_constant[i] * 6.0221409e+23 / RadData::ICRP_07.NDX$AMU[i]
+  data.frame("SA" = signif(SA, 6), "Units" = "Bq / g", row.names = "")
 }

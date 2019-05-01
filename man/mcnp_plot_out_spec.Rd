@@ -20,7 +20,6 @@ Model results from MCNP and perhaps other sources typically
   column titled 'R'.
 }
 \examples{
-library(ggplot2)
 mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 }
 \seealso{
