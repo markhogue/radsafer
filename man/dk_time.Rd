@@ -28,6 +28,6 @@ dk_time(5730, 14, 1)
 Other decay corrections: \code{\link{dk_activity}},
   \code{\link{dk_cf}},
   \code{\link{dk_pct_to_num_half_life}},
-  \code{\link{dk_pct_to_num_t_h}}, \code{\link{dk_reverse}}
+  \code{\link{dk_reverse}}
 }
 \concept{decay corrections}

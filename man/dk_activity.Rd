@@ -27,7 +27,6 @@ dk_activity(10, 5, 2.5)
 \seealso{
 Other decay corrections: \code{\link{dk_cf}},
   \code{\link{dk_pct_to_num_half_life}},
-  \code{\link{dk_pct_to_num_t_h}},
   \code{\link{dk_reverse}}, \code{\link{dk_time}}
 }
 \concept{decay corrections}

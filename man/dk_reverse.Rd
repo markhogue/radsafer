@@ -34,6 +34,6 @@ dk_reverse(400, 28.79, 50)
 Other decay corrections: \code{\link{dk_activity}},
   \code{\link{dk_cf}},
   \code{\link{dk_pct_to_num_half_life}},
-  \code{\link{dk_pct_to_num_t_h}}, \code{\link{dk_time}}
+  \code{\link{dk_time}}
 }
 \concept{decay corrections}

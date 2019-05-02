@@ -10,4 +10,5 @@
 stay_time <- function(dose_rate, dose_allowed, margin = 20) {
   mins <- (100 - margin)/100 * (dose_allowed / dose_rate) * 60
   print(paste0("Time allowed is ", mins, " minutes"))
+  mins
 }

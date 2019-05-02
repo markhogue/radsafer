@@ -28,7 +28,6 @@ dk_cf(5.27, "y","2010-12-01", "2018-12-01")
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},
   \code{\link{dk_pct_to_num_half_life}},
-  \code{\link{dk_pct_to_num_t_h}},
   \code{\link{dk_reverse}}, \code{\link{dk_time}}
 }
 \concept{decay corrections}
