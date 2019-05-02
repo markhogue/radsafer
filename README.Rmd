@@ -90,7 +90,7 @@ neutron_geom_cf(11.1, 11)
 
 **disk_to_disk_solid_angle**
 
-Correct for a mismatch between the _source calibration_ of a _counting system_ and the item being measured. A significant factor in the counting efficiency is the solid angle from the source to the detector. 
+Correct for a mismatch between the _source calibration_ of a _counting system_ and the item being measured. A significant factor in the counting efficiency is the solid angle from the source to the detector. You can also check for the impact of an item not being centered with the detector.
 
 Example: You are counting an air sample with an active collection diameter of 45 mm, your detector has a radius of 25 mm and there is a gap between the two of 5 mm. (The function is based on radius, not diameter so be sure to divide the diameter by two.) The relative solid angle is:
 

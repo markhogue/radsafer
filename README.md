@@ -107,6 +107,8 @@ neutron_geom_cf(11.1, 11)
 Correct for a mismatch between the *source calibration* of a *counting
 system* and the item being measured. A significant factor in the
 counting efficiency is the solid angle from the source to the detector.
+You can also check for the impact of an item not being centered with the
+detector.
 
 Example: You are counting an air sample with an active collection
 diameter of 45 mm, your detector has a radius of 25 mm and there is a
@@ -117,8 +119,9 @@ is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] "The relative solid angle estimate: 0.04825"
-#> [1] 0.04824782
+#>    mean_eff        SEM
+#>  0.04883302 0.00215713
+#> [1] 0.04883302 0.00215713
 ```
 
 An optional plot is available in 2D or
@@ -126,12 +129,13 @@ An optional plot is available in 2D or
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "3d")))
-#> [1] "The relative solid angle estimate: 0.04657"
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #> [1] 0.04657206
+    #>    mean_eff         SEM
+    #>  0.04923591 0.002176702
+    #> [1] 0.049235907 0.002176702
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -141,15 +145,18 @@ two.
 
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
-#> [1] "The relative solid angle estimate: 0.04874"
-#> [1] 0.04873899
+#>    mean_eff         SEM
+#>  0.05213223 0.002221604
+#>     mean_eff         SEM
+#> 1 0.05213223 0.002221604
 ```
 
 Correct for the mismatch:
 
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
-#> [1] 1.046529
+#>   mean_eff      SEM
+#> 1 1.058825 1.020629
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -198,6 +205,7 @@ calculate stay time with: `stay_time`
 ``` r
 stay_time(dose_rate = 120, dose_allowed = 100, margin =  20)
 #> [1] "Time allowed is 40 minutes"
+#> [1] 40
 ```
 
 ### mcnp tools functions
@@ -232,6 +240,11 @@ quick plot with `mcnp_plot_out_spec`:
 
 ``` r
 mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
+#> Registered S3 methods overwritten by 'ggplot2':
+#>   method         from 
+#>   [.quosures     rlang
+#>   c.quosures     rlang
+#>   print.quosures rlang
 ```
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="50%" />
