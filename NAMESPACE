@@ -2,6 +2,7 @@
 
 export("%>%")
 export(RN_Spec_Act)
+export(RN_bin_screen_phot)
 export(RN_info)
 export(RN_screen)
 export(air_dens_cf)

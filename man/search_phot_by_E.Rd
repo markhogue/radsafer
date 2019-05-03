@@ -37,8 +37,9 @@ search_results <- search_phot_by_E(0.1, 0.15, 1e6 * 3.153e7, 3e6 * 3.153e7)
 }
 \seealso{
 Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_info}}, \code{\link{RN_screen}},
-  \code{\link{search_alpha_by_E}},
+  \code{\link{RN_bin_screen_phot}},
+  \code{\link{RN_bin_screen_plot}}, \code{\link{RN_info}},
+  \code{\link{RN_screen}}, \code{\link{search_alpha_by_E}},
   \code{\link{search_beta_by_E}}
 }
 \concept{radionuclides}

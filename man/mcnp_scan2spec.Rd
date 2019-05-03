@@ -2,7 +2,7 @@
 % Please edit documentation in R/mcnp_scan2spec.R
 \name{mcnp_scan2spec}
 \alias{mcnp_scan2spec}
-\title{Copy and paste MCNP output spectral data for use with [mcnp_plot_out_spec()]}
+\title{Copy and paste MCNP output spectral data for use with \code{mcnp_plot_out_spec()}}
 \usage{
 mcnp_scan2spec()
 }
@@ -11,11 +11,11 @@ spectrum file with maximum energy and MCNP bin value
 }
 \description{
 Provides quick copy-and-paste conversion to data frame.
-Conversion is based on the three columns with 
-results from MCNP output in energy bins with
-maximum energy in MeV in the first column,
-the mean result for the bin in the second column, and 
-relative Monte Carlo uncertainty in the third column.
+Conversion is based on the two or three columns with 
+input energy or output results from MCNP. Energy is expected to be in 
+bins with maximum energy in MeV in the first column,
+the input probability or output mean result for the bin in the 
+second column, and relative Monte Carlo uncertainty in the third column.
 }
 \examples{
 # Since this function requires the user

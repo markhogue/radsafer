@@ -40,7 +40,9 @@ RNs_selected <- RN_screen(dk_mode = "IT", max_half_life_seconds = 433 * 3.15e7)
 }
 \seealso{
 Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_info}}, \code{\link{search_alpha_by_E}},
+  \code{\link{RN_bin_screen_phot}},
+  \code{\link{RN_bin_screen_plot}}, \code{\link{RN_info}},
+  \code{\link{search_alpha_by_E}},
   \code{\link{search_beta_by_E}},
   \code{\link{search_phot_by_E}}
 }
