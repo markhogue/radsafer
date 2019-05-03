@@ -119,9 +119,9 @@ is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#>    mean_eff        SEM
-#>  0.04883302 0.00215713
-#> [1] 0.04883302 0.00215713
+#>    mean_eff         SEM
+#>  0.04788251 0.002141611
+#> [1] 0.047882507 0.002141611
 ```
 
 An optional plot is available in 2D or
@@ -134,8 +134,8 @@ An optional plot is available in 2D or
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
     #>    mean_eff         SEM
-    #>  0.04923591 0.002176702
-    #> [1] 0.049235907 0.002176702
+    #>  0.04784569 0.002136641
+    #> [1] 0.047845691 0.002136641
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -146,9 +146,9 @@ two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05213223 0.002221604
+#>  0.05103875 0.002199559
 #>     mean_eff         SEM
-#> 1 0.05213223 0.002221604
+#> 1 0.05103875 0.002199559
 ```
 
 Correct for the mismatch:
@@ -156,7 +156,7 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>   mean_eff      SEM
-#> 1 1.058825 1.020629
+#> 1 1.066737 1.029447
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -240,11 +240,6 @@ quick plot with `mcnp_plot_out_spec`:
 
 ``` r
 mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
-#> Registered S3 methods overwritten by 'ggplot2':
-#>   method         from 
-#>   [.quosures     rlang
-#>   c.quosures     rlang
-#>   print.quosures rlang
 ```
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="50%" />

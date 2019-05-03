@@ -163,7 +163,7 @@ For _MCNP outputs_, plot the results of a tally with _energy bins_. Either first
 ```{r echo = FALSE}
 plot_data <- photons_cs137_hist[1:16, ]
 ```
-```{r out.width = '50%'}
+```{r out.width = '50%', warning=FALSE, message=FALSE}
 mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 ```
 
