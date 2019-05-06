@@ -12,6 +12,7 @@ RoxygenNote: 6.1.1
 Suggests: testthat, tidyverse, scatterplot3d, beepr
 Imports: 
     ggplot2,
+    readr,
     stats,
     graphics,
     RadData,
