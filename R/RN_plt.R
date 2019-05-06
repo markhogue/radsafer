@@ -1,4 +1,4 @@
-#' Quick plot to accompany [RN_bin_screen_phot]
+#' Quick plot to radionuclide emission data screens.
 #' 
 #' Plots with ggplot2 with geom_point and log y-scale.
 #' Useful for a small set of radionclides.
@@ -6,16 +6,20 @@
 #' by entering only the data frame name.
 #' 
 #' @family radionuclides
+#' 
 #' @param df data frame of results including RN (radionuclide), 
 #'  energy in E_MeV and probability (prob) of photon.
 #'  
 #'  @examples 
-#'  RN_bin_screen_plot(spec_0.1_0.3)
+#'  RN_plt(spec_0.1_0.3)
 #'  
-#'  @export
+#'  @return plot of spectrum
 #'  
-RN_bin_screen_plot <- function(df){
-  E_MeV  <- prob  <- RN <-  NULL # appeasing R CMD check -  avoid note on no visible binding of ggplot arg
+#' @export
+RN_plt <- function(df){
+  
+  E_MeV  <- prob  <- RN <-  NULL 
+  # (avoids note on no visible binding of ggplot arg)
 ggplot2::ggplot(data = df, 
                 ggplot2::aes(E_MeV, prob, color = RN, shape = RN)) + 
   ggplot2::geom_point(alpha = 0.7) +

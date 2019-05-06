@@ -1,6 +1,7 @@
 #' Produce MCNP source terms from ICRP 107 data except beta
 #' @family mcnp tools
 #' @seealso  [si_hist()] and [sp_hist()]  if radioactive emission data is available in histogram form and needs formatting for MCNP input.
+#' [RN_screen_plot] may be used for a simple plot of output.
 #' @description Obtain emission data from the RadData package and write to a file for use with the radiation transport code, MCNP.
 #' @param desired_RN Radionuclide in form Ba-137m
 #' @param rad_type Radiation type, leave NULL if selecting photons or 
@@ -23,7 +24,8 @@
 #' @param cut minimum energy defaults to 0
 #' @param erg.dist energy distribution number for MCNP input
 #' 
-#' @return a text file, 'si.sp.dat' is written to working directory. 
+#' @return a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)). 
+#' For use with MCNP, a text file, 'si.sp.dat' is written to working directory. 
 #' If file already exists, it is appended. The file contains all 
 #' emission energies in the si 'card' and the Line indicator, L is included,
 #' e.g. si1  L  0.01 (showing a first energy of 0.01 MeV). 
@@ -38,8 +40,7 @@
 #' mcnp_si_sp_RD('Am-241', rad_type = 'A', cut = 0.01, erg.dist = 23)
 #' 
 #' @export
-mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, 
-                           cut = 0, erg.dist = 1) {
+mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, erg.dist = 1) {
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")
   stop <- FALSE
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
@@ -66,14 +67,16 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE,
       dat_set <- "B"
   
   if (dat_set == "B") {
-    si.sp <- RadData::ICRP_07.BET[which(RadData::ICRP_07.BET$RN == 
-                                          desired_RN), ]
+    si.sp <- RadData::ICRP_07.BET[which(RadData::ICRP_07.BET$RN == desired_RN), ]
   }
+  
   if (dat_set == "R") {
     si.sp <- RadData::ICRP_07.RAD[which(RadData::ICRP_07.RAD$RN == 
                                           desired_RN), ]
+    
     if (photon == TRUE) 
       si.sp <- si.sp[which(si.sp$is_photon == TRUE), ]
+    
     if (photon == FALSE) 
       si.sp <- si.sp[which(si.sp$code_AN == rad_type), ]
   }
@@ -81,8 +84,10 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE,
   
   if (photon == TRUE) {
     si.sp <- RadData::ICRP_07.RAD[which(RadData::ICRP_07.RAD$RN == desired_RN), ]
+    
     si.sp <- si.sp[which(si.sp$is_photon == TRUE), ]
   }
+  
   # check for no matches
   if (is.na(si.sp[1, 1])) {
     oops <- "No matches"
@@ -99,35 +104,85 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE,
   na.num <- add.NA(length(si.sp$E_MeV))
   
   # na.num <- 6 - (length(si.sp$E_MeV) %% 6)
-  prob.sum <- ifelse(dat_set == "B", "see branching ratio", signif(sum(si.sp$prob, 
-                                                                       5)))
-  si <- as.data.frame(matrix(c(si.sp$E_MeV, rep(NA, na.num)), ncol = 6, byrow = TRUE))
+  prob.sum <- ifelse(dat_set == "B", 
+              "see branching ratio", 
+              signif(sum(si.sp$prob, 5)))
+  
+  si <- as.data.frame(matrix(c(si.sp$E_MeV, rep(NA, na.num)), 
+              ncol = 6, byrow = TRUE))
+  
   si$V7 <- c(rep("&", nrow(si) - 1), NA)
   si <- data.frame(si$V1, si$V2, si$V3, si$V4, si$V5, si$V6, si$V7)
   if (dat_set == "B") {
-    sp <- as.data.frame(matrix(c(si.sp$A, rep(NA, na.num)), ncol = 6, 
+    sp <- as.data.frame(matrix(c(si.sp$A, rep(NA, na.num)), 
+                               ncol = 6, 
                                byrow = TRUE))
   }
   if (dat_set == "R") {
-    sp <- as.data.frame(matrix(c(si.sp$prob, rep(NA, na.num)), ncol = 6, byrow = TRUE))
+    sp <- as.data.frame(matrix(c(si.sp$prob, 
+                    rep(NA, na.num)), 
+                    ncol = 6, 
+                    byrow = TRUE))
   }
   sp$V7 <- c(rep("&", nrow(sp) - 1), NA)
   sp <- data.frame(sp$V1, sp$V2, sp$V3, sp$V4, sp$V5, sp$V6, sp$V7)
   # write output si output
-  utils::write.table(data.frame(text = "c"), "si.sp.dat", col.names = FALSE, row.names = FALSE, append = TRUE, quote = FALSE)
+  utils::write.table(data.frame(text = "c"), "si.sp.dat", 
+      col.names = FALSE, 
+      row.names = FALSE, 
+      append = TRUE, 
+      quote = FALSE)
   dist_type <- "L"
   if (dat_set == "B") 
     dist_type <- "A"
   r_type_text <- as.character(rad_type)
   if (photon == TRUE) 
     r_type_text <- "photon"
-  utils::write.table(data.frame(text = paste0("si", erg.dist," ", dist_type, " & ", "$", desired_RN, ", radiation type= ", r_type_text)), "si.sp.dat", col.names = FALSE, row.names = FALSE, append = TRUE, quote = FALSE)
-  utils::write.table(data.frame(text = paste0("c  energy cut off at ", cut, " MeV ")), "si.sp.dat", col.names = FALSE, row.names = FALSE, append = TRUE, quote = FALSE)
-  readr::write_delim(data.frame(si), "si.sp.dat", col_names = FALSE, append = TRUE)
+  utils::write.table(data.frame(text = paste0("si", 
+      erg.dist," ", dist_type, " & ", "$", desired_RN, 
+      ", radiation type= ", r_type_text)), "si.sp.dat",
+      col.names = FALSE, 
+      row.names = FALSE, 
+      append = TRUE, 
+      quote = FALSE)
+  
+  utils::write.table(data.frame(text = paste0("c  energy cut off at ",
+        cut, " MeV ")), 
+        "si.sp.dat", 
+        col.names = FALSE, 
+        row.names = FALSE, 
+        append = TRUE, 
+        quote = FALSE)
+  
+  readr::write_delim(data.frame(si), 
+                     "si.sp.dat", 
+                     col_names = FALSE, 
+                     append = TRUE)
+  
   # sp output
-  utils::write.table(data.frame(text = "c"), "si.sp.dat", col.names = FALSE, 
-              row.names = FALSE, append = TRUE, quote = FALSE)
-  utils::write.table(data.frame(text = paste0("sp", erg.dist, " & ", "$", desired_RN, ", radiation type= ", r_type_text, " sum of probs = ", prob.sum)), "si.sp.dat", col.names = FALSE, row.names = FALSE, append = TRUE, quote = FALSE)
-  readr::write_delim(data.frame(sp), "si.sp.dat", col_names = FALSE, append = TRUE)
-}
+  utils::write.table(data.frame(text = "c"),
+          "si.sp.dat", 
+           col.names = FALSE, 
+           row.names = FALSE, 
+          append = TRUE, 
+          quote = FALSE)
+  
+  utils::write.table(data.frame(text = paste0("sp", 
+        erg.dist, " & ", "$", 
+        desired_RN, ", radiation type= ", 
+        r_type_text, " sum of probs = ", 
+        prob.sum)), "si.sp.dat", 
+        col.names = FALSE, 
+        row.names = FALSE, 
+        append = TRUE, 
+        quote = FALSE)
+  
+  readr::write_delim(data.frame(sp), 
+                     "si.sp.dat", 
+                     col_names = FALSE, 
+                     append = TRUE)
+  
+# return a data frame to allow plots, etc.
+ si.sp
+  }
 

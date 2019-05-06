@@ -6,6 +6,8 @@
 #' 
 #' @inheritParams search_phot_by_E
 #' 
+#' @seealso [RN_plt()]
+#' 
 #' @importFrom rlang .data
 #' @examples 
 #' # between 7 and 8 MeV

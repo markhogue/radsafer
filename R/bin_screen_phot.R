@@ -7,7 +7,7 @@
 #' the default is 100 (greater than the maximum probability of any photon).
 #' 
 #' @family radionuclides
-#' @seealso [RN_bin_screen_plot()]
+#' @seealso [RN_plt()]
 #' 
 #' @param E_min minimum energy in MeV, default = 0
 #' @param E_max maximum energy in MeV, default = 10
@@ -22,7 +22,7 @@
 #' @importFrom rlang .data
 #' 
 #' @examples 
-#' spec_0.1_0.3 <- RN_bin_screen_phot(E_min = 0.1, E_max = 0.3, 
+#' spec_0.1_0.3 <- bin_screen_phot(E_min = 0.1, E_max = 0.3, 
 #' min_prob = 0.4, min_half_life_seconds = 30 * 24 * 3600,
 #' max_half_life_seconds = 3.153e7, no_E_min = 0.015, 
 #' no_E_max = 0.0999, no_min_prob = 0.05, no_E_min2 = 0.301, no_E_max2 = 10, no_min_prob2 = 0.01)
@@ -31,7 +31,7 @@
 #' results to a viewable object, such as 'search_results'
 #' 
 #' @export
-RN_bin_screen_phot <- function(E_min = 0, 
+bin_screen_phot <- function(E_min = 0, 
                                E_max = 10, 
                              min_prob = 0,
                            min_half_life_seconds = NULL,

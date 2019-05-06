@@ -2,10 +2,11 @@
 
 export("%>%")
 export(RN_Spec_Act)
-export(RN_bin_screen_phot)
+export(RN_index_screen)
 export(RN_info)
-export(RN_screen)
+export(RN_plt)
 export(air_dens_cf)
+export(bin_screen_phot)
 export(disk_to_disk_solid_angle)
 export(dk_activity)
 export(dk_cf)

@@ -44,6 +44,7 @@ scan2spec.df <- function() {
   print("then hit [enter] twice")
   raw_scan <- scan()
   mtrx <- matrix(raw_scan, ncol = 3, byrow = TRUE)
-  spec.df <- data.frame(E.avg = mtrx[, 1], fraction = mtrx[, 2], unc = mtrx[, 
-                                                                            3])
+  spec.df <- data.frame(E.avg = mtrx[, 1], 
+                        fraction = mtrx[, 2], 
+                        unc = mtrx[, 3])
 }

@@ -120,8 +120,8 @@ is:
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
 #>    mean_eff         SEM
-#>  0.04788251 0.002141611
-#> [1] 0.047882507 0.002141611
+#>  0.04806641 0.002132889
+#> [1] 0.048066408 0.002132889
 ```
 
 An optional plot is available in 2D or
@@ -133,9 +133,9 @@ An optional plot is available in 2D or
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #>    mean_eff         SEM
-    #>  0.04784569 0.002136641
-    #> [1] 0.047845691 0.002136641
+    #>    mean_eff        SEM
+    #>  0.04965531 0.00217145
+    #> [1] 0.04965531 0.00217145
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -146,9 +146,9 @@ two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05103875 0.002199559
+#>  0.05137294 0.002206029
 #>     mean_eff         SEM
-#> 1 0.05103875 0.002199559
+#> 1 0.05137294 0.002206029
 ```
 
 Correct for the mismatch:
@@ -156,7 +156,7 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>   mean_eff      SEM
-#> 1 1.066737 1.029447
+#> 1 1.034591 1.015924
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -249,7 +249,12 @@ mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 Search by alpha, beta, photon or use the general screen option.
 
 `search_phot_by_E` allows screening based on energy, half-life, and
-minimum probability.
+minimum probability. Also available are `search_alpha_by_E`,
+`search_beta_by_E`, and `bin_screen_phot`. `bin_screen_phot` allows
+limiting searhes to radionuclides with emissions in an energy bin of
+interest with additional filters for not having photons in other
+specified energy bins. Results for all these search functions may be
+plotted with `RN_plt`.
 
 Here’s a search for photon energy between 0.99 and 1.01 MeV, half-life
 between 13 and 15 minutes, and probability at least
@@ -270,15 +275,21 @@ search_results <- search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 | Mo-101 | G        | 1.00740 | 0.0017300 |      14.61 | m     |       0.0007907 |
 | Sm-140 | G        | 0.99990 | 0.0012000 |      14.82 | m     |       0.0007795 |
 
-The `RN_screen` function helps find a radionuclide of interest based on
-decay mode, half-life, and total emission energy.
+``` r
+RN_plt(spec_0.1_0.3)
+```
+
+<img src="man/figures/README-unnamed-chunk-19-1.png" width="100%" />
+
+The `RN_index_screen` function helps find a radionuclide of interest
+based on decay mode, half-life, and total emission energy.
 
 In this example, we search for radionuclides decaying by spontaneous
 fission with half-lives between 6 months and 2
 years.
 
 ``` r
-RNs_selected <- RN_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
+RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
 ```
 
 | RN     | half\_life | units |

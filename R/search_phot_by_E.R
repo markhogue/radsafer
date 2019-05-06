@@ -4,6 +4,8 @@
 #' 
 #' @family radionuclides
 #' 
+#' @seealso [RN_plt()] 
+#' 
 #' @param E_min minimum energy in MeV, default = 0
 #' @param E_max maximum energy in MeV, default = 10
 #' @param min_half_life_seconds minimum half-life in seconds. 

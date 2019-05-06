@@ -34,7 +34,8 @@ select from:
 \item{erg.dist}{energy distribution number for MCNP input}
 }
 \value{
-a text file, 'si.sp.dat' is written to working directory. 
+a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)). 
+For use with MCNP, a text file, 'si.sp.dat' is written to working directory. 
 If file already exists, it is appended. The file contains all 
 emission energies in the si 'card' and the Line indicator, L is included,
 e.g. si1  L  0.01 (showing a first energy of 0.01 MeV). 
@@ -54,6 +55,7 @@ mcnp_si_sp_RD('Am-241', rad_type = 'A', cut = 0.01, erg.dist = 23)
 }
 \seealso{
 [si_hist()] and [sp_hist()]  if radioactive emission data is available in histogram form and needs formatting for MCNP input.
+[RN_screen_plot] may be used for a simple plot of output.
 
 Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_est_nps}},

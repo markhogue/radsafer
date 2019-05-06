@@ -168,25 +168,30 @@ mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 ```
 
 ### radionuclides
-Search by alpha, beta, photon or use the general screen option.
+Search by alpha, beta, photon or use the general screen option. 
 
-`search_phot_by_E` allows screening based on energy, half-life, and minimum probability.
+`search_phot_by_E` allows screening based on energy, half-life, and minimum probability. Also available are `search_alpha_by_E`, `search_beta_by_E`, and `bin_screen_phot`. `bin_screen_phot` allows limiting searhes to radionuclides with emissions in an energy bin of interest with additional filters for not having photons in other specified energy bins. Results for all these search functions may be plotted with `RN_plt`.
 
 Here's a search for photon energy between 0.99 and 1.01 MeV, half-life between 13 and 15 minutes, and probability at least 1e-4
 
 ```{r echo = TRUE}
 search_results <- search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 ```
+
 ```{r echo = FALSE}
 knitr::kable(search_results)
 ```
 
-The `RN_screen` function helps find a radionuclide of interest based on decay mode, half-life, and total emission energy.
+```{r echo = TRUE}
+RN_plt(spec_0.1_0.3)
+```
+
+The `RN_index_screen` function helps find a radionuclide of interest based on decay mode, half-life, and total emission energy.
 
 In this example, we search for radionuclides decaying by spontaneous fission with half-lives between 6 months and 2 years.
 
 ```{r echo = TRUE}
-RNs_selected <- RN_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
+RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
 ```
 
 ```{r echo = FALSE}
