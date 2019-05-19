@@ -10,19 +10,18 @@
 #' @param df data frame of results including RN (radionuclide), 
 #'  energy in E_MeV and probability (prob) of photon.
 #'  
-#'  @examples 
-#'  RN_plt(spec_0.1_0.3)
+#' @examples 
+#' RN_plt(spec_0.1_0.3)
 #'  
-#'  @return plot of spectrum
+#' @return plot of spectrum
 #'  
 #' @export
 RN_plt <- function(df){
   
   E_MeV  <- prob  <- RN <-  NULL 
   # (avoids note on no visible binding of ggplot arg)
-ggplot2::ggplot(data = df, 
-                ggplot2::aes(E_MeV, prob, color = RN, shape = RN)) + 
-  ggplot2::geom_point(alpha = 0.7) +
-  ggplot2::scale_y_log10()
+  ggplot2::ggplot(data = df, 
+                  ggplot2::aes(E_MeV, prob, color = RN, shape = RN)) + 
+    ggplot2::geom_point(alpha = 0.7) +
+    ggplot2::scale_y_log10()
 }
-

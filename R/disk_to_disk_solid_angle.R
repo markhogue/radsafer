@@ -149,6 +149,6 @@ disk_to_disk_solid_angle  <-  function(r.source,
   if(beep == "on") {
     if(requireNamespace("beepr")) beepr::beep(10)
   }
-  print.data.frame(df_res, row.names = "")
+  rownames(df_res)  <-  ""
   df_res
 }

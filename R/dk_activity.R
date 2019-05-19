@@ -13,5 +13,5 @@
 dk_activity <- function(A0, half_life, target) {
   if(!is.numeric(c(A0, half_life, target)))
     stop("All arguments must be a numbers.")
-    -log(target/A0) / log(2)
+    -half_life * log(target/A0) / log(2)
 }

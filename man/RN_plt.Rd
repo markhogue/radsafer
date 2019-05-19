@@ -8,18 +8,20 @@ RN_plt(df)
 }
 \arguments{
 \item{df}{data frame of results including RN (radionuclide), 
-energy in E_MeV and probability (prob) of photon.
-
-@examples 
-RN_plt(spec_0.1_0.3)
-
-@return plot of spectrum}
+energy in E_MeV and probability (prob) of photon.}
+}
+\value{
+plot of spectrum
 }
 \description{
 Plots with ggplot2 with geom_point and log y-scale.
 Useful for a small set of radionclides.
 The point of this is to make it easy to get the plot
 by entering only the data frame name.
+}
+\examples{
+RN_plt(spec_0.1_0.3)
+ 
 }
 \seealso{
 Other radionuclides: \code{\link{RN_Spec_Act}},
