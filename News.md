@@ -1,5 +1,16 @@
 
-<!-- News.md is generated from News.Rmd. Please edit that file -->
+# radsafer (version 2.0.0.9000)
+
+***2019-05-23*** Repaired a bug in dk\_activity. Working on improvements
+in overall ease of use. Expecting an update to CRAN in a couple of
+weeks.
+
+# radsafer (version 2.0.0)
+
+***2019-05-05*** Hurray\! This is the grand opening of radsafer\! The
+ICPR 107 data in RadData is now effectively utilized for radionuclide
+screening, plots, and use with MCNP. MCNP utilities have been expanded -
+see the Readme file for details.
 
 # radsafer (version 1.0.9000)
 
