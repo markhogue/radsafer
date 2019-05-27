@@ -1,4 +1,10 @@
 
+# radsafer (version 2.0.1)
+
+***2019-05-27*** This version is to be submitted to CRAN. Bug removal on
+dk\_activity. Updated examples in many functions to identify parameters
+at least once.
+
 # radsafer (version 2.0.0.9000)
 
 ***2019-05-23*** Repaired a bug in dk\_activity. Working on improvements

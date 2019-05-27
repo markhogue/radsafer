@@ -28,7 +28,7 @@ Calculate the activity at an earlier time, given the time past,
 # The activity is estimated to be around 400 TBq. Original RTG's of this 
 # type contained 1480 TBq when built 50 years earlier. We're wondering if 
 # much has leaked. So, we compute the original from what we have. 
-dk_reverse(400, 28.79, 50)
+dk_reverse(A1 = 400, half_life = 28.79, t = 50)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},

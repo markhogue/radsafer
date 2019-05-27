@@ -20,5 +20,5 @@ Time in minutes allowed for the work.
 Calculate stay time for radiation work.
 }
 \examples{
-stay_time(100, 50, 20)
+stay_time(dose_rate = 100, dose_allowed = 50, margin = 20)
 }

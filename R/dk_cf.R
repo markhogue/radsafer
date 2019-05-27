@@ -9,7 +9,10 @@
 
 #' @return The decay correction factor from the reference date to the date of interest. 
 #' @examples 
-#' dk_cf(5.27, "y","2010-12-01", "2018-12-01")
+#' dk_cf(half_life = 5.27, time_unit = "y", date1 = "2010-12-01", date2 = "2018-12-01")
+#' #
+#' # example defaulting to today's date:
+#' dk_cf(half_life = 28.79, time_unit = "y", date1 = "2001-01-01")
 #' @export
 dk_cf <- function(half_life, time_unit, date1, date2 = Sys.Date()) {
   # arg checks

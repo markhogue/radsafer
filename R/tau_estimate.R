@@ -7,7 +7,7 @@
 #' @param t_eq Time, in seconds, to the given percent equilibrium is achieved.
 #' @return tau, the time constant, in seconds.
 #' @examples
-#' tau_estimate(90, 22)
+#' tau_estimate(pct_eq = 90, t_eq = 22)
 #' @export
 tau_estimate <- function(pct_eq, t_eq)
         (-log(1 - pct_eq / 100) / t_eq)^-1

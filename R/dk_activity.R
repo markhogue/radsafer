@@ -6,9 +6,10 @@
 #' @param target The target activity.
 #' @return time, in same units as half-life, to decay to target activity.
 #' @examples
-#' # How long does it take for original activity of 10 to decay to 2.5 
-#' # if half-life is 5? (All time units consistent)
-#' dk_activity(10, 5, 2.5)
+#' # How long does it take for original activity of 10000 Bq to decay to 2500 Bq 
+#' # if half-life is 5 minutes? 
+#' # (All time units are consistent, so answer will be in minutes)
+#' dk_activity(A0 = 10000, half_life = 5, target = 2500)
 #' @export
 dk_activity <- function(A0, half_life, target) {
   if(!is.numeric(c(A0, half_life, target)))

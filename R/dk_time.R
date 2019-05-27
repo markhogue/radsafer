@@ -8,7 +8,7 @@
 #' @examples
 #' # A carbonaceous artifact has a C-14 measurement of 1 dpm per g pure carbon.
 #' # The reference activity is 14 dpm per g pure carbon. How old is our sample?
-#' dk_time(5730, 14, 1)
+#' dk_time(half_life = 5730, A0 = 14, A1 = 1)
 #' @export
 dk_time <- function(half_life, A0, A1) {
   if(!is.numeric(c(half_life, A0, A1)))

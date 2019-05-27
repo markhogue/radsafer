@@ -12,6 +12,3 @@ test_that("Rem 500 on contact",  {
   expect_equal(signif(neutron_geom_cf(5, 4.5), 7), 0.8358183)
 })
 
-test_that("intentional error check",  {
-  expect_equal(signif(neutron_geom_cf(3, 4.5), 7), 0.8358183)
-})

@@ -9,6 +9,4 @@ test_that("pressure only", {
 test_that("temperature and pressure change", {
   expect_equal(signif(air_dens_cf(20, 780), 6), 0.974359)
   })
-test_that("intentional air_dens_cf error check", {
-    expect_equal(signif(air_dens_cf(20, 780), 6), 2)
-  })
+

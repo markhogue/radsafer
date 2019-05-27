@@ -5,7 +5,7 @@
 #' @param margin Percent margin to protect limit, default = 20 percent.
 #' @return Time in minutes allowed for the work. 
 #' @examples 
-#' stay_time(100, 50, 20)
+#' stay_time(dose_rate = 100, dose_allowed = 50, margin = 20)
 #' @export
 stay_time <- function(dose_rate, dose_allowed, margin = 20) {
   mins <- (100 - margin)/100 * (dose_allowed / dose_rate) * 60

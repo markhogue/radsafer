@@ -24,6 +24,16 @@ Estimate half-life from two data points. Half-life units are
   @family rad measurements
 }
 \examples{
-half_life_2pt(2015, 2016, 45, 30)
-half_life_2pt(0, 60, 60, 15)
+# Between the first two data points in a series of counts
+half_life_2pt(time1 = 0, time2 = 1, N1 = 45, N2 = 30)
+#
+# Between the second and third in the series (same intervals)
+half_life_2pt(time1 = 1, time2 = 2, N1 = 30, N2 = 21)
+#
+# Use on a series
+count_times <- 1:5
+acts <- 10000 * 2^(-count_times/10) #activities
+acts <- rpois(5, acts) #activities with counting variability applied
+half_life_2pt(time1 = count_times[1:4], time2 = count_times[2:5],
+N1 = acts[1:4], N2 = acts[2:5])
 }

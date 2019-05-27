@@ -8,7 +8,7 @@
 #' @param P.ref The reference air pressure - default is 760 mm Hg
 #' @return The ratio of actual to reference air density.
 #' @examples
-#' air_dens_cf(20, 760)
+#' air_dens_cf(T.actual = 20, P.actual = 760, T.ref = 20, P.ref = 760)
 #' air_dens_cf(30, 750)
 #' @export
 air_dens_cf <- function(T.actual,

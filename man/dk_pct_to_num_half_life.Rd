@@ -17,7 +17,7 @@ Given a percentage reduction in activity, calculate how many
   half-lives have passed.
 }
 \examples{
-dk_pct_to_num_half_life(93.75)
+dk_pct_to_num_half_life(pct_lost = 93.75)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},

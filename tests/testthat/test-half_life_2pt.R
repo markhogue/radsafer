@@ -6,6 +6,3 @@ test_that("years entered",  {
 test_that("minutes entered", {
   expect_equal(signif(half_life_2pt(0, 60, 60, 15), 2), 30)
   })
-test_that("intentional error check on half_life_2pt", {
-  expect_equal(signif(half_life_2pt(0, 60, 60, 15), 2), 60)
-})

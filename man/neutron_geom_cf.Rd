@@ -26,7 +26,7 @@ Correction factors are needed when an Neutron Rem Detector (NRD)
   for the over-response.
 }
 \examples{
-neutron_geom_cf(11.1, 11)
+neutron_geom_cf(l = 11.1, r.d = 11)
 neutron_geom_cf(30, 11)
 neutron_geom_cf(5, 4.5)
 }

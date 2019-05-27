@@ -20,7 +20,7 @@ If the time constant is not known, but the vendor specifies that
   seconds, use this function to estimate tau.
 }
 \examples{
-tau_estimate(90, 22)
+tau_estimate(pct_eq = 90, t_eq = 22)
 }
 \seealso{
 Other rad measurements: \code{\link{air_dens_cf}},

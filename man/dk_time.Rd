@@ -22,7 +22,7 @@ Calculate time for a radionuclide to decay to a target activity.
 \examples{
 # A carbonaceous artifact has a C-14 measurement of 1 dpm per g pure carbon.
 # The reference activity is 14 dpm per g pure carbon. How old is our sample?
-dk_time(5730, 14, 1)
+dk_time(half_life = 5730, A0 = 14, A1 = 1)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},
