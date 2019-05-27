@@ -13,7 +13,7 @@ RN_Spec_Act(RN_select)
 specific activity in Bq / g
 }
 \description{
-Provides specific activity of a radionucide in Bq/g.
+Provides specific activity of a radionuclide in Bq/g.
 }
 \examples{
 RN_Spec_Act("Ac-230")

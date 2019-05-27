@@ -170,7 +170,7 @@ mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 ### radionuclides
 Search by alpha, beta, photon or use the general screen option. 
 
-`search_phot_by_E` allows screening based on energy, half-life, and minimum probability. Also available are `search_alpha_by_E`, `search_beta_by_E`, and `bin_screen_phot`. `bin_screen_phot` allows limiting searhes to radionuclides with emissions in an energy bin of interest with additional filters for not having photons in other specified energy bins. Results for all these search functions may be plotted with `RN_plt`.
+`search_phot_by_E` allows screening based on energy, half-life, and minimum probability. Also available are `search_alpha_by_E`, `search_beta_by_E`, and `bin_screen_phot`. `bin_screen_phot` allows limiting searches to radionuclides with emissions in an energy bin of interest with additional filters for not having photons in other specified energy bins. Results for all these search functions may be plotted with `RN_plt`.
 
 Here's a search for photon energy between 0.99 and 1.01 MeV, half-life between 13 and 15 minutes, and probability at least 1e-4
 

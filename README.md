@@ -119,9 +119,7 @@ is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#>    mean_eff         SEM
-#>  0.04806641 0.002132889
-#> [1] 0.048066408 0.002132889
+#> [1] 0.048004423 0.002143551
 ```
 
 An optional plot is available in 2D or
@@ -133,9 +131,7 @@ An optional plot is available in 2D or
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #>    mean_eff        SEM
-    #>  0.04965531 0.00217145
-    #> [1] 0.04965531 0.00217145
+    #> [1] 0.049091457 0.002164924
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -146,17 +142,15 @@ two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05137294 0.002206029
-#>     mean_eff         SEM
-#> 1 0.05137294 0.002206029
+#>  0.05169653 0.002215244
 ```
 
 Correct for the mismatch:
 
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
-#>   mean_eff      SEM
-#> 1 1.034591 1.015924
+#>  mean_eff      SEM
+#>  1.053066 1.023243
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -251,7 +245,7 @@ Search by alpha, beta, photon or use the general screen option.
 `search_phot_by_E` allows screening based on energy, half-life, and
 minimum probability. Also available are `search_alpha_by_E`,
 `search_beta_by_E`, and `bin_screen_phot`. `bin_screen_phot` allows
-limiting searhes to radionuclides with emissions in an energy bin of
+limiting searches to radionuclides with emissions in an energy bin of
 interest with additional filters for not having photons in other
 specified energy bins. Results for all these search functions may be
 plotted with `RN_plt`.

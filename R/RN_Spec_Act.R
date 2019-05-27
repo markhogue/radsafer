@@ -2,7 +2,7 @@
 #' 
 #' @family radionuclides
 #' 
-#' @description Provides specific activity of a radionucide in Bq/g.
+#' @description Provides specific activity of a radionuclide in Bq/g.
 #' 
 #' @param RN_select identify the radionuclide of interest in the format "Es-254m"
 #' @return specific activity in Bq / g
