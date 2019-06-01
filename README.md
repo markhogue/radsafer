@@ -3,6 +3,11 @@
 
 # radsafer <img src='man/figures/radsafer.png' align="right" height="139" />
 
+“[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/last-month/radsafer?color=blue)](https://r-pkg.org/pkg/radsafer)”
+[![Build
+Status](https://travis-ci.org/markhogue/radsafer.svg?branch=master)](https://travis-ci.org/markhogue/radsafer)
+
 The goal of radsafer is to provide functions that are useful for
 radiation safety professionals.
 
@@ -119,7 +124,7 @@ is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.048004423 0.002143551
+#> [1] 0.048813593 0.002160732
 ```
 
 An optional plot is available in 2D or
@@ -131,7 +136,7 @@ An optional plot is available in 2D or
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #> [1] 0.049091457 0.002164924
+    #> [1] 0.049789410 0.002178257
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -141,8 +146,8 @@ two.
 
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
-#>    mean_eff         SEM
-#>  0.05169653 0.002215244
+#>   mean_eff         SEM
+#>  0.0530529 0.002235252
 ```
 
 Correct for the mismatch:
@@ -150,7 +155,7 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>  mean_eff      SEM
-#>  1.053066 1.023243
+#>  1.065546 1.026165
 ```
 
 This makes sense - the air sample has particles originating outside the
