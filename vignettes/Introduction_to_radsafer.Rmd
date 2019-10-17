@@ -119,7 +119,7 @@ scaler_sim(true_bkg = 50, true_samp = 10, ct_time = 20, trials = 1e5)
 **rate_meter_sim**
 
 _Rate meters_: In the ratemeter simulation, readings are plotted once per second for a default time of 600 seconds. The meter starts with a reading of zero and builds up based on the time constant. Resolution uncertainty is established to express the uncertainty from reading an analog scale, including the instability of its readings. Many standard references identify the precision or resolution uncertainty of analog readings as half of the smallest increment. This should be considered the single coverage uncertainty for a very stable reading. When a reading is not very stable, evaluation of the reading fluctuation is evaluated in terms of numbers of scale increments covered by meter indication over a reasonable evaluation period. Example with default time constant:
-```{r out.width = '50%'}
+```{r out.width = '50%', fig.align='center'}
 rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20))
 ```
 
