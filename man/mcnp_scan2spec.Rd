@@ -11,15 +11,15 @@ spectrum file with maximum energy and MCNP bin value
 }
 \description{
 Provides quick copy-and-paste conversion to data frame.
-Conversion is based on the two or three columns with 
-input energy or output results from MCNP. Energy is expected to be in 
+Conversion is based on the two or three columns with
+input energy or output results from MCNP. Energy is expected to be in
 bins with maximum energy in MeV in the first column,
-the input probability or output mean result for the bin in the 
+the input probability or output mean result for the bin in the
 second column, and relative Monte Carlo uncertainty in the third column.
 }
 \examples{
 # Since this function requires the user
-# to copy and paste input, this example 
+# to copy and paste input, this example
 # is set up to provide data for this purpose.
 # To run the example, copy and paste the following
 # into an input file and delete the hash tags to run.
@@ -34,8 +34,6 @@ second column, and relative Monte Carlo uncertainty in the third column.
 # 2.3555556 2.048186e-05 0.5011170
 # 2.6777778 1.468040e-04 0.7248116
 # 3.0000000 1.037092e-04 0.7659850
-
-
 }
 \seealso{
 Other mcnp tools: \code{\link{mcnp_cone_angle}},
@@ -43,6 +41,6 @@ Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_matrix_rotations}},
   \code{\link{mcnp_plot_out_spec}},
   \code{\link{mcnp_si_hist}}, \code{\link{mcnp_si_sp_RD}},
-  \code{\link{mcnp_sp_hist}}
+  \code{\link{mcnp_si_sp_hist}}, \code{\link{mcnp_sp_hist}}
 }
 \concept{mcnp tools}

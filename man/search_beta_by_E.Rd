@@ -10,7 +10,7 @@ search_beta_by_E(E_max, min_half_life_seconds = NULL,
 \arguments{
 \item{E_max}{maximum energy in MeV, default = 10}
 
-\item{min_half_life_seconds}{minimum half-life in seconds. 
+\item{min_half_life_seconds}{minimum half-life in seconds.
 Use multiplier as needed, e.g. 3 * 3600 for 3 hours. Default = NULL,}
 
 \item{max_half_life_seconds}{maximum half-life. See min_half_life_seconds.}
@@ -23,14 +23,13 @@ results to a viewable object, such as 'search_results'
 Search for beta emission based on maximum energy and half-life.
 }
 \examples{
-# Max beta at least 2 MeV 
+# Max beta at least 2 MeV
 search_results <- search_beta_by_E(2)
 # Max beta at least 2 MeV and half-life between 1 s and 1 h
 search_results <- search_beta_by_E(2, 1, 3600)
 
 # Max beta at least 1 MeV and half-life between 1 d and 2 d
 search_results <- search_beta_by_E(1, 3600 * 24, 2 * 3600 * 24)
-
 }
 \seealso{
 [RN_plt()]

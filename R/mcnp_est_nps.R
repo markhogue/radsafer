@@ -3,18 +3,18 @@
 #' @description Provides quick estimate of number of particles histories,
 #' (nps) to obtain target MCNP 'error'.
 #' Paste may include up to three tallies side by side in the default MCNP
-#' order. For example, the headers of a three tally report includes column 
+#' order. For example, the headers of a three tally report includes column
 #' names: nps, mean, error, vov, slope, fom, mean, error, vov, slope, fom,
 #' mean, error, vov, slope, fom.
 #' The structure of the tfc has been the same for versions 4 through 6,
-#' including MCNPX. 
-#' 
+#' including MCNPX.
+#'
 #' @param err_target The target Monte Carlo uncertainty
-#' 
+#'
 #' @return estimate of number of particle histories needed
-#' @examples 
+#' @examples
 #' # Since this function requires the user
-#' # to copy and paste input, this example 
+#' # to copy and paste input, this example
 #' # is set up to provide data for this purpose.
 #' # To run the example, copy and paste the following
 #' # into an input file and delete the hash tags to run.
@@ -31,8 +31,7 @@
 #' #     294912000   4.0549E+00 0.0716 0.0100  0.0 5.6E-02
 #' #     327680000   4.0665E+00 0.0686 0.0090  0.0 5.4E-02
 #' #     360448000   4.1841E+00 0.0641 0.0079  0.0 5.7E-02
-#'
-#' @export 
+#' @export
 mcnp_est_nps <- function(err_target) {
   n <- as.numeric(readline(prompt = "How many tallies (1, 2 or 3) will you be scanning? "))
   stopifnot(n %in% c(1, 2, 3))
@@ -44,12 +43,12 @@ mcnp_est_nps <- function(err_target) {
   tfc.df <- data.frame(mtrx)
   rm(mtrx)
   # forecast nps needed for target error using latter half of tfc
-  latter_half <- tfc.df[-(1:floor(length(tfc.df[, 1])/2)), ]
+  latter_half <- tfc.df[-(1:floor(length(tfc.df[, 1]) / 2)), ]
   new_err <- seq(err_target, 0.5, length.out = 50)
-  err_loc <- c(3, 8, 13)[1:n]  #one through three error columns
+  err_loc <- c(3, 8, 13)[1:n] # one through three error columns
   tal_num <- c("first", "second", "third")
   counter <- 0
-  nps_fn <- function(err, b, m) exp((err - b)/m)
+  nps_fn <- function(err, b, m) exp((err - b) / m)
   # loop for all 1 through 3 tallies pasted
   for (i in err_loc) {
     counter <- counter + 1
@@ -59,21 +58,34 @@ mcnp_est_nps <- function(err_target) {
       next
     }
     lm1 <- stats::lm(latter_half[, i] ~ log(latter_half[, 1]))
-    if (summary(lm1)$adj.r.squared < 0.8) 
-      cat(paste0("Warning: Not a reliable trend in ",  tal_num[counter], " tally. \n"))
-    if (lm1$coefficients[[2]] > 0) 
-      cat(paste0("Error trend is positive in ", tal_num[counter], 
-                 " tally.\nResults will be erroneous.\n"))
+    if (summary(lm1)$adj.r.squared < 0.8) {
+      cat(paste0("Warning: Not a reliable trend in ", tal_num[counter], " tally. \n"))
+    }
+    if (lm1$coefficients[[2]] > 0) {
+      cat(paste0(
+        "Error trend is positive in ", tal_num[counter],
+        " tally.\nResults will be erroneous.\n"
+      ))
+    }
     extrap_nps1 <- nps_fn(new_err, stats::coefficients(lm1)[[1]], stats::coefficients(lm1)[[2]])
     cat("\n ")
-    print(data.frame(Tally = tal_num[counter], `Estimated nps needed` = format(extrap_nps1[1], 
-                                                                               digits = 2, scientific = TRUE), `error target` = err_target, row.names = ""))
-    graphics::plot(x = tfc.df[, 1], y = tfc.df[, i], xlim = c(tfc.df[1, 1],   max(c(extrap_nps1, tfc.df[, 1]))), ylim = c(err_target, 
-                                                                                                                max(tfc.df[, i])), xlab = "nps", ylab = "MC run uncert", 
-         log = "x", main = paste0("rough forecast nps vs error, ", 
-                                  tal_num[counter], " tally"), col = "darkblue", col.main = "darkblue", col.axis = "darkblue", col.lab = "darkblue")
-    graphics::lines(extrap_nps1, new_err[1:length(extrap_nps1)], col = "firebrick1", 
-          lty = 2)
+    print(data.frame(Tally = tal_num[counter], `Estimated nps needed` = format(extrap_nps1[1],
+      digits = 2, scientific = TRUE
+    ), `error target` = err_target, row.names = ""))
+    graphics::plot(
+      x = tfc.df[, 1], y = tfc.df[, i], xlim = c(tfc.df[1, 1], max(c(extrap_nps1, tfc.df[, 1]))), ylim = c(
+        err_target,
+        max(tfc.df[, i])
+      ), xlab = "nps", ylab = "MC run uncert",
+      log = "x", main = paste0(
+        "rough forecast nps vs error, ",
+        tal_num[counter], " tally"
+      ), col = "darkblue", col.main = "darkblue", col.axis = "darkblue", col.lab = "darkblue"
+    )
+    graphics::lines(extrap_nps1, new_err[1:length(extrap_nps1)],
+      col = "firebrick1",
+      lty = 2
+    )
     graphics::abline(h = err_target, col = "darkgreen", lty = 2)
   }
 }

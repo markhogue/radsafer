@@ -8,19 +8,19 @@
 #' @examples
 #' mcnp_cone_angle(45)
 #' @export
-mcnp_cone_angle <- function(d) tan(d * pi/180)^2
+mcnp_cone_angle <- function(d) tan(d * pi / 180)^2
 
 #' Copy and paste MCNP output spectral data for use with `mcnp_plot_out_spec.R`
 #' @description Provides quick copy-and-paste conversion to data frame.
-#' Conversion is based on the three columns with 
+#' Conversion is based on the three columns with
 #' results from MCNP output in energy bins with
 #' maximum energy in MeV in the first column,
-#' the mean result for the bin in the second column, and 
+#' the mean result for the bin in the second column, and
 #' relative Monte Carlo uncertainty in the third column.
 #' @return spectrum file with maximum energy and MCNP bin value
-#' @examples 
+#' @examples
 #' # Since this function requires the user
-#' # to copy and paste input, this example 
+#' # to copy and paste input, this example
 #' # is set up to provide data for this purpose.
 #' # To run the example, copy and paste the following
 #' # into an input file and delete the hash tags to run.
@@ -35,16 +35,16 @@ mcnp_cone_angle <- function(d) tan(d * pi/180)^2
 #' # 2.3555556 2.048186e-05 0.5011170
 #' # 2.6777778 1.468040e-04 0.7248116
 #' # 3.0000000 1.037092e-04 0.7659850
-#' 
-#'
-#' @export 
+#' @export
 scan2spec.df <- function() {
   print("copy and paste MCNP three column")
   print("binned-by-energy tally results (no header)")
   print("then hit [enter] twice")
   raw_scan <- scan()
   mtrx <- matrix(raw_scan, ncol = 3, byrow = TRUE)
-  spec.df <- data.frame(E.avg = mtrx[, 1], 
-                        fraction = mtrx[, 2], 
-                        unc = mtrx[, 3])
+  spec.df <- data.frame(
+    E.avg = mtrx[, 1],
+    fraction = mtrx[, 2],
+    unc = mtrx[, 3]
+  )
 }

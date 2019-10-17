@@ -29,36 +29,40 @@ rate_meter_sim <- function(cpm_equilibrium,
                            meter_scale_increments,
                            trials = 600,
                            tau = 9.5,
-                           log_opt = "")
-{
+                           log_opt = "") {
   ifelse(log_opt == "", ylim <- c(cpm_equilibrium * 0.8, cpm_equilibrium * 1.2),
-         ylim <- c(cpm_equilibrium * 0.2, cpm_equilibrium * 2))
+    ylim <- c(cpm_equilibrium * 0.2, cpm_equilibrium * 2)
+  )
   cps_cpm_adj <- exp(4.24985 - 1.04087 * log(tau))
-  runtime_df <- data.frame("sec" = 1:trials,
-                           "new_cps" = rep(0, trials),
-                           "cpm" = rep(0, trials))
-  for(j in 2:max(runtime_df$sec)) {
-    #first_past <- ifelse(j > 60, j - 60, 1) #use at most last 60 new cps
+  runtime_df <- data.frame(
+    "sec" = 1:trials,
+    "new_cps" = rep(0, trials),
+    "cpm" = rep(0, trials)
+  )
+  for (j in 2:max(runtime_df$sec)) {
+    # first_past <- ifelse(j > 60, j - 60, 1) #use at most last 60 new cps
     runtime_df$new_cps[j] <- stats::rpois(1, cpm_equilibrium / 60) * exp(-1 / tau)
     runtime_df$cpm[j] <- cps_cpm_adj * length(1:j) *
       mean(runtime_df$new_cps[1:j] *
-             exp(-(j - (1:j)) / tau))
+        exp(-(j - (1:j)) / tau))
   }
 
   fudge <- cpm_equilibrium /
-    mean(runtime_df$cpm[0.66 * floor(length(runtime_df$cpm)) :
-                          length(runtime_df$cpm)])
-  tcol <-  "darkblue"
+    mean(runtime_df$cpm[0.66 * floor(length(runtime_df$cpm)):
+    length(runtime_df$cpm)])
+  tcol <- "darkblue"
   # set up plot range and draw cpm_equilibrium line
-  graphics::plot(x = runtime_df$sec,
-       y = runtime_df$cpm,
-       col = "blue",
-       xlab = "time, s",
-       ylab = "cpm",
-       col.lab = tcol,
-       type = "p",
-       ylim = ylim,
-       log = log_opt)
+  graphics::plot(
+    x = runtime_df$sec,
+    y = runtime_df$cpm,
+    col = "blue",
+    xlab = "time, s",
+    ylab = "cpm",
+    col.lab = tcol,
+    type = "p",
+    ylim = ylim,
+    log = log_opt
+  )
   graphics::abline(h = meter_scale_increments, col = "gray")
   graphics::abline(h = cpm_equilibrium, col = "lightcoral", lty = 2)
 }

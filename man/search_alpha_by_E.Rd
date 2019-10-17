@@ -12,7 +12,7 @@ search_alpha_by_E(E_min, E_max, min_half_life_seconds = NULL,
 
 \item{E_max}{maximum energy in MeV, default = 10}
 
-\item{min_half_life_seconds}{minimum half-life in seconds. 
+\item{min_half_life_seconds}{minimum half-life in seconds.
 Use multiplier as needed, e.g. 3 * 3600 for 3 hours. Default = NULL,}
 
 \item{max_half_life_seconds}{maximum half-life. See min_half_life_seconds.}
@@ -30,12 +30,11 @@ Search for alpha emission based on energy, half-life and minimum probability.
 # between 7 and 8 MeV
 search_results <- search_alpha_by_E(7, 8)
 
-#1-4 MeV; half-life between 1 and 4 hours
+# 1-4 MeV; half-life between 1 and 4 hours
 search_results <- search_alpha_by_E(1, 4, 1 * 3600, 4 * 3600)
 
 # between 7 and 10 MeV with at least 1e-3 probability
 search_results <- search_alpha_by_E(7, 10, min_prob = 1e-3)
-
 }
 \seealso{
 [RN_plt()]

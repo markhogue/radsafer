@@ -7,8 +7,8 @@
 #' @param date1 Source reference date. If units are hours or shorter, include time. Format is "YYYY-mm-dd" for longer half-lives, or "YYYY-mm-dd-HH:MM".
 #' @param date2 Date of interest. Format is same as date1. Default is today's date, obtained from system.
 
-#' @return The decay correction factor from the reference date to the date of interest. 
-#' @examples 
+#' @return The decay correction factor from the reference date to the date of interest.
+#' @examples
 #' dk_cf(half_life = 5.27, time_unit = "y", date1 = "2010-12-01", date2 = "2018-12-01")
 #' #
 #' # example defaulting to today's date:
@@ -16,41 +16,52 @@
 #' @export
 dk_cf <- function(half_life, time_unit, date1, date2 = Sys.Date()) {
   # arg checks
-  if(!is.numeric(half_life)) 
+  if (!is.numeric(half_life)) {
     stop("half_life must be a number.")
-  if(!is.character(date1)) 
+  }
+  if (!is.character(date1)) {
     stop("dates must be in format 'YYYY-MM-DD'")
-  if(!is.character(date1)) 
+  }
+  if (!is.character(date1)) {
     stop("dates must be in format 'YYYY-MM-DD'")
-  if(!time_unit %in% c("years", "days", "hours","minutes", 
-                       "y", "d", "h", "m"))
+  }
+  if (!time_unit %in% c(
+    "years", "days", "hours", "minutes",
+    "y", "d", "h", "m"
+  )) {
     stop("time unit must be one of these: 
        'years', 'days', 'hours','minutes', 
         'y', 'd', 'h', 'm'")
+  }
   # end of arg checks
-  if(time_unit == "year" | time_unit == "y") {
+  if (time_unit == "year" | time_unit == "y") {
     2^(-as.numeric(difftime(strptime(date2, "%Y-%m-%d"),
-                            strptime(date1, "%Y-%m-%d"),
-                            units = "days") /365.25 / half_life))
+      strptime(date1, "%Y-%m-%d"),
+      units = "days"
+    ) / 365.25 / half_life))
   }
-  else if(time_unit == "days" |
-          time_unit == "d" |
-          time_unit == "day") {
+  else if (time_unit == "days" |
+    time_unit == "d" |
+    time_unit == "day") {
     2^(-as.numeric(difftime(strptime(date2, "%Y-%m-%d"),
-                            strptime(date1, "%Y-%m-%d"),
-                            units = "days")  / half_life))
+      strptime(date1, "%Y-%m-%d"),
+      units = "days"
+    ) / half_life))
   }
-  else if(time_unit == "hours" |
-          time_unit == "h" |
-          time_unit == "hour") {
+  else if (time_unit == "hours" |
+    time_unit == "h" |
+    time_unit == "hour") {
     2^(-as.numeric(difftime(strptime(date2, "%Y-%m-%d-%H:%M"),
-                            strptime(date1, "%Y-%m-%d-%H:%M"),
-                            units = "hours") / half_life))  }
-  else if(time_unit == "minutes" |
-          time_unit == "m" |
-          time_unit == "mins") {
+      strptime(date1, "%Y-%m-%d-%H:%M"),
+      units = "hours"
+    ) / half_life))
+  }
+  else if (time_unit == "minutes" |
+    time_unit == "m" |
+    time_unit == "mins") {
     2^(-as.numeric(difftime(strptime(date2, "%Y-%m-%d-%H:%M"),
-                            strptime(date1, "%Y-%m-%d-%H:%M"),
-                            units = "mins") / half_life))  }
-  
+      strptime(date1, "%Y-%m-%d-%H:%M"),
+      units = "mins"
+    ) / half_life))
+  }
 }

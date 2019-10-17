@@ -4,16 +4,16 @@
 \alias{scaler_sim}
 \title{Count Room Scaler Simulation}
 \usage{
-scaler_sim(true_bkg, true_samp, ct_time, trials)
+scaler_sim(true_bkg, true_samp, ct_time, trials = 1e+05)
 }
 \arguments{
 \item{true_bkg}{True background count rate in counts per minute.}
 
 \item{true_samp}{True sample count rate in counts per minute.}
 
-\item{ct_time}{How many iterations of counting are performed.}
+\item{ct_time}{Count time in minutes.}
 
-\item{trials}{How many times to run the model.}
+\item{trials}{Number of sample values, default = 1e5.}
 }
 \value{
 A histogram of all trial results including limits for +/- 1 standard
@@ -24,7 +24,7 @@ Returns a plotted distribution of results for a scaler model
   based on the Poisson distribution. Inputs and outputs in counts per minute.
 }
 \examples{
-scaler_sim(true_bkg = 50, true_samp = 10, ct_time = 1, trials = 1e5)
+scaler_sim(true_bkg = 5, true_samp = 10, ct_time = 1, trials = 1e5)
 scaler_sim(true_bkg = 50, true_samp = 30, ct_time = 1, trials = 1e5)
 }
 \seealso{

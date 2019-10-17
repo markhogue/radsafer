@@ -10,12 +10,12 @@ RN_index_screen(dk_mode = NULL, min_half_life_seconds = NULL,
 }
 \arguments{
 \item{dk_mode}{default = NULL
-#' select from:  
+#' select from:
 'A' for Alpha
 'B-' for Beta Negative
 'B+' for Beta Positive
 'EC' for Electron Capture
-'IT' for Isomeric Transition 
+'IT' for Isomeric Transition
 'SF' for Spontaneous Fission}
 
 \item{min_half_life_seconds}{default = NULL. If half-life is known in units other than seconds, enter with conversion factor, e.g. for 15 minutes, enter min_half_life_seconds = 15 * 60.}

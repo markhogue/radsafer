@@ -10,4 +10,4 @@
 #' tau_estimate(pct_eq = 90, t_eq = 22)
 #' @export
 tau_estimate <- function(pct_eq, t_eq)
-        (-log(1 - pct_eq / 100) / t_eq)^-1
+  (-log(1 - pct_eq / 100) / t_eq)^-1

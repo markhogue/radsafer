@@ -22,19 +22,19 @@ between the main and auxiliary coordinate systems in the form:
      xz' yz' zz'
 }
 \examples{
-mcnp_matrix_rotations('x', 30) 
-mcnp_matrix_rotations('y', 7)
-mcnp_matrix_rotations('z', 15)
+mcnp_matrix_rotations("x", 30)
+mcnp_matrix_rotations("y", 7)
+mcnp_matrix_rotations("z", 15)
 # For combined rotations, use matrix multiplication (\%*\%)
 # rotate 45 degrees on x-axis and 45 degrees on y-axis
-mcnp_matrix_rotations('x', 45) \%*\% mcnp_matrix_rotations('y', 45)
-
+mcnp_matrix_rotations("x", 45) \%*\% mcnp_matrix_rotations("y", 45)
 }
 \seealso{
 Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_est_nps}},
   \code{\link{mcnp_plot_out_spec}},
   \code{\link{mcnp_scan2spec}}, \code{\link{mcnp_si_hist}},
-  \code{\link{mcnp_si_sp_RD}}, \code{\link{mcnp_sp_hist}}
+  \code{\link{mcnp_si_sp_RD}},
+  \code{\link{mcnp_si_sp_hist}}, \code{\link{mcnp_sp_hist}}
 }
 \concept{mcnp tools}

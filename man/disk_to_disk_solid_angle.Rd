@@ -35,8 +35,6 @@ Returns fractional solid angle for a geometry frequently
 }
 \examples{
 disk_to_disk_solid_angle(r.source = 15, gap = 20, r.detector = 10, plot.opt = "n", runs = 1e3)
- 
-
 }
 \references{
 \url{https://karthikkaranth.me/blog/generating-random-points-in-a-sphere/}

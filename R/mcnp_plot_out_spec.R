@@ -9,19 +9,29 @@
 #'   in the first column, binned results in the second column, uncertainty in
 #'   the third column.
 #' @param title Title for chart
+#' @param log_axes TRUE for both axes logarithmic
 #' @examples
-#' mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
+#' mcnp_plot_out_spec(photons_cs137_hist, "example Cs-137 well irradiator")
 #' @export
-mcnp_plot_out_spec <- function(spec.df, title) {
+mcnp_plot_out_spec <- function(spec.df, title, log_axes = FALSE) {
   if (!requireNamespace("ggplot2", quietly = TRUE)) {
-    stop("Package \"ggplot2\" needed for this function to work. Please install it.", 
-         call. = FALSE)
+    stop("Package \"ggplot2\" needed for this function to work. Please install it.",
+      call. = FALSE
+    )
   }
   E.avg <- fraction <- NULL # appeasing R CMD check -  avoid note on no visible binding of ggplot arg
   names(spec.df) <- c("E.avg", "fraction", "unc")
-  spec.df$E.avg <- spec.df$E.avg - c(spec.df$E.avg[1], diff(spec.df$E.avg))/2
-  spec.df$fraction <- spec.df$fraction/sum(spec.df$fraction)
-  
-  ggplot2::ggplot(data = spec.df, ggplot2::aes(E.avg, fraction)) + ggplot2::geom_line() + 
-    ggplot2::ggtitle(paste0(title))
+  spec.df$E.avg <- spec.df$E.avg - c(spec.df$E.avg[1], diff(spec.df$E.avg)) / 2
+  spec.df$fraction <- spec.df$fraction / sum(spec.df$fraction)
+
+  if (log_axes == FALSE) {
+    ggplot2::ggplot(data = spec.df, ggplot2::aes(E.avg, fraction)) + ggplot2::geom_line() +
+      ggplot2::ggtitle(paste0(title))
+  }
+  if (log_axes == TRUE) {
+    ggplot2::ggplot(data = spec.df, ggplot2::aes(E.avg, fraction)) + ggplot2::geom_line() +
+      ggplot2::ggtitle(paste0(title)) +
+      ggplot2::scale_x_log10() +
+      ggplot2::scale_y_log10()
+  }
 }

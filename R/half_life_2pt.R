@@ -16,12 +16,14 @@
 #' #
 #' # Use on a series
 #' count_times <- 1:5
-#' acts <- 10000 * 2^(-count_times/10) #activities
-#' acts <- rpois(5, acts) #activities with counting variability applied
-#' half_life_2pt(time1 = count_times[1:4], time2 = count_times[2:5],
-#' N1 = acts[1:4], N2 = acts[2:5])
+#' acts <- 10000 * 2^(-count_times / 10) # activities
+#' acts <- rpois(5, acts) # activities with counting variability applied
+#' half_life_2pt(
+#'   time1 = count_times[1:4], time2 = count_times[2:5],
+#'   N1 = acts[1:4], N2 = acts[2:5]
+#' )
 #' @export
 half_life_2pt <- function(time1, time2, N1, N2) {
   as.numeric(time2 - time1) /
-    (-log(N2 / N1)/log(2))
+    (-log(N2 / N1) / log(2))
 }

@@ -24,10 +24,10 @@ Calculate the activity at an earlier time, given the time past,
   half-life must be in consistent units.
 }
 \examples{
-# A Sr-90 Radioisotope thermoelectric generator is discovered and measured. 
-# The activity is estimated to be around 400 TBq. Original RTG's of this 
-# type contained 1480 TBq when built 50 years earlier. We're wondering if 
-# much has leaked. So, we compute the original from what we have. 
+# A Sr-90 Radioisotope thermoelectric generator is discovered and measured.
+# The activity is estimated to be around 400 TBq. Original RTG's of this
+# type contained 1480 TBq when built 50 years earlier. We're wondering if
+# much has leaked. So, we compute the original from what we have.
 dk_reverse(A1 = 400, half_life = 28.79, t = 50)
 }
 \seealso{

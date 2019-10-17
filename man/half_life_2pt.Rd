@@ -32,8 +32,10 @@ half_life_2pt(time1 = 1, time2 = 2, N1 = 30, N2 = 21)
 #
 # Use on a series
 count_times <- 1:5
-acts <- 10000 * 2^(-count_times/10) #activities
-acts <- rpois(5, acts) #activities with counting variability applied
-half_life_2pt(time1 = count_times[1:4], time2 = count_times[2:5],
-N1 = acts[1:4], N2 = acts[2:5])
+acts <- 10000 * 2^(-count_times / 10) # activities
+acts <- rpois(5, acts) # activities with counting variability applied
+half_life_2pt(
+  time1 = count_times[1:4], time2 = count_times[2:5],
+  N1 = acts[1:4], N2 = acts[2:5]
+)
 }

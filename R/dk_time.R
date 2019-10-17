@@ -11,7 +11,8 @@
 #' dk_time(half_life = 5730, A0 = 14, A1 = 1)
 #' @export
 dk_time <- function(half_life, A0, A1) {
-  if(!is.numeric(c(half_life, A0, A1)))
+  if (!is.numeric(c(half_life, A0, A1))) {
     stop("All arguments must be a numbers.")
-    -half_life * log(A1 / A0) / log(2)
+  }
+  -half_life * log(A1 / A0) / log(2)
 }

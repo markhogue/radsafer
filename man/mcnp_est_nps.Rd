@@ -16,7 +16,7 @@ estimate of number of particle histories needed
 Provides quick estimate of number of particles histories,
 (nps) to obtain target MCNP 'error'.
 Paste may include up to three tallies side by side in the default MCNP
-order. For example, the headers of a three tally report includes column 
+order. For example, the headers of a three tally report includes column
 names: nps, mean, error, vov, slope, fom, mean, error, vov, slope, fom,
 mean, error, vov, slope, fom.
 The structure of the tfc has been the same for versions 4 through 6,
@@ -24,7 +24,7 @@ including MCNPX.
 }
 \examples{
 # Since this function requires the user
-# to copy and paste input, this example 
+# to copy and paste input, this example
 # is set up to provide data for this purpose.
 # To run the example, copy and paste the following
 # into an input file and delete the hash tags to run.
@@ -41,13 +41,13 @@ including MCNPX.
 #     294912000   4.0549E+00 0.0716 0.0100  0.0 5.6E-02
 #     327680000   4.0665E+00 0.0686 0.0090  0.0 5.4E-02
 #     360448000   4.1841E+00 0.0641 0.0079  0.0 5.7E-02
-
 }
 \seealso{
 Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_matrix_rotations}},
   \code{\link{mcnp_plot_out_spec}},
   \code{\link{mcnp_scan2spec}}, \code{\link{mcnp_si_hist}},
-  \code{\link{mcnp_si_sp_RD}}, \code{\link{mcnp_sp_hist}}
+  \code{\link{mcnp_si_sp_RD}},
+  \code{\link{mcnp_si_sp_hist}}, \code{\link{mcnp_sp_hist}}
 }
 \concept{mcnp tools}

@@ -10,9 +10,9 @@ mcnp_si_sp_RD(desired_RN, rad_type = NULL, photon = FALSE, cut = 0,
 \arguments{
 \item{desired_RN}{Radionuclide in form Ba-137m}
 
-\item{rad_type}{Radiation type, leave NULL if selecting photons or 
-select from:  
-'X' for X-Ray 
+\item{rad_type}{Radiation type, leave NULL if selecting photons or
+select from:
+'X' for X-Ray
 'G' for Gamma
 'AE' for Auger Electron
 'IE' for Internal Conversion Electron
@@ -34,11 +34,11 @@ select from:
 \item{erg.dist}{energy distribution number for MCNP input}
 }
 \value{
-a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)). 
-For use with MCNP, a text file, 'si.sp.dat' is written to working directory. 
-If file already exists, it is appended. The file contains all 
+a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)).
+For use with MCNP, a text file, 'si.sp.dat' is written to working directory.
+If file already exists, it is appended. The file contains all
 emission energies in the si 'card' and the Line indicator, L is included,
-e.g. si1  L  0.01 (showing a first energy of 0.01 MeV). 
+e.g. si1  L  0.01 (showing a first energy of 0.01 MeV).
 This is followed by the emission probability of each si entry.
 An additional text entry is made summing up the probabilities.
 NA's may be included and require user deletion. They facilitate
@@ -48,10 +48,9 @@ writing the output in a convenient format.
 Obtain emission data from the RadData package and write to a file for use with the radiation transport code, MCNP.
 }
 \examples{
-mcnp_si_sp_RD('Co-60', photon = TRUE, cut = 0.01, erg.dist = 13)
-mcnp_si_sp_RD('Sr-90', rad_type = 'B-', cut = 0.01, erg.dist = 15)
-mcnp_si_sp_RD('Am-241', rad_type = 'A', cut = 0.01, erg.dist = 23)
-
+mcnp_si_sp_RD("Co-60", photon = TRUE, cut = 0.01, erg.dist = 13)
+mcnp_si_sp_RD("Sr-90", rad_type = "B-", cut = 0.01, erg.dist = 15)
+mcnp_si_sp_RD("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
 }
 \seealso{
 [si_hist()] and [sp_hist()]  if radioactive emission data is available in histogram form and needs formatting for MCNP input.
@@ -62,6 +61,6 @@ Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_matrix_rotations}},
   \code{\link{mcnp_plot_out_spec}},
   \code{\link{mcnp_scan2spec}}, \code{\link{mcnp_si_hist}},
-  \code{\link{mcnp_sp_hist}}
+  \code{\link{mcnp_si_sp_hist}}, \code{\link{mcnp_sp_hist}}
 }
 \concept{mcnp tools}

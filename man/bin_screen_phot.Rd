@@ -16,7 +16,7 @@ bin_screen_phot(E_min = 0, E_max = 10, min_prob = 0,
 
 \item{min_prob}{minimum probability of selected bin with default = 0.}
 
-\item{min_half_life_seconds}{minimum half-life in seconds. 
+\item{min_half_life_seconds}{minimum half-life in seconds.
 Use multiplier as needed, e.g. 3 * 3600 for 3 hours. Default = NULL,}
 
 \item{max_half_life_seconds}{maximum half-life. See min_half_life_seconds.}
@@ -32,18 +32,19 @@ search results in order of half-life. Recommend assigning
 results to a viewable object, such as 'search_results'
 }
 \description{
-Search for photon emission spectra from representative radionuclides. 
+Search for photon emission spectra from representative radionuclides.
 Identify the bin of interest using E_min and E_max with optional min_prob.
 If minimum probability for photons in the minimized ranges is not
 identified, no screening will occur in the minimized ranges because
 the default is 100 (greater than the maximum probability of any photon).
 }
 \examples{
-spec_0.1_0.3 <- bin_screen_phot(E_min = 0.1, E_max = 0.3, 
-min_prob = 0.4, min_half_life_seconds = 30 * 24 * 3600,
-max_half_life_seconds = 3.153e7, no_E_min = 0.015, 
-no_E_max = 0.0999, no_min_prob = 0.05, no_E_min2 = 0.301, no_E_max2 = 10, no_min_prob2 = 0.01)
-
+spec_0.1_0.3 <- bin_screen_phot(
+  E_min = 0.1, E_max = 0.3,
+  min_prob = 0.4, min_half_life_seconds = 30 * 24 * 3600,
+  max_half_life_seconds = 3.153e7, no_E_min = 0.015,
+  no_E_max = 0.0999, no_min_prob = 0.05, no_E_min2 = 0.301, no_E_max2 = 10, no_min_prob2 = 0.01
+)
 }
 \seealso{
 [RN_plt()]

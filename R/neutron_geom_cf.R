@@ -16,7 +16,7 @@
 #' neutron_geom_cf(30, 11)
 #' neutron_geom_cf(5, 4.5)
 #' @export
-neutron_geom_cf <- function(l, r.d, del=0.5) {
-  if(l < r.d) stop("l must be > r.d")
+neutron_geom_cf <- function(l, r.d, del = 0.5) {
+  if (l < r.d) stop("l must be > r.d")
   (1 + del * (2 * l^2 / r.d^2 * (1 - sqrt(1 - r.d^2 / l^2)) - 1))^-1
 }
