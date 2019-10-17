@@ -24,8 +24,8 @@ mcnp_cone_angle(45)
 Other mcnp tools: \code{\link{mcnp_est_nps}},
   \code{\link{mcnp_matrix_rotations}},
   \code{\link{mcnp_plot_out_spec}},
-  \code{\link{mcnp_scan2spec}}, \code{\link{mcnp_si_hist}},
+  \code{\link{mcnp_scan2spec}},
   \code{\link{mcnp_si_sp_RD}},
-  \code{\link{mcnp_si_sp_hist}}, \code{\link{mcnp_sp_hist}}
+  \code{\link{mcnp_si_sp_hist}}
 }
 \concept{mcnp tools}

@@ -100,7 +100,7 @@ disk_to_disk_solid_angle <- function(r.source,
     if (plot.opt == "3d") {
       scatterplot3d::scatterplot3d(sim_set$x, sim_set$y,
         sim_set$z,
-        main = "radiation disk source to detector surface",
+        main = "disk source -> detector",
         axis = FALSE,
         color = sim_set$color,
         cex.symbols = 0.5, pch = 8,
