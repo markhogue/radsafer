@@ -27,7 +27,7 @@ Or install the development version from GitHub:
 devtools::install_github("markhogue/radsafer")
 ```
 
-## Oveview
+## Overview
 
 To start using the installed package:
 
@@ -122,7 +122,7 @@ angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.045763729 0.002090141
+#> [1] 0.048488477 0.002145602
 ```
 
 An optional plot is available in 2D or 3D:
@@ -133,7 +133,7 @@ An optional plot is available in 2D or 3D:
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #> [1] 0.04606248 0.00209432
+    #> [1] 0.047794484 0.002128845
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -142,16 +142,16 @@ then take a ratio of the two.
 
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
-#>   mean_eff         SEM
-#>  0.0545045 0.002271355
+#>    mean_eff         SEM
+#>  0.05296822 0.002239141
 ```
 
 Correct for the mismatch:
 
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
-#>  mean_eff      SEM
-#>  1.183273 1.084531
+#>  mean_eff     SEM
+#>   1.10825 1.05181
 ```
 
 This makes sense - the air sample has particles originating outside the

@@ -33,7 +33,7 @@ Or install the development version from GitHub:
 devtools::install_github("markhogue/radsafer")
 ```
 
-## Oveview
+## Overview
 To start using the installed package: 
 
 ```{r}

@@ -26,7 +26,7 @@ The radsafer package was developed with these goals:
 
 * Share some less commonly-used functions that may be of significant value to workers in instrumentation and modeling
 
-Related functions are identified as members of thes families:
+Related functions are identified as members of these families:
 
 * decay corrections 
 
