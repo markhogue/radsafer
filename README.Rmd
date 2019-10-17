@@ -146,9 +146,9 @@ If you create MCNP inputs, these functions may be helpful:
 **mcnp_si_sp_RD**
 Obtain emission data from the RadData package and write to a file for use with the radiation transport code, MCNP.
 
-**mcnp_si_hist** and **mcnp_sp_hist**
+**mcnp_si_sp_hist** 
 
-* Create an _energy distribution_ from histogram data with: `si_hist` and `sp_hist` (Load the data into R first using copy and paste with `scan` or reading from an external table with, for example, `read.table`.)
+* Create an _energy distribution_ from histogram data with: `mcnp_si_sp_hist` Options are provided to use data already in R and to copy and paste data interactively.
 
 **mcnp_matrix_rotations**
 

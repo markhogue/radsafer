@@ -58,8 +58,7 @@ dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = 
 ```
 
 Use this function to correct for the value needed today. Say, a disk
-source originally had a target count rate of 3000
-cpm:
+source originally had a target count rate of 3000 cpm:
 
 ``` r
 3000 * dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = "y")
@@ -119,16 +118,14 @@ Example: You are counting an air sample with an active collection
 diameter of 45 mm, your detector has a radius of 25 mm and there is a
 gap between the two of 5 mm. (The function is based on radius, not
 diameter so be sure to divide the diameter by two.) The relative solid
-angle
-is:
+angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.04797122 0.00213652
+#> [1] 0.045763729 0.002090141
 ```
 
-An optional plot is available in 2D or
-3D:
+An optional plot is available in 2D or 3D:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "3d")))
@@ -136,26 +133,25 @@ An optional plot is available in 2D or
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
 
-    #> [1] 0.047264923 0.002120248
+    #> [1] 0.04606248 0.00209432
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
 big deal? Let’s estimate the relative solid angle of the calibration,
-then take a ratio of the
-two.
+then take a ratio of the two.
 
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
-#>    mean_eff         SEM
-#>  0.05335335 0.002248608
+#>   mean_eff         SEM
+#>  0.0545045 0.002271355
 ```
 
 Correct for the mismatch:
 
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
-#>  mean_eff     SEM
-#>  1.128815 1.06054
+#>  mean_eff      SEM
+#>  1.183273 1.084531
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -185,8 +181,7 @@ the single coverage uncertainty for a very stable reading. When a
 reading is not very stable, evaluation of the reading fluctuation is
 evaluated in terms of numbers of scale increments covered by meter
 indication over a reasonable evaluation period. Example with default
-time
-constant:
+time constant:
 
 ``` r
 rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20))
@@ -214,12 +209,11 @@ If you create MCNP inputs, these functions may be helpful:
 **mcnp\_si\_sp\_RD** Obtain emission data from the RadData package and
 write to a file for use with the radiation transport code, MCNP.
 
-**mcnp\_si\_hist** and **mcnp\_sp\_hist**
+**mcnp\_si\_sp\_hist**
 
-  - Create an *energy distribution* from histogram data with: `si_hist`
-    and `sp_hist` (Load the data into R first using copy and paste with
-    `scan` or reading from an external table with, for example,
-    `read.table`.)
+  - Create an *energy distribution* from histogram data with:
+    `mcnp_si_sp_hist` Options are provided to use data already in R and
+    to copy and paste data interactively.
 
 **mcnp\_matrix\_rotations**
 
@@ -241,8 +235,6 @@ quick plot with `mcnp_plot_out_spec`:
 mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 ```
 
-<img src="man/figures/README-unnamed-chunk-16-1.png" width="50%" />
-
 ### radionuclides
 
 Search by alpha, beta, photon or use the general screen option.
@@ -256,8 +248,7 @@ specified energy bins. Results for all these search functions may be
 plotted with `RN_plt`.
 
 Here’s a search for photon energy between 0.99 and 1.01 MeV, half-life
-between 13 and 15 minutes, and probability at least
-1e-4
+between 13 and 15 minutes, and probability at least 1e-4
 
 ``` r
 search_results <- search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
@@ -284,8 +275,7 @@ The `RN_index_screen` function helps find a radionuclide of interest
 based on decay mode, half-life, and total emission energy.
 
 In this example, we search for radionuclides decaying by spontaneous
-fission with half-lives between 6 months and 2
-years.
+fission with half-lives between 6 months and 2 years.
 
 ``` r
 RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
