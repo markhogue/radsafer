@@ -21,7 +21,7 @@ dk_pct_to_num_half_life(pct_lost = 93.75)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},
-  \code{\link{dk_cf}}, \code{\link{dk_reverse}},
-  \code{\link{dk_time}}
+  \code{\link{dk_cf}}, \code{\link{dk_correct}},
+  \code{\link{dk_reverse}}, \code{\link{dk_time}}
 }
 \concept{decay corrections}

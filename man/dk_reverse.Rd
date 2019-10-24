@@ -32,7 +32,7 @@ dk_reverse(A1 = 400, half_life = 28.79, t = 50)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},
-  \code{\link{dk_cf}},
+  \code{\link{dk_cf}}, \code{\link{dk_correct}},
   \code{\link{dk_pct_to_num_half_life}},
   \code{\link{dk_time}}
 }

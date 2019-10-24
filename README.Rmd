@@ -52,24 +52,42 @@ library(radsafer)
 ### Decay Correction Functions
 Radsafer includes several functions to manage radioactive decay corrections:
 
-**dk_cf** provides a correction factor. Revise a calibration or source check value to today's date (the default) or a date and time of your choosing. 
+**dk_correct** provides decay corrected activity or activity-dependent value, such as instrument response rate or dose rate. The computation is made either based on a single radionuclide, or based on user-provided half-life, with time unit. The differential time is either computed based on dates entered or time lapsed  based on the time unit. 
 
-```{r}
-dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = "y")
+Obtain a correction factor for a source to be used today based on a calibration on `date1`. Allow `date2` to be the default system date.
+
+```{r warning=FALSE}
+dk_correct(half_life = 10,
+           time_unit = "y",
+           date1 = "2010-01-01")
 ```
-Use this function to correct for the value needed today. Say, a disk source originally had a target count rate of 3000 cpm:
-```{r}
-3000 * dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = "y")
+
+Use this function to correct for the value needed on dates it was used. Let the function obtain the half-life from the `RadDecay` data. In the example, we have a disk source with an original count rate of 10000 cpm:
+
+```{r warning=FALSE}
+dk_correct(RN_select = "Sr-90",
+  date1 = "2005-01-01",
+  date2 = c("2009-01-01","2009-10-01"),
+  A1 = 10000)
 ```
 
-Other decay functions answer the following questions: 
-* What is the decayed activity? **dk_activity**, Given a percentage reduction in activity, how many half-lives have passed.**dk_pct_to_num_half_life**
+Reverse decay - find out what readings should have been in the past given today's reading of 3000
 
-* How long will it take to reach the target radioactivity? **dk_time**
+```{r warning=FALSE}
+dk_correct(RN_select = "Cs-137", 
+  date1 = "2019-01-01", 
+  date2 = c("2009-01-01","1999-01-01"), 
+  A1 = 3000)
+```
 
-* Given the radioactivity at one time, what was the radioactivity at an earlier time? **dk_reverse**
+Other decay functions answer the following questions:
 
-* Given two data points, estimate the half-life: **half_life_2pt**
+* How long does it take to decay something with a given activity, or how old is a sample if it has decayed from? **dk_time**
+
+* Given a percentage reduction in activity, how many half-lives have passed.**dk_pct_to_num_half_life**
+
+* Given two or more data points, estimate the half-life: **half_life_2pt**
+
 
 ### rad measurements functions
 **air_dens_cf**

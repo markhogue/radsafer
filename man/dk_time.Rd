@@ -26,7 +26,7 @@ dk_time(half_life = 5730, A0 = 14, A1 = 1)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},
-  \code{\link{dk_cf}},
+  \code{\link{dk_cf}}, \code{\link{dk_correct}},
   \code{\link{dk_pct_to_num_half_life}},
   \code{\link{dk_reverse}}
 }

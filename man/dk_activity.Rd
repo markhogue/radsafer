@@ -27,6 +27,7 @@ dk_activity(A0 = 10000, half_life = 5, target = 2500)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_cf}},
+  \code{\link{dk_correct}},
   \code{\link{dk_pct_to_num_half_life}},
   \code{\link{dk_reverse}}, \code{\link{dk_time}}
 }

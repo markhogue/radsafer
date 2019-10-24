@@ -12,6 +12,7 @@
 #' dk_activity(A0 = 10000, half_life = 5, target = 2500)
 #' @export
 dk_activity <- function(A0, half_life, target) {
+  .Deprecated("dk_time")
   if (!is.numeric(c(A0, half_life, target))) {
     stop("All arguments must be a numbers.")
   }

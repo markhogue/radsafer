@@ -17,6 +17,7 @@
 #' dk_reverse(A1 = 400, half_life = 28.79, t = 50)
 #' @export
 dk_reverse <- function(A1, half_life, t) {
+  .Deprecated("dk_correct")
   if (!is.numeric(c(t, half_life, A1))) {
     stop("All arguments must be a numbers.")
   }

@@ -48,35 +48,66 @@ library(radsafer)
 Radsafer includes several functions to manage radioactive decay
 corrections:
 
-**dk\_cf** provides a correction factor. Revise a calibration or source
-check value to today’s date (the default) or a date and time of your
-choosing.
+**dk\_correct** provides decay corrected activity or activity-dependent
+value, such as instrument response rate or dose rate. The computation is
+made either based on a single radionuclide, or based on user-provided
+half-life, with time unit. The differential time is either computed
+based on dates entered or time lapsed based on the time unit.
+
+Obtain a correction factor for a source to be used today based on a
+calibration on `date1`. Allow `date2` to be the default system date.
 
 ``` r
-dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = "y")
-#> [1] 0.3491632
+dk_correct(half_life = 10,
+           time_unit = "y",
+           date1 = "2010-01-01")
+#>  half_life RefValue    RefDate   TargDate  dk_value
+#>         10        1 2010-01-01 2019-10-23 0.5067385
 ```
 
-Use this function to correct for the value needed today. Say, a disk
-source originally had a target count rate of 3000 cpm:
+Use this function to correct for the value needed on dates it was used.
+Let the function obtain the half-life from the `RadDecay` data. In the
+example, we have a disk source with an original count rate of 10000 cpm:
 
 ``` r
-3000 * dk_cf(half_life = 5.27, date1 = "2010-12-01", date2 = "2018-12-01", time_unit = "y")
-#> [1] 1047.49
+dk_correct(RN_select = "Sr-90",
+  date1 = "2005-01-01",
+  date2 = c("2009-01-01","2009-10-01"),
+  A1 = 10000)
+#>     RN half_life units decay_mode
+#>  Sr-90     28.79     y         B-
+#> 
+#>     RN RefValue    RefDate   TargDate dk_value
+#>  Sr-90    10000 2005-01-01 2009-01-01 9081.895
+#>  Sr-90    10000 2005-01-01 2009-10-01 8919.954
 ```
 
-Other decay functions answer the following questions: \* What is the
-decayed activity? **dk\_activity**, Given a percentage reduction in
-activity, how many half-lives have
-passed.**dk\_pct\_to\_num\_half\_life**
+Reverse decay - find out what readings should have been in the past
+given today’s reading of 3000
 
-  - How long will it take to reach the target radioactivity?
-    **dk\_time**
+``` r
+dk_correct(RN_select = "Cs-137", 
+  date1 = "2019-01-01", 
+  date2 = c("2009-01-01","1999-01-01"), 
+  A1 = 3000)
+#>      RN half_life units decay_mode
+#>  Cs-137   30.1671     y         B-
+#> 
+#>      RN RefValue    RefDate   TargDate dk_value
+#>  Cs-137     3000 2019-01-01 2009-01-01 3774.795
+#>  Cs-137     3000 2019-01-01 1999-01-01 4749.991
+```
 
-  - Given the radioactivity at one time, what was the radioactivity at
-    an earlier time? **dk\_reverse**
+Other decay functions answer the following questions:
 
-  - Given two data points, estimate the half-life: **half\_life\_2pt**
+  - How long does it take to decay something with a given activity, or
+    how old is a sample if it has decayed from? **dk\_time**
+
+  - Given a percentage reduction in activity, how many half-lives have
+    passed.**dk\_pct\_to\_num\_half\_life**
+
+  - Given two or more data points, estimate the half-life:
+    **half\_life\_2pt**
 
 ### rad measurements functions
 
@@ -122,7 +153,7 @@ angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.048488477 0.002145602
+#> [1] 0.047208375 0.002117774
 ```
 
 An optional plot is available in 2D or 3D:
@@ -131,9 +162,9 @@ An optional plot is available in 2D or 3D:
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "3d")))
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="50%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="50%" />
 
-    #> [1] 0.047794484 0.002128845
+    #> [1] 0.049071751 0.002164077
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -143,15 +174,15 @@ then take a ratio of the two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05296822 0.002239141
+#>  0.05405132 0.002272925
 ```
 
 Correct for the mismatch:
 
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
-#>  mean_eff     SEM
-#>   1.10825 1.05181
+#>  mean_eff      SEM
+#>  1.101475 1.050298
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -166,7 +197,7 @@ needed for the activity measurement.
 scaler_sim(true_bkg = 50, true_samp = 10, ct_time = 20, trials = 1e5)
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="50%" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="50%" />
 
 **rate\_meter\_sim**
 
@@ -187,7 +218,7 @@ time constant:
 rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20))
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="50%" />
+<img src="man/figures/README-unnamed-chunk-14-1.png" width="50%" />
 
 To estimate *time constant*, use `tau.estimate`
 
@@ -269,7 +300,7 @@ search_results <- search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 RN_plt(spec_0.1_0.3)
 ```
 
-<img src="man/figures/README-unnamed-chunk-19-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
 
 The `RN_index_screen` function helps find a radionuclide of interest
 based on decay mode, half-life, and total emission energy.

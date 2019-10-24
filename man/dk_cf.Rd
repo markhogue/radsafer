@@ -30,6 +30,7 @@ dk_cf(half_life = 28.79, time_unit = "y", date1 = "2001-01-01")
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},
+  \code{\link{dk_correct}},
   \code{\link{dk_pct_to_num_half_life}},
   \code{\link{dk_reverse}}, \code{\link{dk_time}}
 }

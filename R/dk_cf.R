@@ -15,6 +15,7 @@
 #' dk_cf(half_life = 28.79, time_unit = "y", date1 = "2001-01-01")
 #' @export
 dk_cf <- function(half_life, time_unit, date1, date2 = Sys.Date()) {
+  .Deprecated("dk_correct")
   # arg checks
   if (!is.numeric(half_life)) {
     stop("half_life must be a number.")
