@@ -23,10 +23,12 @@ The decay correction factor from the reference date to the date of interest.
 Compute correction value for decay of a single-isotope source.
 }
 \examples{
+ \donttest{
 dk_cf(half_life = 5.27, time_unit = "y", date1 = "2010-12-01", date2 = "2018-12-01")
 #
 # example defaulting to today's date:
 dk_cf(half_life = 28.79, time_unit = "y", date1 = "2001-01-01")
+}
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},

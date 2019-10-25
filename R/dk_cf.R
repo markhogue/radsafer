@@ -8,11 +8,12 @@
 #' @param date2 Date of interest. Format is same as date1. Default is today's date, obtained from system.
 
 #' @return The decay correction factor from the reference date to the date of interest.
-#' @examples
+#' @examples  \donttest{
 #' dk_cf(half_life = 5.27, time_unit = "y", date1 = "2010-12-01", date2 = "2018-12-01")
 #' #
 #' # example defaulting to today's date:
 #' dk_cf(half_life = 28.79, time_unit = "y", date1 = "2001-01-01")
+#' }
 #' @export
 dk_cf <- function(half_life, time_unit, date1, date2 = Sys.Date()) {
   .Deprecated("dk_correct")
