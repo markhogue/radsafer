@@ -2,6 +2,7 @@
 
 export("%>%")
 export(RN_Spec_Act)
+export(RN_find_parent)
 export(RN_index_screen)
 export(RN_info)
 export(RN_plt)

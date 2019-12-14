@@ -41,8 +41,6 @@ emission energies in the si 'card' and the Line indicator, L is included,
 e.g. si1  L  0.01 (showing a first energy of 0.01 MeV).
 This is followed by the emission probability of each si entry.
 An additional text entry is made summing up the probabilities.
-NA's may be included and require user deletion. They facilitate
-writing the output in a convenient format.
 }
 \description{
 Obtain emission data from the RadData package and write to a file for use with the radiation transport code, MCNP.

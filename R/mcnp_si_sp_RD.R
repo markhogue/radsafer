@@ -31,8 +31,6 @@
 #' e.g. si1  L  0.01 (showing a first energy of 0.01 MeV).
 #' This is followed by the emission probability of each si entry.
 #' An additional text entry is made summing up the probabilities.
-#' NA's may be included and require user deletion. They facilitate
-#' writing the output in a convenient format.
 #'
 #' @examples
 #' mcnp_si_sp_RD("Co-60", photon = TRUE, cut = 0.01, erg.dist = 13)
@@ -41,7 +39,7 @@
 #' @export
 mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, erg.dist = 1) {
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")
-  stop <- FALSE
+  stop_flag <- FALSE
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
   if (!is.null(rad_type)) {
     if (!rad_type %in% rt_allowed) {
@@ -94,9 +92,9 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, 
   # check for no matches
   if (is.na(si.sp[1, 1])) {
     oops <- "No matches"
-    stop <- TRUE
+    stop_flag <- TRUE
   }
-  if (stop) {
+  if (stop_flag) {
     return(oops)
   }
 
@@ -110,17 +108,17 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, 
   # na.num <- 6 - (length(si.sp$E_MeV) %% 6)
   prob.sum <- ifelse(dat_set == "B",
     "see branching ratio",
-    signif(sum(si.sp$prob, 5))
+    sum(si.sp$prob)
   )
 
-  si <- as.data.frame(matrix(c(si.sp$E_MeV, rep(NA, na.num)),
+  si <- as.data.frame(matrix(c(si.sp$E_MeV, rep("$", na.num)),
     ncol = 6, byrow = TRUE
   ))
 
-  si$V7 <- c(rep("&", nrow(si) - 1), NA)
+  si$V7 <- c(rep("&", nrow(si) - 1), "$")
   si <- data.frame(si$V1, si$V2, si$V3, si$V4, si$V5, si$V6, si$V7)
   if (dat_set == "B") {
-    sp <- as.data.frame(matrix(c(si.sp$A, rep(NA, na.num)),
+    sp <- as.data.frame(matrix(c(si.sp$A, rep("$", na.num)),
       ncol = 6,
       byrow = TRUE
     ))
@@ -128,13 +126,13 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, 
   if (dat_set == "R") {
     sp <- as.data.frame(matrix(c(
       si.sp$prob,
-      rep(NA, na.num)
+      rep("$", na.num)
     ),
     ncol = 6,
     byrow = TRUE
     ))
   }
-  sp$V7 <- c(rep("&", nrow(sp) - 1), NA)
+  sp$V7 <- c(rep("&", nrow(sp) - 1), "$")
   sp <- data.frame(sp$V1, sp$V2, sp$V3, sp$V4, sp$V5, sp$V6, sp$V7)
   # write output si output
   utils::write.table(data.frame(text = "c"), "si.sp.dat",
@@ -206,7 +204,15 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, 
     col_names = FALSE,
     append = TRUE
   )
-
+  my_dir <- getwd()
+  cat("\n")
+  cat(paste0(
+    "The output is appenede to file, si.sp.dat, in your working directory, ",
+    my_dir, "."
+  ))
+  cat("\n")
+  
   # return a data frame to allow plots, etc.
   si.sp
 }
+
