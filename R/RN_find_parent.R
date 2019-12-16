@@ -1,5 +1,5 @@
 #'  Find a potential precursor of a radionuclide
-#'  @description Find a potential parent radionclide by searching the progeny fields in RadData ICRP_07.NDX
+#'  @description Find a potential parent radionuclide by searching the progeny fields in RadData ICRP_07.NDX
 #' @param RN_select identify the radionuclide of interest in the format "Es-254m"
 #' @return a subset of the data frame RadData::ICRP_07.NDX
 #' @examples 

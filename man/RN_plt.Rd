@@ -15,7 +15,7 @@ plot of spectrum
 }
 \description{
 Plots with ggplot2 with geom_point and log y-scale.
-Useful for a small set of radionclides.
+Useful for a small set of radionuclides.
 The point of this is to make it easy to get the plot
 by entering only the data frame name.
 }

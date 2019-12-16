@@ -3,7 +3,7 @@
 \name{RN_find_parent}
 \alias{RN_find_parent}
 \title{Find a potential precursor of a radionuclide
- @description Find a potential parent radionclide by searching the progeny fields in RadData ICRP_07.NDX}
+ @description Find a potential parent radionuclide by searching the progeny fields in RadData ICRP_07.NDX}
 \usage{
 RN_find_parent(RN_select)
 }
@@ -15,7 +15,7 @@ a subset of the data frame RadData::ICRP_07.NDX
 }
 \description{
 Find a potential precursor of a radionuclide
- @description Find a potential parent radionclide by searching the progeny fields in RadData ICRP_07.NDX
+ @description Find a potential parent radionuclide by searching the progeny fields in RadData ICRP_07.NDX
 }
 \examples{
 RN_find_parent("Th-230")
