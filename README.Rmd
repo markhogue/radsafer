@@ -165,7 +165,7 @@ Obtain emission data from the RadData package and write to a file for use with t
 
 **mcnp_si_sp_hist** 
 
-* Create an _energy distribution_ from histogram data with: `mcnp_si_sp_hist` Options are provided to use data already in R and to copy and paste data interactively.
+* Create an _energy distribution_ from histogram data with: `mcnp_si_sp_hist` Or use `mcnp_si_sp_hist_scan` to quickly copy and paste data interactively.
 
 **mcnp_matrix_rotations**
 

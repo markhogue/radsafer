@@ -153,7 +153,7 @@ angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.044666002 0.002062706
+#> [1] 0.045531533 0.002080926
 ```
 
 An optional plot is available in 2D or 3D:
@@ -164,7 +164,7 @@ An optional plot is available in 2D or 3D:
 
 <img src="man/figures/README-unnamed-chunk-10-1.png" width="50%" />
 
-    #> [1] 0.046779525 0.002113566
+    #> [1] 0.049646801 0.002166732
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -174,7 +174,7 @@ then take a ratio of the two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05180699 0.002217702
+#>  0.05418621 0.002261587
 ```
 
 Correct for the mismatch:
@@ -182,7 +182,7 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>  mean_eff      SEM
-#>  1.107471 1.049271
+#>  1.091434 1.043778
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -243,8 +243,8 @@ write to a file for use with the radiation transport code, MCNP.
 **mcnp\_si\_sp\_hist**
 
   - Create an *energy distribution* from histogram data with:
-    `mcnp_si_sp_hist` Options are provided to use data already in R and
-    to copy and paste data interactively.
+    `mcnp_si_sp_hist` Or use `mcnp_si_sp_hist_scan` to quickly copy and
+    paste data interactively.
 
 **mcnp\_matrix\_rotations**
 
