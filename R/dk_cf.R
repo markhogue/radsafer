@@ -8,7 +8,8 @@
 #' @param date2 Date of interest. Format is same as date1. Default is today's date, obtained from system.
 
 #' @return The decay correction factor from the reference date to the date of interest.
-#' @examples  \donttest{
+#' @examples
+#' \donttest{
 #' dk_cf(half_life = 5.27, time_unit = "y", date1 = "2010-12-01", date2 = "2018-12-01")
 #' #
 #' # example defaulting to today's date:

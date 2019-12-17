@@ -62,7 +62,7 @@ dk_correct(half_life = 10,
            time_unit = "y",
            date1 = "2010-01-01")
 #>  half_life RefValue    RefDate   TargDate  dk_value
-#>         10        1 2010-01-01 2019-10-23 0.5067385
+#>         10        1 2010-01-01 2019-12-17 0.5014729
 ```
 
 Use this function to correct for the value needed on dates it was used.
@@ -153,7 +153,7 @@ angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.047208375 0.002117774
+#> [1] 0.044666002 0.002062706
 ```
 
 An optional plot is available in 2D or 3D:
@@ -164,7 +164,7 @@ An optional plot is available in 2D or 3D:
 
 <img src="man/figures/README-unnamed-chunk-10-1.png" width="50%" />
 
-    #> [1] 0.049071751 0.002164077
+    #> [1] 0.046779525 0.002113566
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -174,7 +174,7 @@ then take a ratio of the two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05405132 0.002272925
+#>  0.05180699 0.002217702
 ```
 
 Correct for the mismatch:
@@ -182,7 +182,7 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>  mean_eff      SEM
-#>  1.101475 1.050298
+#>  1.107471 1.049271
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -317,5 +317,8 @@ RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.
 | Es-254 |      275.7 | d     |
 | Cf-248 |      334.0 | d     |
 
-Other radionuclides family functions provide specific activity and short
-tables of decay data.
+Other radionuclides family functions:
+
+  - Provide specific activity **RN\_Spec\_Act**
+
+  - Where did this radionuclide decay from? **RN\_find\_parent**

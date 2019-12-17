@@ -24,11 +24,11 @@
 #' @export
 RN_index_screen <-
   function(dk_mode = NULL,
-             min_half_life_seconds = NULL,
-             max_half_life_seconds = NULL,
-             min_E_alpha = NULL,
-             min_E_electron = NULL,
-             min_E_photon = NULL) {
+           min_half_life_seconds = NULL,
+           max_half_life_seconds = NULL,
+           min_E_alpha = NULL,
+           min_E_electron = NULL,
+           min_E_photon = NULL) {
     RNs_selected <- RadData::ICRP_07.NDX
     # filter by decay mode
     if (!is.null(dk_mode)) {

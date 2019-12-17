@@ -155,7 +155,8 @@ Obtain emission data from the RadData package and write to a file for use with t
 
 **mcnp_si_sp_hist** 
 
-* Create an _energy distribution_ from histogram data with: `mcnp_si_sp_hist` Options are provided to use data already in R and to copy and paste data interactively.
+* Create an _energy distribution_ from histogram data with: `mcnp_si_sp_hist` Or use `mcnp_si_sp_hist_scan` to quickly copy and paste data interactively.
+
 
 **mcnp_matrix_rotations**
 
@@ -207,4 +208,8 @@ RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.
 knitr::kable(RNs_selected[, c(1:3)])
 ```
 
-Other radionuclides family functions provide specific activity and short tables of decay data.
+Other radionuclides family functions:
+
+* Provide specific activity **RN_Spec_Act**
+
+* Where did this radionuclide decay from? **RN_find_parent**

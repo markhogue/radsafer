@@ -53,38 +53,49 @@ Decay-corrected values are provided. Either a single or multiple
 \examples{
 
 # RN_select and date1 (saving numerical data)
-my_dks <- dk_correct(RN_select = "Sr-90", 
-                     date1 = "2009-01-01", 
-                     date2 = "2019-01-01", 
-                     num = TRUE)
+my_dks <- dk_correct(
+  RN_select = "Sr-90",
+  date1 = "2009-01-01",
+  date2 = "2019-01-01",
+  num = TRUE
+)
 
 #   RN_select and time_lapse (random sample)
-dk_correct(RN_select = base::sample(RadData::ICRP_07.NDX$RN, 1),
-     time_lapse = 1:10, 
-     time_unit = base::sample(c('y', 'd', 'h', 'm', 's'), 1))
-     
+dk_correct(
+  RN_select = base::sample(RadData::ICRP_07.NDX$RN, 1),
+  time_lapse = 1:10,
+  time_unit = base::sample(c("y", "d", "h", "m", "s"), 1)
+)
+
 #   half_life and date1
-dk_correct(half_life = 10, 
-           time_unit= "y", 
-           date1 = "2009-01-01", 
-           date2 = c("2015-01-01",
-                      "2016-01-01",
-                      "2017-01-01"))
+dk_correct(
+  half_life = 10,
+  time_unit = "y",
+  date1 = "2009-01-01",
+  date2 = c(
+    "2015-01-01",
+    "2016-01-01",
+    "2017-01-01"
+  )
+)
 
 #   half_life and time_lapse
-dk_correct(half_life = 10, 
-           time_lapse = 10, 
-           time_unit= "y")
+dk_correct(
+  half_life = 10,
+  time_lapse = 10,
+  time_unit = "y"
+)
 
 # decay to today
 dk_correct(RN_select = "Sr-90", date1 = "2009-01-01")
 
 # reverse decay - find out what readings should have been in the past given today's reading of 3000
-dk_correct(RN_select = "Sr-90", 
-  date1 = "2019-01-01", 
-  date2 = c("2009-01-01","1999-01-01"), 
-  A1 = 3000)
-
+dk_correct(
+  RN_select = "Sr-90",
+  date1 = "2019-01-01",
+  date2 = c("2009-01-01", "1999-01-01"),
+  A1 = 3000
+)
 }
 \seealso{
 Other decay corrections: \code{\link{dk_activity}},

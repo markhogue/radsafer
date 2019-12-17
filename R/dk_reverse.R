@@ -9,7 +9,8 @@
 #' @param half_life Half-life. Units are arbitrary, but must match time past.
 #' @param A1 The target activity or related parameter, such as dose rate.
 #' @return The original activity or related parameter.
-#' @examples \donttest{
+#' @examples
+#' \donttest{
 #' # A Sr-90 Radioisotope thermoelectric generator is discovered and measured.
 #' # The activity is estimated to be around 400 TBq. Original RTG's of this
 #' # type contained 1480 TBq when built 50 years earlier. We're wondering if

@@ -211,8 +211,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, 
     my_dir, "."
   ))
   cat("\n")
-  
+
   # return a data frame to allow plots, etc.
   si.sp
 }
-

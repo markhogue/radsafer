@@ -5,7 +5,8 @@
 #' @param half_life, Half-life. Units are arbitrary, but must match time past.
 #' @param target The target activity.
 #' @return time, in same units as half-life, to decay to target activity.
-#' @examples \donttest{
+#' @examples
+#' \donttest{
 #' # How long does it take for original activity of 10000 Bq to decay to 2500 Bq
 #' # if half-life is 5 minutes?
 #' # (All time units are consistent, so answer will be in minutes)
