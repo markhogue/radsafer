@@ -23,10 +23,12 @@ Make MCNP histogram probabilities for energy bins.
 Data may be identified by named vector, e.g. my_emin_data, or by column of a data frame, e.g. photons_cs137_hist[1] (which is in emax format) and photons_cs137_hist[2] (bin_prob).
 }
 \examples{
+\dontrun{
 mcnp_si_sp_hist(
   emin = c(0, photons_cs137_hist[1:64, 1]),
   bin_prob = photons_cs137_hist[1:64, 2]
 )
+}
 }
 \seealso{
 [mcnp_si_sp_hist_scan()] for copy and paste in data

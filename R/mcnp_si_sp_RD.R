@@ -33,9 +33,11 @@
 #' An additional text entry is made summing up the probabilities.
 #'
 #' @examples
+#' \dontrun{
 #' mcnp_si_sp_RD("Co-60", photon = TRUE, cut = 0.01, erg.dist = 13)
 #' mcnp_si_sp_RD("Sr-90", rad_type = "B-", cut = 0.01, erg.dist = 15)
 #' mcnp_si_sp_RD("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
+#' }
 #' @export
 mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, erg.dist = 1) {
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")

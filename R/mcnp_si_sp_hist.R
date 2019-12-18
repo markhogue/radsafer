@@ -9,10 +9,12 @@
 #' @seealso [mcnp_si_sp_hist_scan()] for copy and paste in data
 #' @seealso [mcnp_si_sp_RD()] for data from `RadData`
 #' @examples
+#' \dontrun{
 #' mcnp_si_sp_hist(
 #'   emin = c(0, photons_cs137_hist[1:64, 1]),
 #'   bin_prob = photons_cs137_hist[1:64, 2]
 #' )
+#' }
 #' @export
 
 mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {

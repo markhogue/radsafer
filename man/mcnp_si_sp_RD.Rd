@@ -46,9 +46,11 @@ An additional text entry is made summing up the probabilities.
 Obtain emission data from the RadData package and write to a file for use with the radiation transport code, MCNP.
 }
 \examples{
+\dontrun{
 mcnp_si_sp_RD("Co-60", photon = TRUE, cut = 0.01, erg.dist = 13)
 mcnp_si_sp_RD("Sr-90", rad_type = "B-", cut = 0.01, erg.dist = 15)
 mcnp_si_sp_RD("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
+}
 }
 \seealso{
 [si_hist()] and [sp_hist()]  if radioactive emission data is available in histogram form and needs formatting for MCNP input.
