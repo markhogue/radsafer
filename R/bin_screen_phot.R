@@ -7,7 +7,7 @@
 #' the default is 100 (greater than the maximum probability of any photon).
 #'
 #' @family radionuclides
-#' @seealso [RN_plt()]
+#' @seealso [RN_plot_spectrum()]
 #'
 #' @param E_min minimum energy in MeV, default = 0
 #' @param E_max maximum energy in MeV, default = 10
@@ -50,7 +50,7 @@ bin_screen_phot <- function(E_min = 0,
     dplyr::filter(.data$prob > min_prob)
   # half-life search
   j <- dplyr::left_join(p[, 1:4], RadData::ICRP_07.NDX[, c(1:4, 32)],
-    by = "RN"
+                        by = "RN"
   )
   dk_const <- function(half_life_seconds) log(2) / half_life_seconds
   if (!is.null(min_half_life_seconds)) {
