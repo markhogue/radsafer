@@ -10,7 +10,7 @@ mcnp_cone_angle(d)
 \item{d}{The cone angle in degrees.}
 }
 \value{
-The ratio of actual to reference air density.
+tangent of cone angle squared
 }
 \description{
 MCNP cone surface requires a term, t^2, which is the tangent of

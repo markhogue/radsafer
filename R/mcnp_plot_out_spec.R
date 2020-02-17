@@ -1,6 +1,6 @@
 #' Convert histogram data to average points and plot as spectrum.
 #' @family mcnp tools
-#' @seealso  \code{\link{scan2spec.df}} to copy and paste output spectrum.
+#' @seealso  \code{\link{mcnp_scan2spec}} to copy and paste output spectrum.
 #' @description Model results from MCNP and perhaps other sources typically
 #'   provide binned tally results with columns representing maximum energy in
 #'   MeV, a column with the mean tally result titled 'mean' and an uncertainty

@@ -98,9 +98,7 @@ dk_correct(
 )
 }
 \seealso{
-Other decay corrections: \code{\link{dk_activity}},
-  \code{\link{dk_cf}},
-  \code{\link{dk_pct_to_num_half_life}},
-  \code{\link{dk_reverse}}, \code{\link{dk_time}}
+Other decay corrections: \code{\link{dk_pct_to_num_half_life}},
+  \code{\link{dk_time}}
 }
 \concept{decay corrections}

@@ -23,7 +23,8 @@ RN_info("Am-241")
 }
 \seealso{
 Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_index_screen}}, \code{\link{RN_plt}},
+  \code{\link{RN_index_screen}},
+  \code{\link{RN_plot_spectrum}}, \code{\link{RN_plt}},
   \code{\link{bin_screen_phot}},
   \code{\link{search_alpha_by_E}},
   \code{\link{search_beta_by_E}},

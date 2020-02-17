@@ -25,8 +25,8 @@ RN_Spec_Act("Ba-137m")
 }
 \seealso{
 Other radionuclides: \code{\link{RN_index_screen}},
-  \code{\link{RN_info}}, \code{\link{RN_plt}},
-  \code{\link{bin_screen_phot}},
+  \code{\link{RN_info}}, \code{\link{RN_plot_spectrum}},
+  \code{\link{RN_plt}}, \code{\link{bin_screen_phot}},
   \code{\link{search_alpha_by_E}},
   \code{\link{search_beta_by_E}},
   \code{\link{search_phot_by_E}}

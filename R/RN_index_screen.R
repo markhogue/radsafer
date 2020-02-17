@@ -1,6 +1,6 @@
 #' Screen radionuclide data to find matches to decay mode, half-life, and total emission energy
 #'
-#' @description Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider [search_phot_by_E], [search_alpha_by_E], and [search_beta_by_E] for spectroscopic measurement matching. 
+#' @description Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider [search_phot_by_E], [search_alpha_by_E], and [search_beta_by_E] for spectroscopic measurement matching.
 #'
 #' @family radionuclides
 #'
@@ -34,7 +34,7 @@ RN_index_screen <-
     if (!is.null(dk_mode)) {
       RNs_selected <- RNs_selected[which(stringr::str_detect(RNs_selected$decay_mode, dk_mode)), ]
     }
-    
+
     # filter by half-life
     dk_const <- function(half_life_seconds) log(2) / half_life_seconds
     if (!is.null(min_half_life_seconds)) {
@@ -45,17 +45,17 @@ RN_index_screen <-
       lambda_min <- dk_const(max_half_life_seconds)
       RNs_selected <- RNs_selected[which(RNs_selected$decay_constant > lambda_min), ]
     }
-    
+
     # filter by total alpha energy per decay
     if (!is.null(min_E_alpha)) {
       RNs_selected <- RNs_selected[which(RNs_selected$E_alpha > min_E_alpha), ]
     }
-    
+
     # filter by total electron energy per decay
     if (!is.null(min_E_electron)) {
       RNs_selected <- RNs_selected[which(RNs_selected$E_electron > min_E_electron), ]
     }
-    
+
     # filter by total photon energy per decay
     if (!is.null(min_E_photon)) {
       RNs_selected <- RNs_selected[which(RNs_selected$E_photon > min_E_photon), ]

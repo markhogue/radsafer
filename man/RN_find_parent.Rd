@@ -18,6 +18,7 @@ Find a potential precursor of a radionuclide
  @description Find a potential parent radionuclide by searching the progeny fields in RadData ICRP_07.NDX
 }
 \examples{
-RN_find_parent("Th-230")
-RN_find_parent("Tl-208")
+Th_230_df <- RN_find_parent("Th-230")
+
+Tl_208_df <- RN_find_parent("Tl-208")
 }

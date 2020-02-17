@@ -9,4 +9,3 @@
 #' mcnp_cone_angle(45)
 #' @export
 mcnp_cone_angle <- function(d) tan(d * pi / 180)^2
-

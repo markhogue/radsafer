@@ -2,12 +2,12 @@
 #' @family mcnp tools
 #' @description Provides quick copy-and-paste conversion to data frame.
 #' Paste either a source histogram distribution or tally spectrum from MCNP outputs.
-#' Three-column output tally spectra have columns of maximum energy, bin tally, and 
-#' relative Monte Carlo uncertainty for the bin tally value. 
-#' Four-column  source histogram distributions have columns of entry number, maximum 
+#' Three-column output tally spectra have columns of maximum energy, bin tally, and
+#' relative Monte Carlo uncertainty for the bin tally value.
+#' Four-column  source histogram distributions have columns of entry number, maximum
 #' energy, cumulative probability, and bin probability.
 #' In either case, only the maximum energy and bin probability or result values are used.
-#' 
+#'
 #' @return spectrum file with maximum energy and MCNP bin value
 #' @examples
 #' # Since this function requires the user
@@ -42,20 +42,21 @@ mcnp_scan2spec <- function() {
     raw_scan <- scan()
     mtrx <- matrix(raw_scan, ncol = 3, byrow = TRUE)
     spec.df <- data.frame(
-      E.avg = mtrx[, 1] - c(diff(c(0, mtrx[, 1]))) / 2, #average from Emax
+      E.avg = mtrx[, 1] - c(diff(c(0, mtrx[, 1]))) / 2, # average from Emax
       fraction = mtrx[, 2],
       unc = mtrx[, 3]
     )
-}
+  }
   if (cols == 4) {
     cat("copy and paste MCNP source histogram distribution,'\n'")
     cat("with no header'\n'")
     cat("then hit [enter]'\n'")
     raw_scan <- scan()
     mtrx <- matrix(raw_scan, ncol = 4, byrow = TRUE)
-    spec.df <- data.frame(E.avg = mtrx[, 2] - c(diff(c(0, mtrx[, 2]))) / 2, #average from Emax
-                          prob = mtrx[, 4])
+    spec.df <- data.frame(
+      E.avg = mtrx[, 2] - c(diff(c(0, mtrx[, 2]))) / 2, # average from Emax
+      prob = mtrx[, 4]
+    )
   }
   spec.df
 }
-

@@ -32,16 +32,16 @@ RN_index_screen(dk_mode = NULL, min_half_life_seconds = NULL,
 data frame of radionuclide data from the RadData package index data (RadData::ICRP_07.NDX), matching search criteria.
 }
 \description{
-Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider [search_phot_by_E], [search_alpha_by_E], and [search_beta_by_E] for spectroscopic measurement matching. For best results, assign results to a named object, then view the object.
+Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider [search_phot_by_E], [search_alpha_by_E], and [search_beta_by_E] for spectroscopic measurement matching.
 }
 \examples{
-RNs_selected <- RN_index_screen(dk_mode = "SF")
-RNs_selected <- RN_index_screen(dk_mode = "IT", max_half_life_seconds = 433 * 3.15e7)
+RN_index_screen(dk_mode = "SF")
+RN_index_screen(dk_mode = "IT", max_half_life_seconds = 433 * 3.15e7)
 }
 \seealso{
 Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_info}}, \code{\link{RN_plt}},
-  \code{\link{bin_screen_phot}},
+  \code{\link{RN_info}}, \code{\link{RN_plot_spectrum}},
+  \code{\link{RN_plt}}, \code{\link{bin_screen_phot}},
   \code{\link{search_alpha_by_E}},
   \code{\link{search_beta_by_E}},
   \code{\link{search_phot_by_E}}

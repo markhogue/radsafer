@@ -25,7 +25,7 @@ Model results from MCNP and perhaps other sources typically
 mcnp_plot_out_spec(photons_cs137_hist, "example Cs-137 well irradiator")
 }
 \seealso{
-\code{\link{scan2spec.df}} to copy and paste output spectrum.
+\code{\link{mcnp_scan2spec}} to copy and paste output spectrum.
 
 Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_est_nps}},

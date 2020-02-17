@@ -11,11 +11,12 @@ spectrum file with maximum energy and MCNP bin value
 }
 \description{
 Provides quick copy-and-paste conversion to data frame.
-Conversion is based on the two or three columns with
-input energy or output results from MCNP. Energy is expected to be in
-bins with maximum energy in MeV in the first column,
-the input probability or output mean result for the bin in the
-second column, and relative Monte Carlo uncertainty in the third column.
+Paste either a source histogram distribution or tally spectrum from MCNP outputs.
+Three-column output tally spectra have columns of maximum energy, bin tally, and
+relative Monte Carlo uncertainty for the bin tally value.
+Four-column  source histogram distributions have columns of entry number, maximum
+energy, cumulative probability, and bin probability.
+In either case, only the maximum energy and bin probability or result values are used.
 }
 \examples{
 # Since this function requires the user
@@ -23,7 +24,7 @@ second column, and relative Monte Carlo uncertainty in the third column.
 # is set up to provide data for this purpose.
 # To run the example, copy and paste the following
 # into an input file and delete the hash tags to run.
-# my_hist_data <- scan()
+# my_hist_data <- mcnp_scan2spec()
 # 0.1000000 3.133122e-05 0.3348260
 # 0.4222222 6.731257e-05 0.2017546
 # 0.7444444 5.249198e-05 0.4524577
