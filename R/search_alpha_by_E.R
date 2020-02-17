@@ -22,7 +22,8 @@
 #' results to a viewable object, such as 'search_results'
 #'
 #' @export
-search_alpha_by_E <- function(E_min, E_max,
+search_alpha_by_E <- function(E_min = 0, 
+                              E_max = 10,
                               min_half_life_seconds = NULL,
                               max_half_life_seconds = NULL,
                               min_prob = 0) {
