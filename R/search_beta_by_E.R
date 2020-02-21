@@ -28,6 +28,7 @@
 search_beta_by_E <- function(E_max,
                              min_half_life_seconds = NULL,
                              max_half_life_seconds = NULL) {
+  .Deprecated(RN_search_beta_by_E)
   # beta search
   b_sum <- RadData::ICRP_07.BET %>%
     dplyr::group_by(.data$RN) %>%

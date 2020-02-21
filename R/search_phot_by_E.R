@@ -30,6 +30,7 @@ search_phot_by_E <- function(E_min = 0, E_max = 10,
                              min_half_life_seconds = NULL,
                              max_half_life_seconds = NULL,
                              min_prob = 0) {
+  .Deprecated(RN_search_phot_by_E)
   # photon search
   p <- RadData::ICRP_07.RAD %>%
     dplyr::filter(.data$is_photon == TRUE) %>%
