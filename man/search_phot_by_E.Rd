@@ -27,6 +27,7 @@ results to a viewable object, such as 'search_results'
 Search for photon emission based on energy, half-life and minimum probability.
 }
 \examples{
+\dontrun{
 # between 1 and 1.2 MeV, between 6 and 6.2 hours half-life,
 # ... probability at least 1e-4
 search_results <- search_phot_by_E(1, 1.2, 6 * 3600, 6.2 * 3600, 1e-4)
@@ -34,12 +35,18 @@ search_results <- search_phot_by_E(1, 1.2, 6 * 3600, 6.2 * 3600, 1e-4)
 # between 0.1 and 0.15 MeV, between 1 and 3 million years half-life
 search_results <- search_phot_by_E(0.1, 0.15, 1e6 * 3.153e7, 3e6 * 3.153e7)
 }
+}
 \seealso{
 [RN_plt()]
 
 Other radionuclides: \code{\link{RN_Spec_Act}},
   \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plot_spectrum}}, \code{\link{RN_plt}},
+  \code{\link{RN_plot_search_results}},
+  \code{\link{RN_plot_spectrum}},
+  \code{\link{RN_save_spectrum}},
+  \code{\link{RN_search_alpha_by_E}},
+  \code{\link{RN_search_beta_by_E}},
+  \code{\link{RN_search_phot_by_E}},
   \code{\link{bin_screen_phot}},
   \code{\link{search_alpha_by_E}},
   \code{\link{search_beta_by_E}}

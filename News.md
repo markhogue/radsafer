@@ -1,4 +1,24 @@
 
+# radsafer (version 2.2.0)
+
+***2020-02-21*** Improved plotting functions – discrete energy spectra
+with lollipop plots (`RN_plot_spectrum`) and histograms plotted with
+steps between energy bins `ggplot2::geom_step(direction = 'vh')` (in
+`mcnp_plot_out_spec`). Added the `ggtheme` package’s `theme_calc` for
+radionuclide plots (`RN_plot_spectrum`). In case users want to just get
+a plot form MCNP or, possibly other histogram data, they can now do it
+with one step (`mcnp_scan2plot`). The scan-in function, now called
+`mcnp_scan_save`, can now scan in 4-column source histogram data from
+output files in addition to the three-column output spectra. The two
+column scan went away for lack of any known application, but can be put
+back in if anyone needs it - use the maintainer email listed in the
+package description. Some function renaming was done to make it easier
+for users to select a helpful function, for example, `search_alpha_by_E`
+is now `RN_search_alpha_by_E`. Renamed functions will have a warning to
+use the new function name and these functions will be removed in a later
+version. Previously deprecated functions were also removed and
+documentation was improved.
+
 # radsafer (version 2.1.0)
 
 ***2019-12-17*** Many improvements in rad measurements family plots. Bug

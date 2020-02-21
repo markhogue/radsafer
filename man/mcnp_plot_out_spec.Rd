@@ -4,22 +4,23 @@
 \alias{mcnp_plot_out_spec}
 \title{Convert histogram data to average points and plot as spectrum.}
 \usage{
-mcnp_plot_out_spec(spec.df, title, log_axes = FALSE)
+mcnp_plot_out_spec(spec.df, title = deparse(substitute(spec.df)),
+  log_plot = 0)
 }
 \arguments{
 \item{spec.df}{A data frame with no header. Maximum energy in MeV should be
-in the first column, binned results in the second column, uncertainty in
-the third column.}
+in the first column, binned results in the second column.}
 
-\item{title}{Title for chart}
+\item{title}{Title for chart (default = name of spec.df)}
 
-\item{log_axes}{TRUE for both axes logarithmic}
+\item{log_plot}{0 = no log axes (default), 1  = log y-axis, 2 = log both axes.}
 }
 \description{
-Model results from MCNP and perhaps other sources typically
-  provide binned tally results with columns representing maximum energy in
-  MeV, a column with the mean tally result titled 'mean' and an uncertainty
-  column titled 'R'.
+Model results or input source histograms from MCNP and perhaps 
+  other sources typically provide binned tally results with columns representing
+  maximum energy in MeV, a column with the mean tally result or bin probability 
+  and an uncertainty column (not used). Once the data is scanned in, or otherwise 
+  entered into the R global environment, they can be plotted with this function.
 }
 \examples{
 mcnp_plot_out_spec(photons_cs137_hist, "example Cs-137 well irradiator")
@@ -30,7 +31,9 @@ mcnp_plot_out_spec(photons_cs137_hist, "example Cs-137 well irradiator")
 Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_est_nps}},
   \code{\link{mcnp_matrix_rotations}},
+  \code{\link{mcnp_scan2plot}},
   \code{\link{mcnp_scan2spec}},
+  \code{\link{mcnp_scan_save}},
   \code{\link{mcnp_si_sp_RD}},
   \code{\link{mcnp_si_sp_hist_scan}},
   \code{\link{mcnp_si_sp_hist}}

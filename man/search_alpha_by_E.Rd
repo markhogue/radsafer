@@ -28,6 +28,7 @@ results to a viewable object, such as 'search_results'
 Search for alpha emission based on energy, half-life and minimum probability.
 }
 \examples{
+\dontrun{
 # between 7 and 8 MeV
 search_results <- search_alpha_by_E(7, 8)
 
@@ -37,12 +38,18 @@ search_results <- search_alpha_by_E(1, 4, 1 * 3600, 4 * 3600)
 # between 7 and 10 MeV with at least 1e-3 probability
 search_results <- search_alpha_by_E(7, 10, min_prob = 1e-3)
 }
+}
 \seealso{
 [RN_plt()]
 
 Other radionuclides: \code{\link{RN_Spec_Act}},
   \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plot_spectrum}}, \code{\link{RN_plt}},
+  \code{\link{RN_plot_search_results}},
+  \code{\link{RN_plot_spectrum}},
+  \code{\link{RN_save_spectrum}},
+  \code{\link{RN_search_alpha_by_E}},
+  \code{\link{RN_search_beta_by_E}},
+  \code{\link{RN_search_phot_by_E}},
   \code{\link{bin_screen_phot}},
   \code{\link{search_beta_by_E}},
   \code{\link{search_phot_by_E}}

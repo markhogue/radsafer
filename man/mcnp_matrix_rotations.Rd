@@ -33,7 +33,9 @@ mcnp_matrix_rotations("x", 45) \%*\% mcnp_matrix_rotations("y", 45)
 Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_est_nps}},
   \code{\link{mcnp_plot_out_spec}},
+  \code{\link{mcnp_scan2plot}},
   \code{\link{mcnp_scan2spec}},
+  \code{\link{mcnp_scan_save}},
   \code{\link{mcnp_si_sp_RD}},
   \code{\link{mcnp_si_sp_hist_scan}},
   \code{\link{mcnp_si_sp_hist}}

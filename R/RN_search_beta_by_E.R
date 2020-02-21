@@ -14,23 +14,20 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' \dontrun{
 #' # Max beta at least 2 MeV
-#' search_results <- search_beta_by_E(2)
+#' search_results <- RN_search_beta_by_E(2)
 #' # Max beta at least 2 MeV and half-life between 1 s and 1 h
-#' search_results <- search_beta_by_E(2, 1, 3600)
+#' search_results <- RN_search_beta_by_E(2, 1, 3600)
 #'
 #' # Max beta at least 1 MeV and half-life between 1 d and 2 d
-#' search_results <- search_beta_by_E(1, 3600 * 24, 2 * 3600 * 24)
-#' }
+#' search_results <- RN_search_beta_by_E(1, 3600 * 24, 2 * 3600 * 24)
 #' @return search results in order of half-life. Recommend assigning
 #' results to a viewable object, such as 'search_results'
 #'
 #' @export
-search_beta_by_E <- function(E_max,
+RN_search_beta_by_E <- function(E_max,
                              min_half_life_seconds = NULL,
                              max_half_life_seconds = NULL) {
-  .Deprecated("RN_search_beta_by_E")
   # beta search
   b_sum <- RadData::ICRP_07.BET %>%
     dplyr::group_by(.data$RN) %>%

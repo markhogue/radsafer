@@ -5,7 +5,7 @@
 \title{Plot radionuclide emission spectra.}
 \usage{
 RN_plot_spectrum(desired_RN, rad_type = NULL, photon = FALSE,
-  log_plot = 1, prob_cut = 0.01)
+  log_plot = 0, prob_cut = 0.01)
 }
 \arguments{
 \item{desired_RN}{Radionuclide in form "Ba-137m"}
@@ -43,20 +43,33 @@ Select cutoff value for probability optional, included at 1% by default.
 Plot includes energy times probability for dosimetric importance comparisons.
 }
 \examples{
-RN_plot_spectrum(desired_RN = c("Sr-90", "Y-90"), rad_type = "B-", 
-photon = FALSE, prob_cut = 0.01)
-RN_plot_spectrum(desired_RN = c("Co-60", "Ba-137m"), rad_type = NULL, 
-photon = TRUE, prob_cut = 0.015)
-RN_plot_spectrum(desired_RN = c("Co-60", "Ba-137m"), rad_type = NULL, 
-photon = TRUE, log_plot = 0)
+RN_plot_spectrum(
+  desired_RN = c("Sr-90", "Y-90"), rad_type = "B-",
+  photon = FALSE, prob_cut = 0.01
+)
+RN_plot_spectrum(
+  desired_RN = c("Co-60", "Ba-137m"), rad_type = NULL,
+  photon = TRUE, prob_cut = 0.015
+)
+RN_plot_spectrum(
+  desired_RN = c("Co-60", "Ba-137m"), rad_type = NULL,
+  photon = TRUE, log_plot = 0
+)
 RN_plot_spectrum(desired_RN = c("Co-60", "Ba-137m"), rad_type = "G")
-RN_plot_spectrum(desired_RN = c("Pu-238", "Pu-239", "Am-241"), rad_type = "A",
-photon = FALSE, prob_cut = 0.01, log_plot = 0)
+RN_plot_spectrum(
+  desired_RN = c("Pu-238", "Pu-239", "Am-241"), rad_type = "A",
+  photon = FALSE, prob_cut = 0.01, log_plot = 0
+)
 }
 \seealso{
 Other radionuclides: \code{\link{RN_Spec_Act}},
   \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plt}}, \code{\link{bin_screen_phot}},
+  \code{\link{RN_plot_search_results}},
+  \code{\link{RN_save_spectrum}},
+  \code{\link{RN_search_alpha_by_E}},
+  \code{\link{RN_search_beta_by_E}},
+  \code{\link{RN_search_phot_by_E}},
+  \code{\link{bin_screen_phot}},
   \code{\link{search_alpha_by_E}},
   \code{\link{search_beta_by_E}},
   \code{\link{search_phot_by_E}}

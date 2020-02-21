@@ -24,7 +24,8 @@ Imports:
     stringr,
     magrittr,
     dplyr,
-    rlang
+    rlang,
+    ggthemes
 Depends: R (>= 3.3)
 URL: https://github.com/markhogue/radsafer
 BugReports: https://github.com/markhogue/radsafer/issues

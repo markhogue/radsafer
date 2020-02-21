@@ -25,8 +25,8 @@ Data may be identified by named vector, e.g. my_emin_data, or by column of a dat
 \examples{
 \dontrun{
 mcnp_si_sp_hist(
-  emin = c(0, photons_cs137_hist[1:64, 1]),
-  bin_prob = photons_cs137_hist[1:64, 2]
+  emin = c(0, photons_cs137_hist$E_MeV),
+  bin_prob = photons_cs137_hist$prob
 )
 }
 }
@@ -39,7 +39,9 @@ Other mcnp tools: \code{\link{mcnp_cone_angle}},
   \code{\link{mcnp_est_nps}},
   \code{\link{mcnp_matrix_rotations}},
   \code{\link{mcnp_plot_out_spec}},
+  \code{\link{mcnp_scan2plot}},
   \code{\link{mcnp_scan2spec}},
+  \code{\link{mcnp_scan_save}},
   \code{\link{mcnp_si_sp_RD}},
   \code{\link{mcnp_si_sp_hist_scan}}
 }

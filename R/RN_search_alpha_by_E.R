@@ -10,26 +10,23 @@
 #'
 #' @importFrom rlang .data
 #' @examples
-#' \dontrun{
 #' # between 7 and 8 MeV
-#' search_results <- search_alpha_by_E(7, 8)
+#' search_results <- RN_search_alpha_by_E(7, 8)
 #'
 #' # 1-4 MeV; half-life between 1 and 4 hours
-#' search_results <- search_alpha_by_E(1, 4, 1 * 3600, 4 * 3600)
+#' search_results <- RN_search_alpha_by_E(1, 4, 1 * 3600, 4 * 3600)
 #'
 #' # between 7 and 10 MeV with at least 1e-3 probability
-#' search_results <- search_alpha_by_E(7, 10, min_prob = 1e-3)
-#' }
+#' search_results <- RN_search_alpha_by_E(7, 10, min_prob = 1e-3)
 #' @return search results in order of half-life. Recommend assigning
 #' results to a viewable object, such as 'search_results'
 #'
 #' @export
-search_alpha_by_E <- function(E_min = 0,
+RN_search_alpha_by_E <- function(E_min = 0,
                               E_max = 10,
                               min_half_life_seconds = NULL,
                               max_half_life_seconds = NULL,
                               min_prob = 0) {
-  .Deprecated("RN_search_alpha_by_E")
   # alpha search
   p <- RadData::ICRP_07.RAD %>%
     dplyr::filter(.data$code_AN == "A") %>%
