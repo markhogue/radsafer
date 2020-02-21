@@ -11,8 +11,8 @@
 #' @examples
 #' \dontrun{
 #' mcnp_si_sp_hist(
-#'   emin = c(0, photons_cs137_hist[1:64, 1]),
-#'   bin_prob = photons_cs137_hist[1:64, 2]
+#'   emin = c(0, photons_cs137_hist$E_MeV),
+#'   bin_prob = photons_cs137_hist$prob
 #' )
 #' }
 #' @export
