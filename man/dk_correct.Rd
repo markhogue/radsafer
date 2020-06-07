@@ -4,9 +4,16 @@
 \alias{dk_correct}
 \title{Correct activity-dependent value based on radioactive decay.}
 \usage{
-dk_correct(RN_select = NULL, half_life = NULL, time_unit = NULL,
-  time_lapse = NULL, date1 = NULL, date2 = Sys.Date(), A1 = 1,
-  num = FALSE)
+dk_correct(
+  RN_select = NULL,
+  half_life = NULL,
+  time_unit = NULL,
+  time_lapse = NULL,
+  date1 = NULL,
+  date2 = Sys.Date(),
+  A1 = 1,
+  num = FALSE
+)
 }
 \arguments{
 \item{RN_select}{identify the radionuclide of interest in the format,
@@ -98,7 +105,8 @@ dk_correct(
 )
 }
 \seealso{
-Other decay corrections: \code{\link{dk_pct_to_num_half_life}},
-  \code{\link{dk_time}}
+Other decay corrections: 
+\code{\link{dk_pct_to_num_half_life}()},
+\code{\link{dk_time}()}
 }
 \concept{decay corrections}

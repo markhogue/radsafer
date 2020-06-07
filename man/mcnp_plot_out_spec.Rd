@@ -4,8 +4,7 @@
 \alias{mcnp_plot_out_spec}
 \title{Convert histogram data to average points and plot as spectrum.}
 \usage{
-mcnp_plot_out_spec(spec.df, title = deparse(substitute(spec.df)),
-  log_plot = 0)
+mcnp_plot_out_spec(spec.df, title = deparse(substitute(spec.df)), log_plot = 0)
 }
 \arguments{
 \item{spec.df}{A data frame with no header. Maximum energy in MeV should be
@@ -28,14 +27,15 @@ mcnp_plot_out_spec(photons_cs137_hist, "example Cs-137 well irradiator")
 \seealso{
 \code{\link{mcnp_scan2spec}} to copy and paste output spectrum.
 
-Other mcnp tools: \code{\link{mcnp_cone_angle}},
-  \code{\link{mcnp_est_nps}},
-  \code{\link{mcnp_matrix_rotations}},
-  \code{\link{mcnp_scan2plot}},
-  \code{\link{mcnp_scan2spec}},
-  \code{\link{mcnp_scan_save}},
-  \code{\link{mcnp_si_sp_RD}},
-  \code{\link{mcnp_si_sp_hist_scan}},
-  \code{\link{mcnp_si_sp_hist}}
+Other mcnp tools: 
+\code{\link{mcnp_cone_angle}()},
+\code{\link{mcnp_est_nps}()},
+\code{\link{mcnp_matrix_rotations}()},
+\code{\link{mcnp_scan2plot}()},
+\code{\link{mcnp_scan2spec}()},
+\code{\link{mcnp_scan_save}()},
+\code{\link{mcnp_si_sp_RD}()},
+\code{\link{mcnp_si_sp_hist_scan}()},
+\code{\link{mcnp_si_sp_hist}()}
 }
 \concept{mcnp tools}

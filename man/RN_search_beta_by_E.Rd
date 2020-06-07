@@ -4,8 +4,11 @@
 \alias{RN_search_beta_by_E}
 \title{Search for beta}
 \usage{
-RN_search_beta_by_E(E_max, min_half_life_seconds = NULL,
-  max_half_life_seconds = NULL)
+RN_search_beta_by_E(
+  E_max,
+  min_half_life_seconds = NULL,
+  max_half_life_seconds = NULL
+)
 }
 \arguments{
 \item{E_max}{maximum energy in MeV, default = 10}
@@ -34,16 +37,15 @@ search_results <- RN_search_beta_by_E(1, 3600 * 24, 2 * 3600 * 24)
 \seealso{
 [RN_plt()]
 
-Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plot_search_results}},
-  \code{\link{RN_plot_spectrum}},
-  \code{\link{RN_save_spectrum}},
-  \code{\link{RN_search_alpha_by_E}},
-  \code{\link{RN_search_phot_by_E}},
-  \code{\link{bin_screen_phot}},
-  \code{\link{search_alpha_by_E}},
-  \code{\link{search_beta_by_E}},
-  \code{\link{search_phot_by_E}}
+Other radionuclides: 
+\code{\link{RN_Spec_Act}()},
+\code{\link{RN_bin_screen_phot}()},
+\code{\link{RN_index_screen}()},
+\code{\link{RN_info}()},
+\code{\link{RN_plot_search_results}()},
+\code{\link{RN_plot_spectrum}()},
+\code{\link{RN_save_spectrum}()},
+\code{\link{RN_search_alpha_by_E}()},
+\code{\link{RN_search_phot_by_E}()}
 }
 \concept{radionuclides}

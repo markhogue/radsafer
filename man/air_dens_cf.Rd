@@ -27,8 +27,10 @@ air_dens_cf(T.actual = 20, P.actual = 760, T.ref = 20, P.ref = 760)
 air_dens_cf(30, 750)
 }
 \seealso{
-Other rad measurements: \code{\link{disk_to_disk_solid_angle}},
-  \code{\link{neutron_geom_cf}}, \code{\link{scaler_sim}},
-  \code{\link{tau_estimate}}
+Other rad measurements: 
+\code{\link{disk_to_disk_solid_angle}()},
+\code{\link{neutron_geom_cf}()},
+\code{\link{scaler_sim}()},
+\code{\link{tau_estimate}()}
 }
 \concept{rad measurements}

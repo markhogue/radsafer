@@ -1,4 +1,9 @@
 
+# radsafer (version 2.2.1)
+
+***2020-06-07*** Removed deprecated search functions that have been
+replaced by searches starting with RN.
+
 # radsafer (version 2.2.0)
 
 ***2020-02-21*** Improved plotting functions – discrete energy spectra

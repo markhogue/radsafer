@@ -25,7 +25,8 @@ Calculate time for a radionuclide to decay to a target activity.
 dk_time(half_life = 5730, A0 = 14, A1 = 1)
 }
 \seealso{
-Other decay corrections: \code{\link{dk_correct}},
-  \code{\link{dk_pct_to_num_half_life}}
+Other decay corrections: 
+\code{\link{dk_correct}()},
+\code{\link{dk_pct_to_num_half_life}()}
 }
 \concept{decay corrections}

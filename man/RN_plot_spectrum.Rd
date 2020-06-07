@@ -4,8 +4,13 @@
 \alias{RN_plot_spectrum}
 \title{Plot radionuclide emission spectra.}
 \usage{
-RN_plot_spectrum(desired_RN, rad_type = NULL, photon = FALSE,
-  log_plot = 0, prob_cut = 0.01)
+RN_plot_spectrum(
+  desired_RN,
+  rad_type = NULL,
+  photon = FALSE,
+  log_plot = 0,
+  prob_cut = 0.01
+)
 }
 \arguments{
 \item{desired_RN}{Radionuclide in form "Ba-137m"}
@@ -62,16 +67,15 @@ RN_plot_spectrum(
 )
 }
 \seealso{
-Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plot_search_results}},
-  \code{\link{RN_save_spectrum}},
-  \code{\link{RN_search_alpha_by_E}},
-  \code{\link{RN_search_beta_by_E}},
-  \code{\link{RN_search_phot_by_E}},
-  \code{\link{bin_screen_phot}},
-  \code{\link{search_alpha_by_E}},
-  \code{\link{search_beta_by_E}},
-  \code{\link{search_phot_by_E}}
+Other radionuclides: 
+\code{\link{RN_Spec_Act}()},
+\code{\link{RN_bin_screen_phot}()},
+\code{\link{RN_index_screen}()},
+\code{\link{RN_info}()},
+\code{\link{RN_plot_search_results}()},
+\code{\link{RN_save_spectrum}()},
+\code{\link{RN_search_alpha_by_E}()},
+\code{\link{RN_search_beta_by_E}()},
+\code{\link{RN_search_phot_by_E}()}
 }
 \concept{radionuclides}

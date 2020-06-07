@@ -4,12 +4,14 @@
 \name{photons_cs137_hist}
 \alias{photons_cs137_hist}
 \title{File Description:}
-\format{A \code{data.frame}
+\format{
+A \code{data.frame}
 \describe{
 \item{E_max}{Maximum Energy in MeV}
 \item{bin_tally}{Tally result for this bin}
 \item{R}{Monte Carlo uncertainty for this bin}
-}}
+}
+}
 \usage{
 photons_cs137_hist
 }

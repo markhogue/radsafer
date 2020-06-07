@@ -4,7 +4,7 @@
 #'
 #' @family radionuclides
 #'
-#' @inheritParams search_phot_by_E
+#' @inheritParams RN_search_phot_by_E
 #'
 #' @seealso [RN_plt()]
 #'

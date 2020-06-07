@@ -4,8 +4,7 @@
 \alias{RN_save_spectrum}
 \title{Save radionuclide emission spectra.}
 \usage{
-RN_save_spectrum(desired_RN, rad_type = NULL, photon = FALSE,
-  prob_cut = 0)
+RN_save_spectrum(desired_RN, rad_type = NULL, photon = FALSE, prob_cut = 0)
 }
 \arguments{
 \item{desired_RN}{Radionuclide in form "Ba-137m"}
@@ -49,16 +48,15 @@ actinide_a_df <- RN_save_spectrum(desired_RN = c("Pu-238", "Pu-239", "Am-241"), 
 photon = FALSE, prob_cut = 0.01)
 }
 \seealso{
-Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plot_search_results}},
-  \code{\link{RN_plot_spectrum}},
-  \code{\link{RN_search_alpha_by_E}},
-  \code{\link{RN_search_beta_by_E}},
-  \code{\link{RN_search_phot_by_E}},
-  \code{\link{bin_screen_phot}},
-  \code{\link{search_alpha_by_E}},
-  \code{\link{search_beta_by_E}},
-  \code{\link{search_phot_by_E}}
+Other radionuclides: 
+\code{\link{RN_Spec_Act}()},
+\code{\link{RN_bin_screen_phot}()},
+\code{\link{RN_index_screen}()},
+\code{\link{RN_info}()},
+\code{\link{RN_plot_search_results}()},
+\code{\link{RN_plot_spectrum}()},
+\code{\link{RN_search_alpha_by_E}()},
+\code{\link{RN_search_beta_by_E}()},
+\code{\link{RN_search_phot_by_E}()}
 }
 \concept{radionuclides}

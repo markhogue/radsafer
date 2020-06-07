@@ -4,9 +4,13 @@
 \alias{RN_search_alpha_by_E}
 \title{Search for alpha}
 \usage{
-RN_search_alpha_by_E(E_min = 0, E_max = 10,
-  min_half_life_seconds = NULL, max_half_life_seconds = NULL,
-  min_prob = 0)
+RN_search_alpha_by_E(
+  E_min = 0,
+  E_max = 10,
+  min_half_life_seconds = NULL,
+  max_half_life_seconds = NULL,
+  min_prob = 0
+)
 }
 \arguments{
 \item{E_min}{minimum energy in MeV, default = 0}
@@ -40,16 +44,15 @@ search_results <- RN_search_alpha_by_E(7, 10, min_prob = 1e-3)
 \seealso{
 [RN_plt()]
 
-Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plot_search_results}},
-  \code{\link{RN_plot_spectrum}},
-  \code{\link{RN_save_spectrum}},
-  \code{\link{RN_search_beta_by_E}},
-  \code{\link{RN_search_phot_by_E}},
-  \code{\link{bin_screen_phot}},
-  \code{\link{search_alpha_by_E}},
-  \code{\link{search_beta_by_E}},
-  \code{\link{search_phot_by_E}}
+Other radionuclides: 
+\code{\link{RN_Spec_Act}()},
+\code{\link{RN_bin_screen_phot}()},
+\code{\link{RN_index_screen}()},
+\code{\link{RN_info}()},
+\code{\link{RN_plot_search_results}()},
+\code{\link{RN_plot_spectrum}()},
+\code{\link{RN_save_spectrum}()},
+\code{\link{RN_search_beta_by_E}()},
+\code{\link{RN_search_phot_by_E}()}
 }
 \concept{radionuclides}

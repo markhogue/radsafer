@@ -4,8 +4,15 @@
 \alias{disk_to_disk_solid_angle}
 \title{Calculate fractional solid angle for disk to disk}
 \usage{
-disk_to_disk_solid_angle(r.source, gap, r.detector, plot.opt = "n",
-  runs = 10000, off_center = 0, beep = "off")
+disk_to_disk_solid_angle(
+  r.source,
+  gap,
+  r.detector,
+  plot.opt = "n",
+  runs = 10000,
+  off_center = 0,
+  beep = "off"
+)
 }
 \arguments{
 \item{r.source}{source radius (all units must be consistent)}
@@ -41,8 +48,10 @@ disk_to_disk_solid_angle(r.source = 15, gap = 20, r.detector = 10, plot.opt = "n
 \url{https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance}
 }
 \seealso{
-Other rad measurements: \code{\link{air_dens_cf}},
-  \code{\link{neutron_geom_cf}}, \code{\link{scaler_sim}},
-  \code{\link{tau_estimate}}
+Other rad measurements: 
+\code{\link{air_dens_cf}()},
+\code{\link{neutron_geom_cf}()},
+\code{\link{scaler_sim}()},
+\code{\link{tau_estimate}()}
 }
 \concept{rad measurements}

@@ -4,8 +4,13 @@
 \alias{rate_meter_sim}
 \title{Ratemeter Simulation}
 \usage{
-rate_meter_sim(cpm_equilibrium, meter_scale_increments, trials = 600,
-  tau = 9.5, log_opt = "")
+rate_meter_sim(
+  cpm_equilibrium,
+  meter_scale_increments,
+  trials = 600,
+  tau = 9.5,
+  log_opt = ""
+)
 }
 \arguments{
 \item{cpm_equilibrium}{The expected count rate.}

@@ -4,8 +4,11 @@
 \alias{RN_plot_search_results}
 \title{Plot results of RN_search functions}
 \usage{
-RN_plot_search_results(discrete_df,
-  title = deparse(substitute(discrete_df)), log_plot = 0)
+RN_plot_search_results(
+  discrete_df,
+  title = deparse(substitute(discrete_df)),
+  log_plot = 0
+)
 }
 \arguments{
 \item{discrete_df}{A data frame results from a `radsafer` search function. Columns must
@@ -27,16 +30,15 @@ Use \code{\link{RN_search_alpha_by_E}}, \code{\link{RN_search_beta_by_E}},
 or \code{\link{RN_search_phot_by_E}} and save the results, 
 e.g. save_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 
-Other radionuclides: \code{\link{RN_Spec_Act}},
-  \code{\link{RN_index_screen}}, \code{\link{RN_info}},
-  \code{\link{RN_plot_spectrum}},
-  \code{\link{RN_save_spectrum}},
-  \code{\link{RN_search_alpha_by_E}},
-  \code{\link{RN_search_beta_by_E}},
-  \code{\link{RN_search_phot_by_E}},
-  \code{\link{bin_screen_phot}},
-  \code{\link{search_alpha_by_E}},
-  \code{\link{search_beta_by_E}},
-  \code{\link{search_phot_by_E}}
+Other radionuclides: 
+\code{\link{RN_Spec_Act}()},
+\code{\link{RN_bin_screen_phot}()},
+\code{\link{RN_index_screen}()},
+\code{\link{RN_info}()},
+\code{\link{RN_plot_spectrum}()},
+\code{\link{RN_save_spectrum}()},
+\code{\link{RN_search_alpha_by_E}()},
+\code{\link{RN_search_beta_by_E}()},
+\code{\link{RN_search_phot_by_E}()}
 }
 \concept{radionuclides}
