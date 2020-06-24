@@ -4,7 +4,7 @@
 #'
 #' @family radionuclides
 #'
-#' @seealso [RN_plt()]
+#' @seealso [RN_plot_spectrum()]
 #'
 #' @param E_min minimum energy in MeV, default = 0
 #' @param E_max maximum energy in MeV, default = 10
