@@ -22,7 +22,7 @@
 #' 'FF' for Fission Fragment
 #' 'N' for Neutron
 #' @param photon 'Y' to select all rad_types that are photons
-#' @param cut minimum energy defaults to 0
+#' @param cut minimum energy, defaults to 1e-3 MeV
 #' @param erg.dist energy distribution number for MCNP input
 #'
 #' @return a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)).
@@ -40,7 +40,7 @@
 #' mcnp_si_sp_RD("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
 #' }
 #' @export
-mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 0, erg.dist = 1) {
+mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-3, erg.dist = 1) {
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")
   stop_flag <- FALSE
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
