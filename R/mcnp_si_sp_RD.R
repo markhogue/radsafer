@@ -24,9 +24,10 @@
 #' @param photon 'Y' to select all rad_types that are photons
 #' @param cut minimum energy, defaults to 1e-3 MeV
 #' @param erg.dist energy distribution number for MCNP input
+#' @param my_dir Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.
 #'
 #' @return a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)).
-#' For use with MCNP, a text file, 'si.sp.dat' is written to working directory.
+#' For use with MCNP, a text file, 'si_sp.txt' is written to working directory.
 #' If file already exists, it is appended. The file contains all
 #' emission energies in the si 'card' and the Line indicator, L is included,
 #' e.g. si1  L  0.01 (showing a first energy of 0.01 MeV).
@@ -40,7 +41,19 @@
 #' mcnp_si_sp_RD("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
 #' }
 #' @export
-mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-3, erg.dist = 1) {
+mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-3, erg.dist = 1, my_dir = NULL) {
+  # permission to write file
+  cat("This function will write or append a file, si_sp.txt,")
+  cat("to your specified, or by default, working directory --") 
+  cat("but only with your permission.")
+  write_permit <- readline("Enter 'y' to continue. ")
+  if (write_permit  != "y") {
+    stop("File will not be written.")
+  }
+  # 
+  
+  if (is.null(my_dir)) my_dir <- getwd()
+  
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")
   stop_flag <- FALSE
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
@@ -126,6 +139,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
       byrow = TRUE
     ))
   }
+  
   if (dat_set == "R") {
     sp <- as.data.frame(matrix(c(
       si.sp$prob,
@@ -137,8 +151,9 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
   }
   sp$V7 <- c(rep("&", nrow(sp) - 1), "$")
   sp <- data.frame(sp$V1, sp$V2, sp$V3, sp$V4, sp$V5, sp$V6, sp$V7)
+  #
   # write output si output
-  utils::write.table(data.frame(text = "c"), "si.sp.dat",
+  utils::write.table(data.frame(text = "c"), "si_sp.txt",
     col.names = FALSE,
     row.names = FALSE,
     append = TRUE,
@@ -156,7 +171,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
     "si",
     erg.dist, " ", dist_type, " & ", "$", desired_RN,
     ", radiation type= ", r_type_text
-  )), "si.sp.dat",
+  )), "si_sp.txt",
   col.names = FALSE,
   row.names = FALSE,
   append = TRUE,
@@ -167,7 +182,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
     "c  energy cut off at ",
     cut, " MeV "
   )),
-  "si.sp.dat",
+  "si_sp.txt",
   col.names = FALSE,
   row.names = FALSE,
   append = TRUE,
@@ -175,14 +190,14 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
   )
 
   readr::write_delim(data.frame(si),
-    "si.sp.dat",
+    "si_sp.txt",
     col_names = FALSE,
     append = TRUE
   )
 
   # sp output
   utils::write.table(data.frame(text = "c"),
-    "si.sp.dat",
+    "si_sp.txt",
     col.names = FALSE,
     row.names = FALSE,
     append = TRUE,
@@ -195,7 +210,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
     desired_RN, ", radiation type= ",
     r_type_text, " sum of probs = ",
     prob.sum
-  )), "si.sp.dat",
+  )), "si_sp.txt",
   col.names = FALSE,
   row.names = FALSE,
   append = TRUE,
@@ -203,14 +218,13 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
   )
 
   readr::write_delim(data.frame(sp),
-    "si.sp.dat",
+    "si_sp.txt",
     col_names = FALSE,
     append = TRUE
   )
-  my_dir <- getwd()
   cat("\n")
   cat(paste0(
-    "The output is appeneded to file, si.sp.dat, in your working directory, ",
+    "The output is appeneded to file, si_sp.txt, in your working directory, ",
     my_dir, "."
   ))
   cat("\n")

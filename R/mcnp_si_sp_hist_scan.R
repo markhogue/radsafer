@@ -13,6 +13,14 @@
 #' }
 #' @export
 mcnp_si_sp_hist_scan <- function(ebin_mode = "emax", my_dir = NULL) {
+  # permission to write file
+  cat("This function will write or append a file, si_sp.txt,")
+  cat("to your specified, or by default, working directory --") 
+  cat("but only with your permission.")
+  write_permit <- readline("Enter 'y' to continue. ")
+  if (write_permit  != "y") {
+    stop("File will not be written.")
+  }
 
   # emin input - first in scanned emin is bounding low energy
   if (!ebin_mode %in% c("emin", "emax")) stop("ebin_mode must be either 'emin' (default) or 'emax'.")

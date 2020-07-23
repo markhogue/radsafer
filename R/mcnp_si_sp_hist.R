@@ -18,6 +18,15 @@
 #' @export
 
 mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {
+  # permission to write file
+  cat("This function will write or append a file, si_sp.txt,")
+  cat("to your specified, or by default, working directory --") 
+  cat("but only with your permission.")
+  write_permit <- readline("Enter 'y' to continue. ")
+  if (write_permit  != "y") {
+    stop("File will not be written.")
+  }
+  # 
   if (is.null(my_dir)) my_dir <- getwd()
   # construct table of energy bins with 5 columns
   emin_raw <- emin
@@ -107,7 +116,8 @@ mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {
   cat("\n")
   E.avg <- fraction <- NULL # avoid no visible binding note
   # Make data frame for plotting
-  spec.df <- data.frame("E.avg" = emin_raw[1:(length(emin_raw) - 1)] + c(diff(emin_raw)), "fraction" = bin_prob_raw)
+  spec.df <- data.frame("E.avg" = emin_raw[1:(length(emin_raw) - 1)] +
+                          c(diff(emin_raw)), "fraction" = bin_prob_raw)
 
   # Plot spectrum - linear axes
   ggplot2::ggplot(data = spec.df, ggplot2::aes(E.avg, fraction)) + ggplot2::geom_line()
@@ -117,3 +127,4 @@ mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {
     ggplot2::scale_x_log10() +
     ggplot2::scale_y_log10()
 }
+
