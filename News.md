@@ -1,6 +1,12 @@
 
 # radsafer (version 2.2.1)
 
+***2020-07-23*** Small change to require user to allow file to be
+created or appended when creating si\_sp.txt files for MCNP input enery
+cards. This is required by CRAN.
+
+# radsafer (version 2.2.1)
+
 ***2020-06-07*** Removed deprecated search functions that have been
 replaced by searches starting with RN.
 

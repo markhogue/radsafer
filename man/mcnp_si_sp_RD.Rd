@@ -8,8 +8,9 @@ mcnp_si_sp_RD(
   desired_RN,
   rad_type = NULL,
   photon = FALSE,
-  cut = 0,
-  erg.dist = 1
+  cut = 0.001,
+  erg.dist = 1,
+  my_dir = NULL
 )
 }
 \arguments{
@@ -34,13 +35,15 @@ select from:
 
 \item{photon}{'Y' to select all rad_types that are photons}
 
-\item{cut}{minimum energy defaults to 0}
+\item{cut}{minimum energy, defaults to 1e-3 MeV}
 
 \item{erg.dist}{energy distribution number for MCNP input}
+
+\item{my_dir}{Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.}
 }
 \value{
 a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)).
-For use with MCNP, a text file, 'si.sp.dat' is written to working directory.
+For use with MCNP, a text file, 'si_sp.txt' is written to working directory.
 If file already exists, it is appended. The file contains all
 emission energies in the si 'card' and the Line indicator, L is included,
 e.g. si1  L  0.01 (showing a first energy of 0.01 MeV).
