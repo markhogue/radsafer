@@ -22,7 +22,7 @@
 mcnp_matrix_rotations <- function(rot.axis, angle_degrees) {
   if (!rot.axis %in% c("x", "y", "z")) {
     cat("axis of rotation must be either 'x', 'y' or 'z'")
-    return
+    return()
   }
   # x, y, z base ('Identity') matrix
   x1 <- matrix(c(1, 0, 0))
