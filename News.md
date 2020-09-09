@@ -1,8 +1,11 @@
+# radsafer (version 2.2.3)
 
-# radsafer (version 2.2.1)
+***2020-09-09*** Add option to scan biased histogram (mcnp_scan_save). Remove duplicate to this function (mcnp_scan2spec). Return data frame from RN_info. Fix functions that have return without () per CRAN directive.
+
+# radsafer (version 2.2.2)
 
 ***2020-07-23*** Small change to require user to allow file to be
-created or appended when creating si\_sp.txt files for MCNP input enery
+created or appended when creating si\_sp.txt files for MCNP input energy
 cards. This is required by CRAN.
 
 # radsafer (version 2.2.1)
