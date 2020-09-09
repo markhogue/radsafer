@@ -6,7 +6,11 @@
 #' relative Monte Carlo uncertainty for the bin tally value. 
 #' Four-column  source histogram distributions have columns of entry number, maximum 
 #' energy, cumulative probability, and bin probability.
-#' In either case, only the maximum energy and bin probability or result values are used.
+#' Seven-column biased histogram distributions have columns of entry
+#' number, maximum energy, cumulative probability, biased cumulative
+#' probability, probability of bin, biased probability, and weight
+#' multiplier.
+#' In all cases, only the maximum energy and bin probability or result values are used.
 #' 
 #' @return spectrum file with maximum energy and MCNP bin value
 #' @examples
@@ -28,35 +32,36 @@
 #' # 3.0000000 1.037092e-04 0.7659850
 #' @export
 mcnp_scan_save <- function() {
-  cat("Use this function to copy, paste and save'\n'")
-  cat("four column source histogram distribution '\n'")
-  cat("or three column binned-by-energy tally results'\n'")
-  cols <- readline("Enter number of columns to enter (3 or 4). ")
-  if (!cols %in% c(3, 4)) {
-    stop("This only works for three or four column energy dists.")
-  }
-  if (cols == 3) {
-    cat("Copy and paste MCNP three column'\n'")
-    cat("binned-by-energy tally results (no header)'\n'")
-    cat("then hit [enter].'\n'")
-    raw_scan <- scan()
-    mtrx <- matrix(raw_scan, ncol = 3, byrow = TRUE)
-    spec.df <- data.frame(
-      E_MeV = mtrx[, 1], 
-      prob = mtrx[, 2]
-    )
+    cat("Use this function to copy, paste and save'\n'")
+    cat("four column source histogram distribution '\n'")
+    cat("or three column binned-by-energy tally results'\n'")
+    cols <- readline("Enter number of columns to enter (3, 4, or 7). ")
+    if (!cols %in% c(3, 4, 7)) {
+        stop("This only works for three or four column energy dists.")
+    }
+    if (cols == 3) {
+        cat("Copy and paste MCNP three column'\n'")
+        cat("binned-by-energy tally results (no header)'\n'")
+        cat("then hit [enter].'\n'")
+        raw_scan <- scan()
+        mtrx <- matrix(raw_scan, ncol = 3, byrow = TRUE)
+        spec.df <- data.frame(E_MeV = mtrx[, 1], prob = mtrx[, 2])
+    }
+    if (cols == 4) {
+        cat("copy and paste MCNP source histogram distribution,'\n'")
+        cat("with no header'\n'")
+        cat("then hit [enter]'\n'")
+        raw_scan <- scan()
+        mtrx <- matrix(raw_scan, ncol = 4, byrow = TRUE)
+        spec.df <- data.frame(E_MeV = mtrx[, 1], prob = mtrx[, 4])
+    }
+    if (cols == 7) {
+        cat("copy and paste MCNP biased source histogram distribution,'\n'")
+        cat("with no header'\n'")
+        cat("then hit [enter]'\n'")
+        raw_scan <- scan()
+        mtrx <- matrix(raw_scan, ncol = 7, byrow = TRUE)
+        spec.df <- data.frame(E_MeV = mtrx[, 1], prob = mtrx[, 5])
+    }
+    spec.df
 }
-  if (cols == 4) {
-    cat("copy and paste MCNP source histogram distribution,'\n'")
-    cat("with no header'\n'")
-    cat("then hit [enter]'\n'")
-    raw_scan <- scan()
-    mtrx <- matrix(raw_scan, ncol = 4, byrow = TRUE)
-    spec.df <- data.frame(
-      E_MeV = mtrx[, 1], 
-      prob = mtrx[, 4]
-    )
-  }
-  spec.df
-}
-
