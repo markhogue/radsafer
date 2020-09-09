@@ -9,8 +9,9 @@
 #'   and an uncertainty column (not used). Once the data is scanned in, or otherwise 
 #'   entered into the R global environment, they can be plotted with this function. 
 #'   
-#' @param spec.df A data frame with no header. Maximum energy in MeV should be
-#'   in the first column, binned results in the second column.
+#' @param spec.df A data frame with no header. Maximum energy in MeV
+#'  should be in the first column, (named E_MeV),  
+#'  and binned results in the second column, (named prob).
 #'   
 #' @param title Title for chart (default = name of spec.df)
 #' @param log_plot 0 = no log axes (default), 1  = log y-axis, 2 = log both axes.
