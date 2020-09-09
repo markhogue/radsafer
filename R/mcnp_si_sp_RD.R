@@ -68,7 +68,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
   # Are both rad_type and photon selected?
   if (!is.null(rad_type) & photon == TRUE) {
     cat("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
-    return
+    return()
   }
 
   # end of argument checks~~~~~~~~~~~~~~~~

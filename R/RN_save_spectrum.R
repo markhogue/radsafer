@@ -55,7 +55,7 @@ RN_save_spectrum <- function(desired_RN,
   # Are both rad_type and photon selected?
   if (!is.null(rad_type) & photon == TRUE) {
     cat("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
-    return
+    return()
   }
   
   # end of argument checks~~~~~~~~~~~~~~~~
