@@ -1,7 +1,7 @@
 #' Convert histogram data to average points and plot as spectrum.
 #' @family mcnp tools
 #' 
-#' @seealso  \code{\link{mcnp_scan2spec}} to copy and paste output spectrum.
+#' @seealso  \code{\link{mcnp_scan_save}} to copy and paste output spectrum.
 #' 
 #' @description Model results or input source histograms from MCNP and perhaps 
 #'   other sources typically provide binned tally results with columns representing

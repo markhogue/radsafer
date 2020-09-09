@@ -1,5 +1,5 @@
 ## Test environments
-* local Windows 10 home version R 4.0
+* local Windows 10 home version R 4.0.2
 * passed all checks with devtools::check_rhub() and devtools::check_win_devel()
 
 ## R CMD check results

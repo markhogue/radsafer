@@ -7,8 +7,9 @@
 mcnp_plot_out_spec(spec.df, title = deparse(substitute(spec.df)), log_plot = 0)
 }
 \arguments{
-\item{spec.df}{A data frame with no header. Maximum energy in MeV should be
-in the first column, binned results in the second column.}
+\item{spec.df}{A data frame with no header. Maximum energy in MeV
+should be in the first column, (named E_MeV),  
+and binned results in the second column, (named prob).}
 
 \item{title}{Title for chart (default = name of spec.df)}
 
@@ -25,14 +26,13 @@ Model results or input source histograms from MCNP and perhaps
 mcnp_plot_out_spec(photons_cs137_hist, "example Cs-137 well irradiator")
 }
 \seealso{
-\code{\link{mcnp_scan2spec}} to copy and paste output spectrum.
+\code{\link{mcnp_scan_save}} to copy and paste output spectrum.
 
 Other mcnp tools: 
 \code{\link{mcnp_cone_angle}()},
 \code{\link{mcnp_est_nps}()},
 \code{\link{mcnp_matrix_rotations}()},
 \code{\link{mcnp_scan2plot}()},
-\code{\link{mcnp_scan2spec}()},
 \code{\link{mcnp_scan_save}()},
 \code{\link{mcnp_si_sp_RD}()},
 \code{\link{mcnp_si_sp_hist_scan}()},

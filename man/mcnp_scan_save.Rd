@@ -16,7 +16,11 @@ Three-column output tally spectra have columns of maximum energy, bin tally, and
 relative Monte Carlo uncertainty for the bin tally value. 
 Four-column  source histogram distributions have columns of entry number, maximum 
 energy, cumulative probability, and bin probability.
-In either case, only the maximum energy and bin probability or result values are used.
+Seven-column biased histogram distributions have columns of entry
+number, maximum energy, cumulative probability, biased cumulative
+probability, probability of bin, biased probability, and weight
+multiplier.
+In all cases, only the maximum energy and bin probability or result values are used.
 }
 \examples{
 # Since this function requires the user
@@ -43,7 +47,6 @@ Other mcnp tools:
 \code{\link{mcnp_matrix_rotations}()},
 \code{\link{mcnp_plot_out_spec}()},
 \code{\link{mcnp_scan2plot}()},
-\code{\link{mcnp_scan2spec}()},
 \code{\link{mcnp_si_sp_RD}()},
 \code{\link{mcnp_si_sp_hist_scan}()},
 \code{\link{mcnp_si_sp_hist}()}
