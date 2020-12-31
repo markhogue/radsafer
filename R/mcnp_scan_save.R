@@ -53,7 +53,7 @@ mcnp_scan_save <- function() {
         cat("then hit [enter]'\n'")
         raw_scan <- scan()
         mtrx <- matrix(raw_scan, ncol = 4, byrow = TRUE)
-        spec.df <- data.frame(E_MeV = mtrx[, 1], prob = mtrx[, 4])
+        spec.df <- data.frame(E_MeV = mtrx[, 2], prob = mtrx[, 4])
     }
     if (cols == 7) {
         cat("copy and paste MCNP biased source histogram distribution,'\n'")

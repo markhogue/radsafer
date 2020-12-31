@@ -1,3 +1,6 @@
+# radsafer (version 2.2.4)
+***2020-12-31*** Corrected the column assignment in the four-column MCNP source copy and paste functions in mcnp_scan_save and mcnp_scan2plot. (Prior version incorrectly used bin number for energy.)
+
 # radsafer (version 2.2.3)
 
 ***2020-09-09*** Add option to scan biased histogram (mcnp_scan_save). Remove duplicate to this function (mcnp_scan2spec). Return data frame from RN_info. Fix functions that have return without () per CRAN directive.

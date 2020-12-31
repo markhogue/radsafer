@@ -57,7 +57,7 @@ mcnp_scan2plot <- function(title = "", log_plot = FALSE) {
     raw_scan <- scan()
     mtrx <- matrix(raw_scan, ncol = 4, byrow = TRUE)
     spec.df <- data.frame(
-      E_MeV = mtrx[, 1], 
+      E_MeV = mtrx[, 2], 
       prob = mtrx[, 4]
     )
   }
