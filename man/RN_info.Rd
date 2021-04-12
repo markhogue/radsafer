@@ -16,7 +16,7 @@ a table including half-life, decay modes, decay progeny, and branch fractions
 Access a quick summary of radionuclide data. This is for convenience only and does not replace a more comprehensive view as is available in the Radiological Toolbox <doi:10.2172/1201298>
 }
 \examples{
-Eu_254m <- RN_info("Es-254m") #saves output to global environment
+Es_254m <- RN_info("Es-254m") #saves output to global environment
 RN_info("Cf-252")
 RN_info("Cs-137")
 RN_info("Am-241")
