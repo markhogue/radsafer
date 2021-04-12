@@ -7,7 +7,7 @@
 #' @param RN_select identify the radionuclide of interest in the format "Es-254m"
 #' @return a table including half-life, decay modes, decay progeny, and branch fractions
 #' @examples
-#' Eu_254m <- RN_info("Es-254m") #saves output to global environment
+#' Es_254m <- RN_info("Es-254m") #saves output to global environment
 #' RN_info("Cf-252")
 #' RN_info("Cs-137")
 #' RN_info("Am-241")
@@ -36,11 +36,20 @@ RN_info <- function(RN_select) {
       row.names = ""
     )
     )
-    }
-  if (!is.na(data$progeny_4)) {
+  }
+  # Temporary if block added for RadDecay 1.0.1 
+  if (!is.na(data$progeny_4) & "branch_4" %in% names(data)) {
     df_decay <- rbind(df_decay, data.frame(
       "Decays_to" = data$progeny_4,
       "branch_fraction" = data$branch_4,
+      row.names = ""
+    )
+    )
+  }
+  if (!is.na(data$progeny_4) & !("branch_4" %in% names(data))) {
+    df_decay <- rbind(df_decay, data.frame(
+      "Decays_to" = data$progeny_4,
+      "branch_fraction" = data$branch_, #branch_4 in RadData 1.0.0
       row.names = ""
     )
     )
