@@ -40,7 +40,7 @@ RN_info <- function(RN_select) {
   if (!is.na(data$progeny_4)) {
     df_decay <- rbind(df_decay, data.frame(
       "Decays_to" = data$progeny_4,
-      "branch_fraction" = data$branch_,
+      "branch_fraction" = data$branch_4,
       row.names = ""
     )
     )

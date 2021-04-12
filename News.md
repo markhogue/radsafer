@@ -1,3 +1,6 @@
+# radsafer (version 2.2.5)
+***2021-04-12*** Updated branch_4 title to match repaired RadData index which previously dropped the 4. 
+
 # radsafer (version 2.2.4)
 ***2020-12-31*** Corrected the column assignment in the four-column MCNP source copy and paste functions in mcnp_scan_save and mcnp_scan2plot. (Prior version incorrectly used bin number for energy.)
 
