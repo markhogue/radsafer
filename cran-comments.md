@@ -1,5 +1,5 @@
 ## Test environments
-* local Windows 10 home version R 4.0.3
+* local Windows 10 home version R 4.0.5
 * passed all checks with devtools::rhub::check(
   platform="windows-x86_64-devel",
   env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = "always")
