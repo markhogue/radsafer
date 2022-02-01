@@ -10,7 +10,8 @@ mcnp_si_sp_RD(
   photon = FALSE,
   cut = 0.001,
   erg.dist = 1,
-  my_dir = NULL
+  my_dir = NULL,
+  write_permit = "n"
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ select from:
 \item{erg.dist}{energy distribution number for MCNP input}
 
 \item{my_dir}{Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.}
+
+\item{write_permit}{Set this to 'y' to allow writing output to your directory.}
 }
 \value{
 a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)).

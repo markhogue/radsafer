@@ -28,7 +28,7 @@ The radsafer package was developed with these goals:
 
 Related functions are identified as members of these families:
   
-  * decay corrections 
+* decay corrections 
 
 * radionuclides 
 
@@ -123,8 +123,10 @@ Other radionuclides family functions:
   
   * Where did this radionuclide decay from? **RN_find_parent**
   
-  ```{r echo = TRUE}
-  RN_find_parent("Th-230")
+```{r echo = TRUE}
+
+RN_find_parent("Th-230")
+
 ```
 
 ### rad measurements functions

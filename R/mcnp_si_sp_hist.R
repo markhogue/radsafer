@@ -4,6 +4,7 @@
 #' @param emin A vector of lower bounding energy. (The highest energy is the higher bound.) If higher bounding energy data is available, convert it to lower bound by concatenating e.g. `emin = c(my_low-E, emax_data)`. This vector length must exceed the probability vector by 1.
 #' @param bin_prob A vector of the bin probabilities. There are n-1 probability values for n values of emin.
 #' @param my_dir Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.
+#' @param write_permit Set this to 'y' to allow writing output to your directory.
 #' @return A vector of energy bins and probabilities for an energy distribution, formatted as needed for MCNP input. It is designed for copying and pasting into an MCNP input. (The # should be changed to the appropriate distribution number.) The data is saved in the global environment and appended to a file in the user's working directory, si_sp.txt. Two plots of the data are provided to the plot window,  one with two linear axes and one with two log axes.
 #' @details Data may be identified by named vector, e.g. my_emin_data, or by column of a data frame, e.g. photons_cs137_hist[1] (which is in emax format) and photons_cs137_hist[2] (bin_prob).
 #' @seealso [mcnp_si_sp_hist_scan()] for copy and paste in data
@@ -16,17 +17,7 @@
 #' )
 #' }
 #' @export
-
-mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {
-  # permission to write file
-  cat("This function will write or append a file, si_sp.txt,")
-  cat("to your specified, or by default, working directory --") 
-  cat("but only with your permission.")
-  write_permit <- readline("Enter 'y' to continue. ")
-  if (write_permit  != "y") {
-    stop("File will not be written.")
-  }
-  # 
+mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL, write_permit = "n") {
   if (is.null(my_dir)) my_dir <- getwd()
   # construct table of energy bins with 5 columns
   emin_raw <- emin
@@ -46,12 +37,14 @@ mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {
     "output ", "from ", as.character(Sys.Date())
   )
 
+  if (write_permit  == "y") {
   utils::write.table(emin.out,
     file = paste0(my_dir, "/si_sp.txt"),
     append = TRUE,
     row.names = FALSE,
     quote = FALSE
   )
+  }
   # print to screen
   prmatrix(emin.m,
     rowlab = c("si#  ", rep(
@@ -82,19 +75,24 @@ mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {
   )
 
   # write output table
-  utils::write.table(bin_prob.out,
+  if (write_permit  == "y") {
+    utils::write.table(bin_prob.out,
     file = paste0(my_dir, "/si_sp.txt"),
     append = TRUE,
     row.names = FALSE,
     quote = FALSE
   )
+  }
+  
   prob_sum <- paste0("c The sum of the bins is: ", sum(bin_prob_raw))
-  utils::write.table(prob_sum,
+  if (write_permit  == "y") {
+    utils::write.table(prob_sum,
     file = paste0(my_dir, "/si_sp.txt"),
     append = TRUE,
     row.names = FALSE, col.names = FALSE,
     quote = FALSE
   )
+  }
   # print to screen
   prmatrix(bin_prob.m,
     rowlab = c("sp#  ", rep(
@@ -127,4 +125,3 @@ mcnp_si_sp_hist <- function(emin, bin_prob, my_dir = NULL) {
     ggplot2::scale_x_log10() +
     ggplot2::scale_y_log10()
 }
-

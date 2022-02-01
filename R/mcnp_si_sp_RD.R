@@ -25,7 +25,7 @@
 #' @param cut minimum energy, defaults to 1e-3 MeV
 #' @param erg.dist energy distribution number for MCNP input
 #' @param my_dir Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.
-#'
+#' @param write_permit Set this to 'y' to allow writing output to your directory.
 #' @return a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)).
 #' For use with MCNP, a text file, 'si_sp.txt' is written to working directory.
 #' If file already exists, it is appended. The file contains all
@@ -41,17 +41,7 @@
 #' mcnp_si_sp_RD("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
 #' }
 #' @export
-mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-3, erg.dist = 1, my_dir = NULL) {
-  # permission to write file
-  cat("This function will write or append a file, si_sp.txt,")
-  cat("to your specified, or by default, working directory --") 
-  cat("but only with your permission.")
-  write_permit <- readline("Enter 'y' to continue. ")
-  if (write_permit  != "y") {
-    stop("File will not be written.")
-  }
-  # 
-  
+mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-3, erg.dist = 1, my_dir = NULL, write_permit = "n") {
   if (is.null(my_dir)) my_dir <- getwd()
   
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")
@@ -153,12 +143,14 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
   sp <- data.frame(sp$V1, sp$V2, sp$V3, sp$V4, sp$V5, sp$V6, sp$V7)
   #
   # write output si output
-  utils::write.table(data.frame(text = "c"), "si_sp.txt",
+  if (write_permit  == "y") {
+    utils::write.table(data.frame(text = "c"), "si_sp.txt",
     col.names = FALSE,
     row.names = FALSE,
     append = TRUE,
     quote = FALSE
   )
+  }
   dist_type <- "L"
   if (dat_set == "B") {
     dist_type <- "A"
@@ -167,7 +159,9 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
   if (photon == TRUE) {
     r_type_text <- "photon"
   }
-  utils::write.table(data.frame(text = paste0(
+  
+  if (write_permit  == "y") {
+    utils::write.table(data.frame(text = paste0(
     "si",
     erg.dist, " ", dist_type, " & ", "$", desired_RN,
     ", radiation type= ", r_type_text
@@ -177,7 +171,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
   append = TRUE,
   quote = FALSE
   )
-
+  
   utils::write.table(data.frame(text = paste0(
     "c  energy cut off at ",
     cut, " MeV "
@@ -228,7 +222,7 @@ mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-
     my_dir, "."
   ))
   cat("\n")
-
+}
   # return a data frame to allow plots, etc.
   si.sp
 }

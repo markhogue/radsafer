@@ -4,7 +4,7 @@
 \alias{mcnp_si_sp_hist}
 \title{energy distribution histogram entries}
 \usage{
-mcnp_si_sp_hist(emin, bin_prob, my_dir = NULL)
+mcnp_si_sp_hist(emin, bin_prob, my_dir = NULL, write_permit = "n")
 }
 \arguments{
 \item{emin}{A vector of lower bounding energy. (The highest energy is the higher bound.) If higher bounding energy data is available, convert it to lower bound by concatenating e.g. `emin = c(my_low-E, emax_data)`. This vector length must exceed the probability vector by 1.}
@@ -12,6 +12,8 @@ mcnp_si_sp_hist(emin, bin_prob, my_dir = NULL)
 \item{bin_prob}{A vector of the bin probabilities. There are n-1 probability values for n values of emin.}
 
 \item{my_dir}{Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.}
+
+\item{write_permit}{Set this to 'y' to allow writing output to your directory.}
 }
 \value{
 A vector of energy bins and probabilities for an energy distribution, formatted as needed for MCNP input. It is designed for copying and pasting into an MCNP input. (The # should be changed to the appropriate distribution number.) The data is saved in the global environment and appended to a file in the user's working directory, si_sp.txt. Two plots of the data are provided to the plot window,  one with two linear axes and one with two log axes.

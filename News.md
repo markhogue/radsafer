@@ -1,3 +1,6 @@
+# radsafer (version 2.2.6)
+***2022-02-02*** Two functions for providing source energy distributions for MCNP have been updated to make them easier to use. Previously, version 2.2.2 implemented a CRAN requirement in `mcnp_si_sp_hist` and `mcnp_si_sp_RD` to ensure users gave consent to any file writing. This was implemented with a required 'y' response to a dialog in the console. This has proven to be cumbersome and prevented use of these functions in R markdown files. This version changes the permission to a function parameter that defaults to 'n', retaining the permission requirement while allowing greater ease of use.
+
 # radsafer (version 2.2.5)
 ***2021-04-12*** Updated branch_4 title to match repaired RadData index which previously dropped the 4. 
 
@@ -5,14 +8,10 @@
 ***2020-12-31*** Corrected the column assignment in the four-column MCNP source copy and paste functions in mcnp_scan_save and mcnp_scan2plot. (Prior version incorrectly used bin number for energy.)
 
 # radsafer (version 2.2.3)
-
 ***2020-09-09*** Add option to scan biased histogram (mcnp_scan_save). Remove duplicate to this function (mcnp_scan2spec). Return data frame from RN_info. Fix functions that have return without () per CRAN directive.
 
 # radsafer (version 2.2.2)
-
-***2020-07-23*** Small change to require user to allow file to be
-created or appended when creating si\_sp.txt files for MCNP input energy
-cards. This is required by CRAN.
+***2020-07-23*** Small change to require user to allow file to be created or appended when creating si\_sp.txt files for MCNP input energy cards. This is required by CRAN.
 
 # radsafer (version 2.2.1)
 
