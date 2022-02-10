@@ -287,8 +287,9 @@ dk_correct <- function(RN_select = NULL,
     )
   }
 
-
-  print.data.frame(df, row.names = FALSE)
+  if (num != TRUE)  {
+    print.data.frame(df, row.names = FALSE)
+    }
   if (num == TRUE) {
     return(A2)
   }
