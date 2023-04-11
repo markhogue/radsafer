@@ -14,7 +14,7 @@ Number of half-lives passed.
 }
 \description{
 Given a percentage reduction in activity, calculate how many
-  half-lives have passed.
+half-lives have passed.
 }
 \examples{
 dk_pct_to_num_half_life(pct_lost = 93.75)

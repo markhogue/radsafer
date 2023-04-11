@@ -44,7 +44,7 @@ plot of spectrum
 \description{
 Plot emission spectra based on radionuclide and desired radiation type.
 Plot on log axes if desired.
-Select cutoff value for probability optional, included at 1% by default.
+Select cutoff value for probability optional, included at 1\% by default.
 Plot includes energy times probability for dosimetric importance comparisons.
 }
 \examples{

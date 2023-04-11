@@ -11,7 +11,7 @@ RN_plot_search_results(
 )
 }
 \arguments{
-\item{discrete_df}{A data frame results from a `radsafer` search function. Columns must
+\item{discrete_df}{A data frame results from a \code{radsafer} search function. Columns must
 include RN, E_MeV, and prob, and code_AN.}
 
 \item{title}{Title for chart (default = name of search_results)}
@@ -26,8 +26,8 @@ search_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 RN_plot_search_results(search_results, title = "example1", log_plot = 0)
 }
 \seealso{
-Use \code{\link{RN_search_alpha_by_E}}, \code{\link{RN_search_beta_by_E}}, 
-or \code{\link{RN_search_phot_by_E}} and save the results, 
+Use \code{\link[=RN_search_alpha_by_E]{RN_search_alpha_by_E()}}, \code{\link[=RN_search_beta_by_E]{RN_search_beta_by_E()}},
+or \code{\link[=RN_search_phot_by_E]{RN_search_phot_by_E()}} and save the results,
 e.g. save_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 
 Other radionuclides: 

@@ -34,11 +34,11 @@ Fractional solid angle and plot of simulation.
 }
 \description{
 Returns fractional solid angle for a geometry frequently
-  encountered in health physics analysis of air samples or disk smears. This
-  is useful in correcting configurations that do not exactly match
-  calibration (by ratioing the respective fractional solid angles). While
-  units of steridian are used for solid angle, this function only uses a
-  fraction of the total field of view.
+encountered in health physics analysis of air samples or disk smears. This
+is useful in correcting configurations that do not exactly match
+calibration (by ratioing the respective fractional solid angles). While
+units of steridian are used for solid angle, this function only uses a
+fraction of the total field of view.
 }
 \examples{
 disk_to_disk_solid_angle(r.source = 15, gap = 20, r.detector = 10, plot.opt = "n", runs = 1e3)

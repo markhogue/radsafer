@@ -2,7 +2,7 @@
 % Please edit documentation in R/tau_estimate.R
 \name{tau_estimate}
 \alias{tau_estimate}
-\title{Estimate tau parameter for [ratemeter_sim]}
+\title{Estimate tau parameter for \code{ratemeter_sim}}
 \usage{
 tau_estimate(pct_eq, t_eq)
 }
@@ -16,8 +16,8 @@ tau, the time constant, in seconds.
 }
 \description{
 If the time constant is not known, but the vendor specifies that
-  the ratemeter will reach some percentage of equilibrium in some number of
-  seconds, use this function to estimate tau.
+the ratemeter will reach some percentage of equilibrium in some number of
+seconds, use this function to estimate tau.
 }
 \examples{
 tau_estimate(pct_eq = 90, t_eq = 22)

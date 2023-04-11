@@ -35,8 +35,6 @@ search_results <- RN_search_beta_by_E(2, 1, 3600)
 search_results <- RN_search_beta_by_E(1, 3600 * 24, 2 * 3600 * 24)
 }
 \seealso{
-[RN_plt()]
-
 Other radionuclides: 
 \code{\link{RN_Spec_Act}()},
 \code{\link{RN_bin_screen_phot}()},

@@ -1,4 +1,4 @@
-#' Copy and paste MCNP output spectral data for use with \code{mcnp_plot_out_spec()}
+#' Copy and paste MCNP output spectral data for use with `mcnp_plot_out_spec()`
 #' @family mcnp tools
 #' @description Provides quick copy-and-paste conversion to data frame.
 #' Paste either a source histogram distribution or tally spectrum from MCNP outputs.

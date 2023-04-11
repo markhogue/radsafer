@@ -20,7 +20,7 @@ The ratio of actual to reference air density.
 }
 \description{
 Obtain a correction factor for ion chamber temperature and
-  pressure vs reference calibration values.
+pressure vs reference calibration values.
 }
 \examples{
 air_dens_cf(T.actual = 20, P.actual = 760, T.ref = 20, P.ref = 760)

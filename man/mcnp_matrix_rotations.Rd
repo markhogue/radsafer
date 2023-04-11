@@ -17,9 +17,9 @@ rotational matrix for copy and paste to MCNP input
 \description{
 Create 3 x 3 rotation matrix in cosines of the angles
 between the main and auxiliary coordinate systems in the form:
-     xx' yx' zx'
-     xy' yy' zy'
-     xz' yz' zz'
+xx' yx' zx'
+xy' yy' zy'
+xz' yz' zz'
 }
 \examples{
 mcnp_matrix_rotations("x", 30)
@@ -36,6 +36,8 @@ Other mcnp tools:
 \code{\link{mcnp_plot_out_spec}()},
 \code{\link{mcnp_scan2plot}()},
 \code{\link{mcnp_scan_save}()},
+\code{\link{mcnp_sdef_erg_hist}()},
+\code{\link{mcnp_sdef_erg_line}()},
 \code{\link{mcnp_si_sp_RD}()},
 \code{\link{mcnp_si_sp_hist_scan}()},
 \code{\link{mcnp_si_sp_hist}()}

@@ -9,8 +9,8 @@
 #' @family rad measurements
 #'
 #' @references
-#' \url{https://karthikkaranth.me/blog/generating-random-points-in-a-sphere/}
-#' \url{https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance}
+#' <https://karthikkaranth.me/blog/generating-random-points-in-a-sphere/>
+#' <https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance>
 #'
 #' @param r.source  source radius (all units must be consistent)
 #' @param gap distance between source and detector

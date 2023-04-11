@@ -1,12 +1,20 @@
 #' energy distribution histogram entries
 #' @family mcnp tools
-#' @description Make MCNP histogram probabilities for energy bins.
+#' @description 
+#' `r lifecycle::badge("deprecated")`:
+#' This function is deprecated 
+#' and will be removed in a future package revision. 
+#' For now, it is still usable. 
+#' The replacement, `mcnp_sdef_erg_hist` makes MCNP histogram
+#' probabilities for energy bins from data either copied and
+#' pasted or from the global environment.
+#' 
 #' @param emin A vector of lower bounding energy. (The highest energy is the higher bound.) If higher bounding energy data is available, convert it to lower bound by concatenating e.g. `emin = c(my_low-E, emax_data)`. This vector length must exceed the probability vector by 1.
 #' @param bin_prob A vector of the bin probabilities. There are n-1 probability values for n values of emin.
 #' @param my_dir Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.
 #' @param write_permit Set this to 'y' to allow writing output to your directory.
 #' @return A vector of energy bins and probabilities for an energy distribution, formatted as needed for MCNP input. It is designed for copying and pasting into an MCNP input. (The # should be changed to the appropriate distribution number.) The data is saved in the global environment and appended to a file in the user's working directory, si_sp.txt. Two plots of the data are provided to the plot window,  one with two linear axes and one with two log axes.
-#' @details Data may be identified by named vector, e.g. my_emin_data, or by column of a data frame, e.g. photons_cs137_hist[1] (which is in emax format) and photons_cs137_hist[2] (bin_prob).
+#' @details Data may be identified by named vector, e.g. my_emin_data, or by column of a data frame, e.g. photons_cs137_hist$E_MeV (which is in emax format) and photons_cs137_hist$prob (bin_prob).
 #' @seealso [mcnp_si_sp_hist_scan()] for copy and paste in data
 #' @seealso [mcnp_si_sp_RD()] for data from `RadData`
 #' @examples

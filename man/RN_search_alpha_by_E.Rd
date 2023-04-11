@@ -42,8 +42,6 @@ search_results <- RN_search_alpha_by_E(1, 4, 1 * 3600, 4 * 3600)
 search_results <- RN_search_alpha_by_E(7, 10, min_prob = 1e-3)
 }
 \seealso{
-[RN_plt()]
-
 Other radionuclides: 
 \code{\link{RN_Spec_Act}()},
 \code{\link{RN_bin_screen_phot}()},

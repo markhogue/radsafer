@@ -49,6 +49,8 @@ Other mcnp tools:
 \code{\link{mcnp_plot_out_spec}()},
 \code{\link{mcnp_scan2plot}()},
 \code{\link{mcnp_scan_save}()},
+\code{\link{mcnp_sdef_erg_hist}()},
+\code{\link{mcnp_sdef_erg_line}()},
 \code{\link{mcnp_si_sp_RD}()},
 \code{\link{mcnp_si_sp_hist_scan}()},
 \code{\link{mcnp_si_sp_hist}()}

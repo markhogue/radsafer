@@ -2,8 +2,8 @@
 #' 
 #' @family radionuclides
 #' 
-#' @seealso  Use \code{\link{RN_search_alpha_by_E}}, \code{\link{RN_search_beta_by_E}}, 
-#' or \code{\link{RN_search_phot_by_E}} and save the results, 
+#' @seealso  Use [RN_search_alpha_by_E()], [RN_search_beta_by_E()], 
+#' or [RN_search_phot_by_E()] and save the results, 
 #' e.g. save_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 #' 
 #' @description Plots results by radionuclide with E_MeV on x-axis and prob on y-axis. 

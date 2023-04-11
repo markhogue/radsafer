@@ -11,18 +11,18 @@
 #'   default `date2`, the system date.
 #'
 #' @param RN_select identify the radionuclide of interest in the format,
-#'   \emph{"Es-254m"} Required unless `half_life` is entered.
+#'   *"Es-254m"* Required unless `half_life` is entered.
 #' @param half_life Required if `RN_select` is not provided.
-#' @param time_unit, acceptable values are \emph{"years"}, \emph{"days"},
-#'   \emph{"hours"}, \emph{"minutes"}, and \emph{"seconds"}. May be shortened to
-#'   \emph{"y"}, \emph{"d"}, \emph{"h"}, \emph{"m"}, and \emph{"s"}. Required if
+#' @param time_unit, acceptable values are *"years"*, *"days"*,
+#'   *"hours"*, *"minutes"*, and *"seconds"*. May be shortened to
+#'   *"y"*, *"d"*, *"h"*, *"m"*, and *"s"*. Required if
 #'   `half_life` or `time_lapse` are to be entered.
 #' @param time_lapse a single value or vector of values representing time lapsed
 #'   since `date1`, with units identified in `time_unit`. Positive values
 #'   represent time past `date1`. Negative values represent time before `date1`.
 #'   Required unless `date1` is entered.
 #' @param date1 Reference date - Required unless using `time_lapse`. Format is
-#'   required to be date-only: \emph{"YYYY-MM-DD"} (e.g. \emph{"1999-12-31"}).
+#'   required to be date-only: *"YYYY-MM-DD"* (e.g. *"1999-12-31"*).
 #'   If `half_life` is short relative to calendar dates, use `time_lapse`
 #'   instead.
 #' @param date2 Date or dates of interest. Default is today's date, obtained

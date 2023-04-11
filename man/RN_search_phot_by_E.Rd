@@ -40,7 +40,7 @@ search_results <- RN_search_phot_by_E(1, 1.2, 6 * 3600, 6.2 * 3600, 1e-4)
 search_results <- RN_search_phot_by_E(0.1, 0.15, 1e6 * 3.153e7, 3e6 * 3.153e7)
 }
 \seealso{
-[RN_plot_spectrum()]
+\code{\link[=RN_plot_spectrum]{RN_plot_spectrum()}}
 
 Other radionuclides: 
 \code{\link{RN_Spec_Act}()},

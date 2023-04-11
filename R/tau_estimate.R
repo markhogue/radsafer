@@ -1,4 +1,4 @@
-#' Estimate tau parameter for [ratemeter_sim]
+#' Estimate tau parameter for `ratemeter_sim`
 #' @description If the time constant is not known, but the vendor specifies that
 #'   the ratemeter will reach some percentage of equilibrium in some number of
 #'   seconds, use this function to estimate tau.

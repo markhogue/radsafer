@@ -31,12 +31,12 @@ select from:
 \item{prob_cut}{minimum probability defaults to 0}
 }
 \value{
-Dataframe with energy spectra - including probability of emission quantum, or, for 
+Dataframe with energy spectra - including probability of emission quantum, or, for
 beta, the probability density.
 }
 \description{
 Save emission spectra based on radionuclide and desired radiation type.
-Select cutoff value for probability optional, included at 1% by default.
+Select cutoff value for probability optional, included at 1\% by default.
 }
 \examples{
 Sr_Y_90_df <- RN_save_spectrum(desired_RN = c("Sr-90", "Y-90"), rad_type = "B-", 

@@ -41,7 +41,7 @@ radionuclides that match selection criteria
 }
 \description{
 Identify photon emitters that represent a target range of energies, while screening
-out other selected energy ranges. This may be helpful for identifying radionuclides 
+out other selected energy ranges. This may be helpful for identifying radionuclides
 in low-definition spectroscopy or in selecting representative spectra for modeling
 shielding.
 }
@@ -54,7 +54,7 @@ RN_bin_screen_phot(
 )
 }
 \seealso{
-[RN_plot_spectrum()]
+\code{\link[=RN_plot_spectrum]{RN_plot_spectrum()}}
 
 Other radionuclides: 
 \code{\link{RN_Spec_Act}()},

@@ -1,6 +1,6 @@
 #' Screen radionuclide data to find matches to decay mode, half-life, and total emission energy
 #'
-#' @description Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider [search_phot_by_E], [search_alpha_by_E], and [search_beta_by_E] for spectroscopic measurement matching.
+#' @description Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider [RN_search_phot_by_E], [RN_search_alpha_by_E], and [RN_search_beta_by_E] for spectroscopic measurement matching.
 #'
 #' @family radionuclides
 #'

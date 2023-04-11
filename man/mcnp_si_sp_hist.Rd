@@ -7,7 +7,7 @@
 mcnp_si_sp_hist(emin, bin_prob, my_dir = NULL, write_permit = "n")
 }
 \arguments{
-\item{emin}{A vector of lower bounding energy. (The highest energy is the higher bound.) If higher bounding energy data is available, convert it to lower bound by concatenating e.g. `emin = c(my_low-E, emax_data)`. This vector length must exceed the probability vector by 1.}
+\item{emin}{A vector of lower bounding energy. (The highest energy is the higher bound.) If higher bounding energy data is available, convert it to lower bound by concatenating e.g. \code{emin = c(my_low-E, emax_data)}. This vector length must exceed the probability vector by 1.}
 
 \item{bin_prob}{A vector of the bin probabilities. There are n-1 probability values for n values of emin.}
 
@@ -19,10 +19,16 @@ mcnp_si_sp_hist(emin, bin_prob, my_dir = NULL, write_permit = "n")
 A vector of energy bins and probabilities for an energy distribution, formatted as needed for MCNP input. It is designed for copying and pasting into an MCNP input. (The # should be changed to the appropriate distribution number.) The data is saved in the global environment and appended to a file in the user's working directory, si_sp.txt. Two plots of the data are provided to the plot window,  one with two linear axes and one with two log axes.
 }
 \description{
-Make MCNP histogram probabilities for energy bins.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}:
+This function is deprecated
+and will be removed in a future package revision.
+For now, it is still usable.
+The replacement, \code{mcnp_sdef_erg_hist} makes MCNP histogram
+probabilities for energy bins from data either copied and
+pasted or from the global environment.
 }
 \details{
-Data may be identified by named vector, e.g. my_emin_data, or by column of a data frame, e.g. photons_cs137_hist[1] (which is in emax format) and photons_cs137_hist[2] (bin_prob).
+Data may be identified by named vector, e.g. my_emin_data, or by column of a data frame, e.g. photons_cs137_hist$E_MeV (which is in emax format) and photons_cs137_hist$prob (bin_prob).
 }
 \examples{
 \dontrun{
@@ -33,9 +39,9 @@ mcnp_si_sp_hist(
 }
 }
 \seealso{
-[mcnp_si_sp_hist_scan()] for copy and paste in data
+\code{\link[=mcnp_si_sp_hist_scan]{mcnp_si_sp_hist_scan()}} for copy and paste in data
 
-[mcnp_si_sp_RD()] for data from `RadData`
+\code{\link[=mcnp_si_sp_RD]{mcnp_si_sp_RD()}} for data from \code{RadData}
 
 Other mcnp tools: 
 \code{\link{mcnp_cone_angle}()},
@@ -44,6 +50,8 @@ Other mcnp tools:
 \code{\link{mcnp_plot_out_spec}()},
 \code{\link{mcnp_scan2plot}()},
 \code{\link{mcnp_scan_save}()},
+\code{\link{mcnp_sdef_erg_hist}()},
+\code{\link{mcnp_sdef_erg_line}()},
 \code{\link{mcnp_si_sp_RD}()},
 \code{\link{mcnp_si_sp_hist_scan}()}
 }

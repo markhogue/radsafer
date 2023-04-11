@@ -49,5 +49,6 @@ mcnp_matrix_rotations <- function(rot.axis, angle_degrees) {
   R[ind[1], ind[2]] <- round(-sin(rot.angle), 8)
   R[ind[2], ind[1]] <- round(sin(rot.angle), 8)
   R[ind[2], ind[2]] <- round(cos(rot.angle), 8)
-  R
-}
+ # print.data.frame(as.data.frame(R), row.names = "")
+  as.numeric(R)
+  }

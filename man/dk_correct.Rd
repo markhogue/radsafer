@@ -17,23 +17,23 @@ dk_correct(
 }
 \arguments{
 \item{RN_select}{identify the radionuclide of interest in the format,
-\emph{"Es-254m"} Required unless `half_life` is entered.}
+\emph{"Es-254m"} Required unless \code{half_life} is entered.}
 
-\item{half_life}{Required if `RN_select` is not provided.}
+\item{half_life}{Required if \code{RN_select} is not provided.}
 
 \item{time_unit, }{acceptable values are \emph{"years"}, \emph{"days"},
 \emph{"hours"}, \emph{"minutes"}, and \emph{"seconds"}. May be shortened to
 \emph{"y"}, \emph{"d"}, \emph{"h"}, \emph{"m"}, and \emph{"s"}. Required if
-`half_life` or `time_lapse` are to be entered.}
+\code{half_life} or \code{time_lapse} are to be entered.}
 
 \item{time_lapse}{a single value or vector of values representing time lapsed
-since `date1`, with units identified in `time_unit`. Positive values
-represent time past `date1`. Negative values represent time before `date1`.
-Required unless `date1` is entered.}
+since \code{date1}, with units identified in \code{time_unit}. Positive values
+represent time past \code{date1}. Negative values represent time before \code{date1}.
+Required unless \code{date1} is entered.}
 
-\item{date1}{Reference date - Required unless using `time_lapse`. Format is
+\item{date1}{Reference date - Required unless using \code{time_lapse}. Format is
 required to be date-only: \emph{"YYYY-MM-DD"} (e.g. \emph{"1999-12-31"}).
-If `half_life` is short relative to calendar dates, use `time_lapse`
+If \code{half_life} is short relative to calendar dates, use \code{time_lapse}
 instead.}
 
 \item{date2}{Date or dates of interest. Default is today's date, obtained
@@ -46,16 +46,16 @@ used as a correction factor.}
 \item{num}{Set for TRUE to facilitate as.numeric results. Default = FALSE.}
 }
 \value{
-Decay adjusted activity or related parameter. See `A1`.
+Decay adjusted activity or related parameter. See \code{A1}.
 }
 \description{
 Decay-corrected values are provided. Either a single or multiple
-  values are computed. The computation is made either based on a single
-  radionuclide, or based on user-provided half-life, with time unit. The
-  differential time is either computed based on dates entered or time lapsed
-  based on the time unit. Time units must be consistent. Decay-correct a
-  source to today's date by assigning a reference `date1` and allowing
-  default `date2`, the system date.
+values are computed. The computation is made either based on a single
+radionuclide, or based on user-provided half-life, with time unit. The
+differential time is either computed based on dates entered or time lapsed
+based on the time unit. Time units must be consistent. Decay-correct a
+source to today's date by assigning a reference \code{date1} and allowing
+default \code{date2}, the system date.
 }
 \examples{
 

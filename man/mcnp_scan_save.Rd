@@ -12,9 +12,9 @@ spectrum file with maximum energy and MCNP bin value
 \description{
 Provides quick copy-and-paste conversion to data frame.
 Paste either a source histogram distribution or tally spectrum from MCNP outputs.
-Three-column output tally spectra have columns of maximum energy, bin tally, and 
-relative Monte Carlo uncertainty for the bin tally value. 
-Four-column  source histogram distributions have columns of entry number, maximum 
+Three-column output tally spectra have columns of maximum energy, bin tally, and
+relative Monte Carlo uncertainty for the bin tally value.
+Four-column  source histogram distributions have columns of entry number, maximum
 energy, cumulative probability, and bin probability.
 Seven-column biased histogram distributions have columns of entry
 number, maximum energy, cumulative probability, biased cumulative
@@ -47,6 +47,8 @@ Other mcnp tools:
 \code{\link{mcnp_matrix_rotations}()},
 \code{\link{mcnp_plot_out_spec}()},
 \code{\link{mcnp_scan2plot}()},
+\code{\link{mcnp_sdef_erg_hist}()},
+\code{\link{mcnp_sdef_erg_line}()},
 \code{\link{mcnp_si_sp_RD}()},
 \code{\link{mcnp_si_sp_hist_scan}()},
 \code{\link{mcnp_si_sp_hist}()}

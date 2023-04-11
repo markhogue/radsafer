@@ -20,8 +20,8 @@ The calculated half-life in units of time input.
 }
 \description{
 Estimate half-life from two data points. Half-life units are
-  consistent with time units of input.
-  @family rad measurements
+consistent with time units of input.
+@family rad measurements
 }
 \examples{
 # Between the first two data points in a series of counts

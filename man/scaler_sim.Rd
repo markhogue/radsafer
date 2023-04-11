@@ -17,11 +17,11 @@ scaler_sim(true_bkg, true_samp, ct_time, trials = 1e+05)
 }
 \value{
 A histogram of all trial results including limits for +/- 1 standard
-  deviation.
+deviation.
 }
 \description{
 Returns a plotted distribution of results for a scaler model
-  based on the Poisson distribution. Inputs and outputs in counts per minute.
+based on the Poisson distribution. Inputs and outputs in counts per minute.
 }
 \examples{
 scaler_sim(true_bkg = 5, true_samp = 10, ct_time = 1, trials = 1e5)

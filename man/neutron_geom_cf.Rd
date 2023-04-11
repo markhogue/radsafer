@@ -20,10 +20,10 @@ The correction factor for solid angle.
 }
 \description{
 Correction factors are needed when an Neutron Rem Detector (NRD)
-  aka "Remball" is used in close proximity to a points source. This formula
-  is per ISO ISO 8529-2-2000 section 6.2. Note, however, that the ISO formula
-  predicts the response. The formula used here takes the inverse to correct
-  for the over-response.
+aka "Remball" is used in close proximity to a points source. This formula
+is per ISO ISO 8529-2-2000 section 6.2. Note, however, that the ISO formula
+predicts the response. The formula used here takes the inverse to correct
+for the over-response.
 }
 \examples{
 neutron_geom_cf(l = 11.1, r.d = 11)

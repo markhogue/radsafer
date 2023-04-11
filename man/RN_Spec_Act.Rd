@@ -4,10 +4,12 @@
 \alias{RN_Spec_Act}
 \title{Specific Activity}
 \usage{
-RN_Spec_Act(RN_select)
+RN_Spec_Act(RN_select, numeric = "n")
 }
 \arguments{
-\item{RN_select}{identify the radionuclide of interest in the format "Es-254m"}
+\item{RN_select}{identify the radionuclide of interest in the format "Es-254m". For multiple specific activities, combine the radionuclides of interest in the form, c("At-219", "Es-251").}
+
+\item{numeric}{default is "n" and a data frame is returned showing the radionuclide, its relative specific activity, and the units. If "y", or any other option is selected for the numeric parameter, specific activity results are delivered as numeric.}
 }
 \value{
 specific activity in Bq / g
@@ -17,11 +19,9 @@ Provides specific activity of a radionuclide in Bq/g.
 }
 \examples{
 RN_Spec_Act("Ac-230")
-RN_Spec_Act("At-219")
-RN_Spec_Act("Es-251")
-RN_Spec_Act("Pd-96")
-RN_Spec_Act("Te-117")
-RN_Spec_Act("Ba-137m")
+RN_Spec_Act(c("At-219", "Es-251"))
+RN_Spec_Act("Pd-96", numeric = "y")
+RN_Spec_Act(c("Cs-137", "Ba-137m"), numeric = "y")
 }
 \seealso{
 Other radionuclides: 

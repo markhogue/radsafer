@@ -37,7 +37,7 @@ RN_index_screen(
 data frame of radionuclide data from the RadData package index data (RadData::ICRP_07.NDX), matching search criteria.
 }
 \description{
-Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider [search_phot_by_E], [search_alpha_by_E], and [search_beta_by_E] for spectroscopic measurement matching.
+Provides a set of radionuclides matching screening criteria. This is a limited screening based on average energy per transformation. Consider \link{RN_search_phot_by_E}, \link{RN_search_alpha_by_E}, and \link{RN_search_beta_by_E} for spectroscopic measurement matching.
 }
 \examples{
 RN_index_screen(dk_mode = "SF")

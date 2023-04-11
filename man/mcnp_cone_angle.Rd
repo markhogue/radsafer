@@ -14,8 +14,8 @@ tangent of cone angle squared
 }
 \description{
 MCNP cone surface requires a term, t^2, which is the tangent of
-  the cone angle, in radians, squared. This function takes an input in
-  degrees and provides the parameter needed by MCNP.
+the cone angle, in radians, squared. This function takes an input in
+degrees and provides the parameter needed by MCNP.
 }
 \examples{
 mcnp_cone_angle(45)
@@ -27,6 +27,8 @@ Other mcnp tools:
 \code{\link{mcnp_plot_out_spec}()},
 \code{\link{mcnp_scan2plot}()},
 \code{\link{mcnp_scan_save}()},
+\code{\link{mcnp_sdef_erg_hist}()},
+\code{\link{mcnp_sdef_erg_line}()},
 \code{\link{mcnp_si_sp_RD}()},
 \code{\link{mcnp_si_sp_hist_scan}()},
 \code{\link{mcnp_si_sp_hist}()}

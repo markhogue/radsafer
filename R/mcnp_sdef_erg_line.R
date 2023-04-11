@@ -1,15 +1,8 @@
-#' Produce MCNP source terms from ICRP 107 data except beta
+#' Produce MCNP source terms from ICRP 107 data 
 #' @family mcnp tools
-#' @seealso  [mcnp_sdef_erg_hist()] if radioactive emission data is available in histogram form and needs formatting for MCNP input.
+#' @seealso [mcnp_sdef_erg_hist()] if radioactive emission data is available in histogram form and needs formatting for MCNP input.
 #'
-#' @description 
-#' #' `r lifecycle::badge("deprecated")`:
-#' This function is deprecated 
-#' and will be removed in a future package revision. 
-#' For now, it is still usable. 
-#' The replacement, `mcnp_sdef_erg_line` is the same function,
-#' renamed to be consistent with the name of function 
-#' `mcnp_sdef_erg_hist`.
+#' @description Obtain emission data from the RadData package and write to a file for use with the radiation transport code, MCNP.
 #'
 #' @param desired_RN Radionuclide in form "Ba-137m"
 #' @param rad_type Radiation type, leave NULL if selecting photons or
@@ -33,7 +26,7 @@
 #' @param erg.dist energy distribution number for MCNP input
 #' @param my_dir Optional directory. The function will write an output text file, si_sp.txt to the working directory by default.
 #' @param write_permit Set this to 'y' to allow writing output to your directory.
-#' @return a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_si_sp_RD(...)).
+#' @return a data frame can be saved to memory if desired (i.e. by my_file <- mcnp_sdef_erg_line(...)).
 #' For use with MCNP, a text file, 'si_sp.txt' is written to working directory.
 #' If file already exists, it is appended. The file contains all
 #' emission energies in the si 'card' and the Line indicator, L is included,
@@ -43,12 +36,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' mcnp_si_sp_RD("Co-60", photon = TRUE, cut = 0.01, erg.dist = 13)
-#' mcnp_si_sp_RD("Sr-90", rad_type = "B-", cut = 0.01, erg.dist = 15)
-#' mcnp_si_sp_RD("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
+#' mcnp_sdef_erg_line("Co-60", photon = TRUE, cut = 0.01, erg.dist = 13)
+#' mcnp_sdef_erg_line("Sr-90", rad_type = "B-", cut = 0.01, erg.dist = 15)
+#' mcnp_sdef_erg_line("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
 #' }
 #' @export
-mcnp_si_sp_RD <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-3, erg.dist = 1, my_dir = NULL, write_permit = "n") {
+mcnp_sdef_erg_line <- function(desired_RN, rad_type = NULL, photon = FALSE, cut = 1e-3, erg.dist = 1, my_dir = NULL, write_permit = "n") {
   if (is.null(my_dir)) my_dir <- getwd()
   
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")

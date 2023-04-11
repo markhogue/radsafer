@@ -13,7 +13,7 @@ RN_info(RN_select)
 a table including half-life, decay modes, decay progeny, and branch fractions
 }
 \description{
-Access a quick summary of radionuclide data. This is for convenience only and does not replace a more comprehensive view as is available in the Radiological Toolbox <doi:10.2172/1201298>
+Access a quick summary of radionuclide data. This is for convenience only and does not replace a more comprehensive view as is available in the Radiological Toolbox \url{doi:10.2172/1201298}
 }
 \examples{
 Es_254m <- RN_info("Es-254m") #saves output to global environment

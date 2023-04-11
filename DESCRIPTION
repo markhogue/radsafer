@@ -1,8 +1,8 @@
 Package: radsafer
 Type: Package
 Title: Radiation Safety 
-Version: 2.2.6
-Date: 2022-02-02
+Version: 2.2.7
+Date: 2023-04-11
 Author: Mark Hogue <mark.hogue.chp@gmail.com>
 Maintainer: Mark Hogue <mark.hogue.chp@gmail.com>
 Description: Provides functions for radiation safety, also known as
@@ -24,7 +24,7 @@ Description: Provides functions for radiation safety, also known as
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Suggests: 
     testthat,
     beepr,
@@ -42,9 +42,9 @@ Imports:
     rlang,
     scatterplot3d,
     ggthemes,
-    qpdf,
-    utf8
+    lifecycle
 Depends: R (>= 3.5)
 URL: https://github.com/markhogue/radsafer
 BugReports: https://github.com/markhogue/radsafer/issues
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)

@@ -3,8 +3,10 @@ title: "Introduction to radsafer"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Intro_and_decay_family}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
   
 ```{r, include = FALSE}
@@ -20,7 +22,7 @@ library(radsafer)
 
 The radsafer package was developed with these goals:
   
-  * Provide functions that are commonly used in radiation safety
+* Provide functions that are commonly used in radiation safety
 
 * Provide easy access to data provided in the RadData package
 
@@ -35,6 +37,8 @@ Related functions are identified as members of these families:
 * rad measurements 
 
 * mcnp tools 
+
+A few functions stand alone.
 
 This framework makes it a little easier to find the function you want - the help file for each function lists related functions.
 
@@ -52,7 +56,7 @@ dk_correct(half_life = 10,
            date1 = "2010-01-01")
 ```
 
-Use this function to correct for the value needed on dates it was used. Let the function obtain the half-life from the `RadDecay` data. In the example, we have a disk source with an original count rate of 10000 cpm:
+Use this function to correct for the value needed on dates it was used. Let the function obtain the half-life from the ICRP Pulbication 107 decay data in the `RadData` R package. In the example, we have a disk source with an original count rate of 10000 cpm:
   
 ```{r warning=FALSE}
 dk_correct(RN_select = "Sr-90",
@@ -119,9 +123,9 @@ knitr::kable(RNs_selected[, c(1:3)])
 
 Other radionuclides family functions:
   
-  * Provide specific activity **RN_Spec_Act**
+  * Obtain a specific activity with **RN_Spec_Act**.
   
-  * Where did this radionuclide decay from? **RN_find_parent**
+  * Find a potential radionuclide parent with **RN_find_parent**.
   
 ```{r echo = TRUE}
 
@@ -200,31 +204,47 @@ rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20
 
 To estimate _time constant_, use `tau.estimate`
 
-### Stay-time computation
+### Some stand-alone functions
+
+#### Stay-time computation
 
 Given a dose rate, dose allowed, and a safety margin (default = 20%), calculate stay time with: `stay_time`
 ```{r}
 stay_time(dose_rate = 120, dose_allowed = 100, margin =  20)
 ```
+
+#### half-value and tenth value computation
+
+Given a set of radiation levels through varying thicknesses of material, compute the half-values, tenth-values, and homogeneity coefficients.
+
+```{r echo = FALSE}
+mm_Al <- 0:5
+mR_h <- c(7.428, 6.272, 5.325,4.535, 3.878, 3.317)
+```
+
+```{r echo = TRUE}
+hvl(x = mm_Al, y = mR_h) 
+```
+
 ### mcnp tools functions
 
 If you create MCNP inputs, these functions may be helpful:
 
-**mcnp_si_sp_RD**
-Obtain emission data from the RadData package and write to a file for use with the radiation transport code, MCNP.
-
-**mcnp_si_sp_hist** 
-
-* Create an _energy distribution_ from histogram data with: `mcnp_si_sp_hist` Or use `mcnp_si_sp_hist_scan` to quickly copy and paste data interactively.
-
+**mcnp_sdef_erg_line** Obtain emission data from the `RadData` package for use with the radiation transport code, MCNP, when you want a "line" source from individual radionuclides. Use **mcnp_sdef_erg_hist** when you have histogram data and want to format it nicely for MCNP.
 
 **mcnp_matrix_rotations**
 
 * Determine the entries needed for MCNP _coordinate transformation rotation_ 
 
-**mcnp_cone_angle**
+```{r}
+mcnp_matrix_rotations("z", 90)
+```
 
-* Quickly obtain the _cone angle_ entry
+**mcnp_cone_angle** This is just the square of the tangent of the angle in radians, but the argument used here is degree.
+
+```{r}
+mcnp_cone_angle(30)
+```
 
 **mcnp_plot_out_spec**
 

@@ -20,7 +20,7 @@ rate_meter_sim(
 \item{trials}{Number of seconds to run simulation. Default = 600.}
 
 \item{tau}{equal to the Resistance * Capacitance of the counting circuit.
-Units = seconds. Default set to 9.5, which provides 90% equilibrium in 22
+Units = seconds. Default set to 9.5, which provides 90\% equilibrium in 22
 seconds. If the user does not know the time constant, but has an estimate
 of equilibrium in some time, use tau.estimate.}
 
@@ -32,15 +32,15 @@ Plot of simulated meter reading every second..
 }
 \description{
 Plot simulated ratemeter readings once per second for 600
-  seconds. The meter starts with a reading of zero and builds up based on the
-  time constant. Resolution uncertainty is established to express the
-  uncertainty from reading an analog scale, including the instability of its
-  readings. Many standard references identify the precision or resolution
-  uncertainty of analog readings as half of the smallest increment. This
-  should be considered the single coverage uncertainty for a very stable
-  reading. When a reading is not very stable, evaluation of the reading
-  fluctuation is evaluated in terms of numbers of scale increments covered by
-  meter indication over a reasonable evaluation period.
+seconds. The meter starts with a reading of zero and builds up based on the
+time constant. Resolution uncertainty is established to express the
+uncertainty from reading an analog scale, including the instability of its
+readings. Many standard references identify the precision or resolution
+uncertainty of analog readings as half of the smallest increment. This
+should be considered the single coverage uncertainty for a very stable
+reading. When a reading is not very stable, evaluation of the reading
+fluctuation is evaluated in terms of numbers of scale increments covered by
+meter indication over a reasonable evaluation period.
 }
 \examples{
 rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20))

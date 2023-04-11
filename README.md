@@ -39,9 +39,11 @@ library(radsafer)
 
   - Related functions are identified as members of families:
       - rad measurements
-      - mcnp tools
       - decay corrections
       - radionuclides
+      - mcnp tools
+
+A few functions stand alone.
 
 ### Decay Correction Functions
 
