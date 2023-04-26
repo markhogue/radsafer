@@ -6,7 +6,7 @@
 [![CRAN RStudio mirror
 downloads](https://cranlogs.r-pkg.org/badges/last-month/radsafer?color=blue)](https://r-pkg.org/pkg/radsafer)
 [![Build
-Status](https://travis-ci.org/markhogue/radsafer.svg?branch=master)](https://travis-ci.org/markhogue/radsafer)
+Status](https://www.travis-ci.com/markhogue/radsafer.svg?branch=master)](https://www.travis-ci.com/markhogue/radsafer)
 
 The goal of radsafer is to provide functions that are useful for
 radiation safety professionals.
