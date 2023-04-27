@@ -1,56 +1,42 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# radsafer <img src='man/figures/radsafer.png' align="right" height="139" />
-
-[![CRAN RStudio mirror
-downloads](https://cranlogs.r-pkg.org/badges/last-month/radsafer?color=blue)](https://r-pkg.org/pkg/radsafer)
-[![Build
-Status](https://www.travis-ci.com/markhogue/radsafer.svg?branch=master)](https://www.travis-ci.com/markhogue/radsafer)
-
-The goal of radsafer is to provide functions that are useful for
-radiation safety professionals.
-
-## Installation
-
-You can install the released version of radsafer from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("radsafer")
-```
-
-Or install the development version from GitHub:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("markhogue/radsafer")
-```
-
-## Overview
-
-To start using the installed package:
+Overview To start using the installed package:
 
 ``` r
 library(radsafer)
 ```
 
-## radsafer families of functions
+The radsafer package was developed with these goals:
 
-  - Related functions are identified as members of families:
-      - rad measurements
-      - decay corrections
-      - radionuclides
-      - mcnp tools
+- Provide functions that are commonly used in radiation safety
+
+- Provide easy access to data provided in the RadData package
+
+- Share some less commonly-used functions that may be of significant
+  value to workers in instrumentation and modeling
+
+Related functions are identified as members of these families:
+
+- decay corrections
+
+- radionuclides
+
+- rad measurements
+
+- mcnp tools
 
 A few functions stand alone.
+
+This framework makes it a little easier to find the function you want -
+the help file for each function lists related functions.
 
 ### Decay Correction Functions
 
 Radsafer includes several functions to manage radioactive decay
 corrections:
 
-**dk\_correct** provides decay corrected activity or activity-dependent
+**dk_correct** provides decay corrected activity or activity-dependent
 value, such as instrument response rate or dose rate. The computation is
 made either based on a single radionuclide, or based on user-provided
 half-life, with time unit. The differential time is either computed
@@ -64,18 +50,19 @@ dk_correct(half_life = 10,
            time_unit = "y",
            date1 = "2010-01-01")
 #>  half_life RefValue    RefDate   TargDate  dk_value
-#>         10        1 2010-01-01 2019-12-17 0.5014729
+#>         10        1 2010-01-01 2023-04-27 0.3973055
 ```
 
 Use this function to correct for the value needed on dates it was used.
-Let the function obtain the half-life from the `RadDecay` data. In the
-example, we have a disk source with an original count rate of 10000 cpm:
+Let the function obtain the half-life from the ICRP Pulbication 107
+decay data in the `RadData` R package. In the example, we have a disk
+source with an original count rate of 10000 cpm:
 
 ``` r
 dk_correct(RN_select = "Sr-90",
-  date1 = "2005-01-01",
-  date2 = c("2009-01-01","2009-10-01"),
-  A1 = 10000)
+           date1 = "2005-01-01",
+           date2 = c("2009-01-01","2009-10-01"),
+           A1 = 10000)
 #>     RN half_life units decay_mode
 #>  Sr-90     28.79     y         B-
 #> 
@@ -102,18 +89,92 @@ dk_correct(RN_select = "Cs-137",
 
 Other decay functions answer the following questions:
 
-  - How long does it take to decay something with a given activity, or
-    how old is a sample if it has decayed from? **dk\_time**
+- How long does it take to decay something with a given activity, or how
+  old is a sample if it has decayed from? **dk_time**
 
-  - Given a percentage reduction in activity, how many half-lives have
-    passed.**dk\_pct\_to\_num\_half\_life**
+- Given a percentage reduction in activity, how many half-lives have
+  passed.**dk_pct_to_num_half_life**
 
-  - Given two or more data points, estimate the half-life:
-    **half\_life\_2pt**
+- Given two or more data points, estimate the half-life:
+  **half_life_2pt**
+
+### radionuclides
+
+Search by alpha, beta, photon or use the general screen option.
+
+`RN_search_phot_by_E` allows screening based on energy, half-life, and
+minimum probability. Also available are `RN_search_alpha_by_E`,
+`RN_search_beta_by_E`, and `bin_screen_phot`. `RN_bin_screen_phot`
+allows limiting searches to radionuclides with emissions in an energy
+bin of interest with additional filters for not having photons in other
+specified energy bins. Results for all these search functions may be
+plotted with `RN_plot_spectrum`.
+
+Here’s a search for photon energy between 0.99 and 1.01 MeV, half-life
+between 13 and 15 minutes, and probability at least 1e-3
+
+``` r
+search_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-3)
+```
+
+| RN     | code_AN |   E_MeV |      prob | half_life | units | decay_constant |
+|:-------|:--------|--------:|----------:|----------:|:------|---------------:|
+| Pr-136 | G       | 0.99100 | 0.0016768 |     13.10 | m     |      0.0008819 |
+| Pr-136 | G       | 1.00070 | 0.0503040 |     13.10 | m     |      0.0008819 |
+| Re-178 | G       | 1.00440 | 0.0057600 |     13.20 | m     |      0.0008752 |
+| Pr-147 | G       | 0.99597 | 0.0083220 |     13.40 | m     |      0.0008621 |
+| Nb-88  | G       | 0.99760 | 0.0041000 |     14.50 | m     |      0.0007967 |
+| Mo-101 | G       | 1.00740 | 0.0017300 |     14.61 | m     |      0.0007907 |
+| Sm-140 | G       | 0.99990 | 0.0012000 |     14.82 | m     |      0.0007795 |
+
+``` r
+RN_plot_spectrum(search_results)
+#> [1] "No matches"
+```
+
+You can also plot a spectrum in one step, skipping the data save:
+
+``` r
+ RN_plot_spectrum(
+   desired_RN = c("Pu-238", "Pu-239", "Am-241"), rad_type = "A",
+   photon = FALSE, prob_cut = 0.01, log_plot = 0)
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+
+The `RN_index_screen` function helps find a radionuclide of interest
+based on decay mode, half-life, and total emission energy.
+
+In this example, we search for radionuclides decaying by spontaneous
+fission with half-lives between 6 months and 2 years.
+
+``` r
+RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
+```
+
+| RN     | half_life | units |
+|:-------|----------:|:------|
+| Es-254 |     275.7 | d     |
+| Cf-248 |     334.0 | d     |
+
+Other radionuclides family functions:
+
+- Obtain a specific activity with **RN_Spec_Act**.
+
+- Find a potential radionuclide parent with **RN_find_parent**.
+
+``` r
+
+RN_find_parent("Th-230")
+#>       RN
+#> 1 Ac-230
+#> 2 Pa-230
+#> 3  U-234
+```
 
 ### rad measurements functions
 
-**air\_dens\_cf** Correct *vented ion chamber readings* based on
+**air_dens_cf** Correct *vented ion chamber readings* based on
 difference in air pressure (readings in degrees Celsius and mm Hg):
 
 ``` r
@@ -129,7 +190,7 @@ rdg <- 100
 #> [1] 103.4112
 ```
 
-**neutron\_geom\_cf**
+**neutron_geom_cf**
 
 Correct for *geometry* when reading a close *neutron* source. Example:
 neutron rem detector with a radius of 11 cm and source near surface:
@@ -139,7 +200,7 @@ neutron_geom_cf(11.1, 11)
 #> [1] 0.7236467
 ```
 
-**disk\_to\_disk\_solid\_angle**
+**disk_to_disk_solid_angle**
 
 Correct for a mismatch between the *source calibration* of a *counting
 system* and the item being measured. A significant factor in the
@@ -155,18 +216,25 @@ angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.045531533 0.002080926
+#> [1] 0.046530285 0.002109366
 ```
 
 An optional plot is available in 2D or 3D:
 
 ``` r
+  library(ggplot2)
+theme_update(# axis labels
+             axis.title = element_text(size = 7),
+             # tick labels
+             axis.text = element_text(size = 5),
+             # title 
+             title = element_text(size = 5))
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "3d")))
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.png" width="50%" />
+<img src="man/figures/README-unnamed-chunk-16-1.png" width="50%" style="display: block; margin: auto;" />
 
-    #> [1] 0.049646801 0.002166732
+    #> [1] 0.04890220 0.00215459
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -176,7 +244,7 @@ then take a ratio of the two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05418621 0.002261587
+#>  0.05163563 0.002220242
 ```
 
 Correct for the mismatch:
@@ -184,14 +252,14 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>  mean_eff      SEM
-#>  1.091434 1.043778
+#>  1.055896 1.030471
 ```
 
 This makes sense - the air sample has particles originating outside the
 source radius, so more of them will be lost, thus an adjustment is
 needed for the activity measurement.
 
-**scaler\_sim**
+**scaler_sim**
 
 *Scaler counts*: obtain quick distributions for parameters of interest:
 
@@ -199,9 +267,9 @@ needed for the activity measurement.
 scaler_sim(true_bkg = 50, true_samp = 10, ct_time = 20, trials = 1e5)
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="50%" />
+<img src="man/figures/README-unnamed-chunk-19-1.png" width="50%" style="display: block; margin: auto;" />
 
-**rate\_meter\_sim**
+**rate_meter_sim**
 
 *Rate meters*: In the ratemeter simulation, readings are plotted once
 per second for a default time of 600 seconds. The meter starts with a
@@ -220,11 +288,13 @@ time constant:
 rate_meter_sim(cpm_equilibrium = 270, meter_scale_increments = seq(100, 1000, 20))
 ```
 
-<img src="man/figures/README-unnamed-chunk-14-1.png" width="50%" />
+<img src="man/figures/README-unnamed-chunk-20-1.png" width="50%" style="display: block; margin: auto;" />
 
 To estimate *time constant*, use `tau.estimate`
 
-### Stay-time computation
+### Some stand-alone functions
+
+#### Stay-time computation
 
 Given a dose rate, dose allowed, and a safety margin (default = 20%),
 calculate stay time with: `stay_time`
@@ -235,92 +305,62 @@ stay_time(dose_rate = 120, dose_allowed = 100, margin =  20)
 #> [1] 40
 ```
 
+#### half-value and tenth value computation
+
+Given a set of radiation levels through varying thicknesses of material,
+compute the half-values, tenth-values, and homogeneity coefficients.
+
+``` r
+hvl(x = mm_Al, y = mR_h) 
+#>   thickness response        mu      hvl      tvl        hc
+#> 1         0    7.428        NA       NA       NA        NA
+#> 2         1    6.272 0.1691614 4.097550 13.61177 0.9676121
+#> 3         2    5.325 0.1636826 4.234704 14.06738 0.9810918
+#> 4         3    4.535 0.1605876 4.316317 14.33850 0.9745802
+#> 5         4    3.878 0.1565055 4.428899 14.71248 0.9984235
+#> 6         5    3.317 0.1562588 4.435892 14.73571        NA
+```
+
 ### mcnp tools functions
 
 If you create MCNP inputs, these functions may be helpful:
 
-**mcnp\_si\_sp\_RD** Obtain emission data from the RadData package and
-write to a file for use with the radiation transport code, MCNP.
+**mcnp_sdef_erg_line** Obtain emission data from the `RadData` package
+for use with the radiation transport code, MCNP, when you want a “line”
+source from individual radionuclides. Use **mcnp_sdef_erg_hist** when
+you have histogram data and want to format it nicely for MCNP.
 
-**mcnp\_si\_sp\_hist**
+**mcnp_matrix_rotations**
 
-  - Create an *energy distribution* from histogram data with:
-    `mcnp_si_sp_hist` Or use `mcnp_si_sp_hist_scan` to quickly copy and
-    paste data interactively.
+- Determine the entries needed for MCNP *coordinate transformation
+  rotation*
 
-**mcnp\_matrix\_rotations**
+``` r
+mcnp_matrix_rotations("z", 90)
+#> [1]  0  1  0 -1  0  0  0  0  1
+```
 
-  - Determine the entries needed for MCNP *coordinate transformation
-    rotation*
+**mcnp_cone_angle** This is just the square of the tangent of the angle
+in radians, but the argument used here is degree.
 
-**mcnp\_cone\_angle**
+``` r
+mcnp_cone_angle(30)
+#> [1] 0.3333333
+```
 
-  - Quickly obtain the *cone angle* entry
+**mcnp_plot_out_spec**
 
-**mcnp\_plot\_out\_spec**
+For *MCNP outputs*, plot the results of a tally with *energy bins*. The
+fastest way to do this is with `mcnp_scan2plot`.
 
-For *MCNP outputs*, plot the results of a tally with *energy bins*.
-Either first save your data to a text file, or copy and paste it using
-`mcnp_scan2spec.df`. Then plot it using your favorite method, or do a
-quick plot with `mcnp_plot_out_spec`:
+Alternatively, if you want to get your data into R, first save it in a
+text file and import it to R. (Base R provides methods with `read.table`
+or you might prefer options from the `readr` or `readxl` packages.) Or
+you can copy and paste your data using `mcnp_scan_save`. You can then
+plot with `mcnp_plot_out_spec` (below) or design your own plot.
 
 ``` r
 mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 ```
 
-### radionuclides
-
-Search by alpha, beta, photon or use the general screen option.
-
-`search_phot_by_E` allows screening based on energy, half-life, and
-minimum probability. Also available are `search_alpha_by_E`,
-`search_beta_by_E`, and `bin_screen_phot`. `bin_screen_phot` allows
-limiting searches to radionuclides with emissions in an energy bin of
-interest with additional filters for not having photons in other
-specified energy bins. Results for all these search functions may be
-plotted with `RN_plt`.
-
-Here’s a search for photon energy between 0.99 and 1.01 MeV, half-life
-between 13 and 15 minutes, and probability at least 1e-4
-
-``` r
-search_results <- search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
-```
-
-| RN     | code\_AN |  E\_MeV |      prob | half\_life | units | decay\_constant |
-| :----- | :------- | ------: | --------: | ---------: | :---- | --------------: |
-| Pr-136 | G        | 0.99100 | 0.0016768 |      13.10 | m     |       0.0008819 |
-| Pr-136 | G        | 1.00070 | 0.0503040 |      13.10 | m     |       0.0008819 |
-| Re-178 | G        | 1.00440 | 0.0057600 |      13.20 | m     |       0.0008752 |
-| Pr-147 | G        | 0.99597 | 0.0083220 |      13.40 | m     |       0.0008621 |
-| Xe-138 | G        | 0.99680 | 0.0006300 |      14.08 | m     |       0.0008205 |
-| Nb-88  | G        | 0.99760 | 0.0041000 |      14.50 | m     |       0.0007967 |
-| Mo-101 | G        | 1.00740 | 0.0017300 |      14.61 | m     |       0.0007907 |
-| Sm-140 | G        | 0.99990 | 0.0012000 |      14.82 | m     |       0.0007795 |
-
-``` r
-RN_plt(spec_0.1_0.3)
-```
-
-<img src="man/figures/README-unnamed-chunk-20-1.png" width="100%" />
-
-The `RN_index_screen` function helps find a radionuclide of interest
-based on decay mode, half-life, and total emission energy.
-
-In this example, we search for radionuclides decaying by spontaneous
-fission with half-lives between 6 months and 2 years.
-
-``` r
-RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
-```
-
-| RN     | half\_life | units |
-| :----- | ---------: | :---- |
-| Es-254 |      275.7 | d     |
-| Cf-248 |      334.0 | d     |
-
-Other radionuclides family functions:
-
-  - Provide specific activity **RN\_Spec\_Act**
-
-  - Where did this radionuclide decay from? **RN\_find\_parent**
+<img src="man/figures/README-unnamed-chunk-27-1.png" width="75%" style="display: block; margin: auto;" />
