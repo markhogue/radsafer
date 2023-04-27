@@ -1,5 +1,5 @@
-# radsafer (version 2.2.7)
-***2023-04-11*** Adding new function to compute half-value layers and tenth-value layers. Combining and renaming functions to make energy cards for MCNP. Tweaks to many functions to enhance use of numeric results.
+# radsafer (version 2.2.8)
+***2023-04-27*** Adding new function to compute half-value layers and tenth-value layers. Combining and renaming functions to make energy cards for MCNP. Tweaks to many functions to enhance use of numeric results. 
 
 # radsafer (version 2.2.6)
 ***2022-02-02*** Two functions for providing source energy distributions for MCNP have been updated to make them easier to use. Previously, version 2.2.2 implemented a CRAN requirement in `mcnp_si_sp_hist` and `mcnp_si_sp_RD` to ensure users gave consent to any file writing. This was implemented with a required 'y' response to a dialog in the console. This has proven to be cumbersome and prevented use of these functions in R markdown files. This version changes the permission to a function parameter that defaults to 'n', retaining the permission requirement while allowing greater ease of use.
