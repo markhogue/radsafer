@@ -1,8 +1,8 @@
 Package: radsafer
 Type: Package
 Title: Radiation Safety 
-Version: 2.2.7
-Date: 2023-04-11
+Version: 2.2.8
+Date: 2023-04-27
 Author: Mark Hogue <mark.hogue.chp@gmail.com>
 Maintainer: Mark Hogue <mark.hogue.chp@gmail.com>
 Description: Provides functions for radiation safety, also known as
