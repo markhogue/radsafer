@@ -3,3 +3,4 @@
 ^CRAN-SUBMISSION$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^README.Rmd
