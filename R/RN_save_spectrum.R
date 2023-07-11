@@ -5,7 +5,7 @@
 #'
 #' @family radionuclides
 #'
-#' @inheritDotParams RN_plot_spectrum
+#' @inheritParams RN_plot_spectrum
 #'
 #' @examples
 #' Sr_Y_90_df <- RN_save_spectrum(desired_RN = c("Sr-90", "Y-90"), rad_type = "B-", 

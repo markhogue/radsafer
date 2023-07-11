@@ -35,7 +35,8 @@
 #'  MCNP mesh tally setting of iints, jints, or kints.
 #'
 #' @examples
-#' mcnp_mesh_bins(target = 30, width = 10, lowest_less = 0, highest_less = 15, highest_high = 304.8, lowest_high = 250)
+#' mcnp_mesh_bins(target = 30, width = 10, lowest_less = 0,
+#'  highest_less = 15, highest_high = 304.8, lowest_high = 250)
 #' #'
 #' @export
 mcnp_mesh_bins <- function(target,

@@ -7,11 +7,9 @@
 RN_save_spectrum(desired_RN, rad_type = NULL, photon = FALSE, prob_cut = 0)
 }
 \arguments{
-\item{...}{
-  Arguments passed on to \code{\link[=RN_plot_spectrum]{RN_plot_spectrum}}
-  \describe{
-    \item{\code{desired_RN}}{Radionuclide in form "Ba-137m"}
-    \item{\code{rad_type}}{Radiation type, leave NULL if selecting photons or
+\item{desired_RN}{Radionuclide in form "Ba-137m"}
+
+\item{rad_type}{Radiation type, leave NULL if selecting photons or
 select from:
 
 'X' for X-Ray
@@ -41,20 +39,14 @@ select from:
 'FF' for Fission Fragment
 
 'N' for Neutron}
-    \item{\code{photon}}{Use only if you do not specify \code{rad_type}.
+
+\item{photon}{Use only if you do not specify \code{rad_type}.
 TRUE will select all rad_types that are photons.
 Note that if you select \code{rad_type = "G"}, for example, you
 will not get X-rays or Annihilation Quanta (the 0.511 MeV
 photon from pair annihilation).}
-    \item{\code{prob_cut}}{minimum probability defaults to 0.01}
-    \item{\code{log_plot}}{0 = no log axes,
 
-1 (default) = log y-axis,
-
-2 = log both axes.
-
-This argument is ignored for B- plots.}
-  }}
+\item{prob_cut}{minimum probability defaults to 0.01}
 }
 \value{
 Dataframe with energy spectra - including probability of emission quantum, or, for
