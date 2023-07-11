@@ -1,5 +1,5 @@
 ## Revision purpose
-Adding new function and combining and renaming a couple functions. Using lifecycle to transition on the renamed functions. Tweaks to many functions to enhance use of numeric results.
+Adding new function and correcting documentation.
 
 ## Test environments
 * local Windows 11 home version 22H2

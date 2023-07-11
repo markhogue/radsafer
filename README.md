@@ -54,7 +54,7 @@ dk_correct(half_life = 10,
 ```
 
 Use this function to correct for the value needed on dates it was used.
-Let the function obtain the half-life from the ICRP Pulbication 107
+Let the function obtain the half-life from the ICRP Publication 107
 decay data in the `RadData` R package. In the example, we have a disk
 source with an original count rate of 10000 cpm:
 
@@ -216,7 +216,7 @@ angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.049525711 0.002168112
+#> [1] 0.047469927 0.002120278
 ```
 
 An optional plot is available in 2D or 3D:
@@ -234,7 +234,7 @@ theme_update(# axis labels
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="50%" style="display: block; margin: auto;" />
 
-    #> [1] 0.048550507 0.002152711
+    #> [1] 0.047585442 0.002137657
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -243,8 +243,8 @@ then take a ratio of the two.
 
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
-#>    mean_eff         SEM
-#>  0.05424739 0.002257839
+#>   mean_eff         SEM
+#>  0.0528169 0.002243531
 ```
 
 Correct for the mismatch:
@@ -252,7 +252,7 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>  mean_eff      SEM
-#>  1.117339 1.048835
+#>  1.109938 1.049528
 ```
 
 This makes sense - the air sample has particles originating outside the

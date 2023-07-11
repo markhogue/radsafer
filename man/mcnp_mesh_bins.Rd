@@ -51,7 +51,7 @@ bins at a desired value of x, y, or z. This function looks at a
 single dimension, -- in units of cm -- at a time. This is a new
 function and hasn't been tested thoroughly. The idea is to
 identify a single setting in the MCNP mesh tally for
-imesh and iints (or jmesh and jintsm or kmesh and kints). It
+imesh and iints (or jmesh and jints or kmesh and kints). It
 is designed only for uniform mesh bin sizes.
 }
 \examples{
