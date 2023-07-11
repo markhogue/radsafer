@@ -50,7 +50,7 @@ dk_correct(half_life = 10,
            time_unit = "y",
            date1 = "2010-01-01")
 #>  half_life RefValue    RefDate   TargDate  dk_value
-#>         10        1 2010-01-01 2023-04-27 0.3973055
+#>         10        1 2010-01-01 2023-07-11 0.3916907
 ```
 
 Use this function to correct for the value needed on dates it was used.
@@ -216,7 +216,7 @@ angle is:
 
 ``` r
 (as_rel_solid_angle <- as.numeric(disk_to_disk_solid_angle(r.source = 45/2, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n")))
-#> [1] 0.046530285 0.002109366
+#> [1] 0.049525711 0.002168112
 ```
 
 An optional plot is available in 2D or 3D:
@@ -234,7 +234,7 @@ theme_update(# axis labels
 
 <img src="man/figures/README-unnamed-chunk-16-1.png" width="50%" style="display: block; margin: auto;" />
 
-    #> [1] 0.04890220 0.00215459
+    #> [1] 0.048550507 0.002152711
 
 Continuing the example: the only calibration source you had available
 with the appropriate isotope has an active diameter of 20 mm. Is this a
@@ -244,7 +244,7 @@ then take a ratio of the two.
 ``` r
 (cal_rel_solid_angle <- disk_to_disk_solid_angle(r.source = 20, gap = 20, r.detector = 12.5, runs = 1e4, plot.opt = "n"))
 #>    mean_eff         SEM
-#>  0.05163563 0.002220242
+#>  0.05424739 0.002257839
 ```
 
 Correct for the mismatch:
@@ -252,7 +252,7 @@ Correct for the mismatch:
 ``` r
 (cf <- cal_rel_solid_angle / as_rel_solid_angle)
 #>  mean_eff      SEM
-#>  1.055896 1.030471
+#>  1.117339 1.048835
 ```
 
 This makes sense - the air sample has particles originating outside the
@@ -348,6 +348,17 @@ mcnp_cone_angle(30)
 #> [1] 0.3333333
 ```
 
+**mcnp_mesh_bins** This helps identify the x, y, or z parameter of a
+simple geometric mesh tally. Select a center of interest, the width of
+this center mesh, then minimum and maximum limits on the extent of the
+entire mesh. Repeat for the other dimensions.
+
+``` r
+mcnp_mesh_bins(target = 30, width = 10, lowest_less = 0, highest_less = 15, highest_high = 304.8, lowest_high = 250)
+#>  low_set high_set width numblocks
+#>        5      295    10        29
+```
+
 **mcnp_plot_out_spec**
 
 For *MCNP outputs*, plot the results of a tally with *energy bins*. The
@@ -363,4 +374,4 @@ plot with `mcnp_plot_out_spec` (below) or design your own plot.
 mcnp_plot_out_spec(photons_cs137_hist, 'example Cs-137 well irradiator')
 ```
 
-<img src="man/figures/README-unnamed-chunk-27-1.png" width="75%" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-28-1.png" width="75%" style="display: block; margin: auto;" />

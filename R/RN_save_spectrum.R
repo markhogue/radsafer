@@ -5,25 +5,7 @@
 #'
 #' @family radionuclides
 #'
-#' @param desired_RN Radionuclide in form "Ba-137m"
-#' @param rad_type Radiation type, leave NULL if selecting photons or
-#' select from:
-#' 'X' for X-Ray
-#' 'G' for Gamma
-#' 'AE' for Auger Electron
-#' 'IE' for Internal Conversion Electron
-#' 'A' for Alpha
-#' 'AR' for Alpha Recoil
-#' 'B-' for Beta Negative
-#' 'AQ' for Annihilation Quanta
-#' 'B+' for Beta Positive
-#' 'PG' for Prompt Gamma
-#' 'DG' for Delayed Gamma
-#' 'DB' for Delayed Beta
-#' 'FF' for Fission Fragment
-#' 'N' for Neutron
-#' @param photon 'Y' to select all rad_types that are photons
-#' @param prob_cut minimum probability defaults to 0
+#' @inheritDotParams RN_plot_spectrum
 #'
 #' @examples
 #' Sr_Y_90_df <- RN_save_spectrum(desired_RN = c("Sr-90", "Y-90"), rad_type = "B-", 
@@ -57,7 +39,10 @@ RN_save_spectrum <- function(desired_RN,
     cat("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
     return()
   }
-  
+  if(!is.logical(photon)){
+    cat("photon must be TRUE or FALSE. (T or F also work)")
+    return()
+  }
   # end of argument checks~~~~~~~~~~~~~~~~
   
   # all betas use ICRP_07.BET others ICRP_07.RAD

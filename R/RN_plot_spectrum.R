@@ -10,23 +10,48 @@
 #' @param desired_RN Radionuclide in form "Ba-137m"
 #' @param rad_type Radiation type, leave NULL if selecting photons or
 #' select from:
+#' 
 #' 'X' for X-Ray
+#' 
 #' 'G' for Gamma
+#' 
 #' 'AE' for Auger Electron
+#' 
 #' 'IE' for Internal Conversion Electron
+#' 
 #' 'A' for Alpha
+#' 
 #' 'AR' for Alpha Recoil
+#' 
 #' 'B-' for Beta Negative
+#' 
 #' 'AQ' for Annihilation Quanta
+#' 
 #' 'B+' for Beta Positive
+#' 
 #' 'PG' for Prompt Gamma
+#' 
 #' 'DG' for Delayed Gamma
+#' 
 #' 'DB' for Delayed Beta
+#' 
 #' 'FF' for Fission Fragment
+#' 
 #' 'N' for Neutron
-#' @param photon 'Y' to select all rad_types that are photons
+#' 
+#' @param photon Use only if you do not specify `rad_type`. 
+#' TRUE will select all rad_types that are photons. 
+#' Note that if you select `rad_type = "G"`, for example, you 
+#' will not get X-rays or Annihilation Quanta (the 0.511 MeV
+#' photon from pair annihilation).
 #' @param prob_cut minimum probability defaults to 0.01
-#' @param log_plot 0 = no log axes, 1 (default) = log y-axis, 2 = log both axes. Ignored for B- plots.
+#' @param log_plot 0 = no log axes, 
+#' 
+#' 1 (default) = log y-axis, 
+#' 
+#' 2 = log both axes. 
+#' 
+#' This argument is ignored for B- plots.
 #'
 #' @examples
 #' RN_plot_spectrum(
@@ -70,7 +95,10 @@ RN_plot_spectrum <- function(desired_RN,
     cat("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
     return()
   }
-
+ if(!is.logical(photon)){
+   cat("photon must be TRUE or FALSE. (T or F also work)")
+   return()
+ }
   # end of argument checks~~~~~~~~~~~~~~~~
 
   # all betas use ICRP_07.BET others ICRP_07.RAD

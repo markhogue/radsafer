@@ -17,24 +17,48 @@ RN_plot_spectrum(
 
 \item{rad_type}{Radiation type, leave NULL if selecting photons or
 select from:
+
 'X' for X-Ray
+
 'G' for Gamma
+
 'AE' for Auger Electron
+
 'IE' for Internal Conversion Electron
+
 'A' for Alpha
+
 'AR' for Alpha Recoil
+
 'B-' for Beta Negative
+
 'AQ' for Annihilation Quanta
+
 'B+' for Beta Positive
+
 'PG' for Prompt Gamma
+
 'DG' for Delayed Gamma
+
 'DB' for Delayed Beta
+
 'FF' for Fission Fragment
+
 'N' for Neutron}
 
-\item{photon}{'Y' to select all rad_types that are photons}
+\item{photon}{Use only if you do not specify \code{rad_type}.
+TRUE will select all rad_types that are photons.
+Note that if you select \code{rad_type = "G"}, for example, you
+will not get X-rays or Annihilation Quanta (the 0.511 MeV
+photon from pair annihilation).}
 
-\item{log_plot}{0 = no log axes, 1 (default) = log y-axis, 2 = log both axes. Ignored for B- plots.}
+\item{log_plot}{0 = no log axes,
+
+1 (default) = log y-axis,
+
+2 = log both axes.
+
+This argument is ignored for B- plots.}
 
 \item{prob_cut}{minimum probability defaults to 0.01}
 }

@@ -1,3 +1,6 @@
+# radsafer (version 2.3.0)
+***2023-07-11*** Adding new function to produce geometry parameters for MCNP geometric mesh tallies. Correcting documentation for `RN_plot_spectrum`. Adding argument check for this and `RN_save_spectrum` - the photon argument must be logical.
+
 # radsafer (version 2.2.8)
 ***2023-04-27*** Adding new function to compute half-value layers and tenth-value layers. Combining and renaming functions to make energy cards for MCNP. Tweaks to many functions to enhance use of numeric results. 
 

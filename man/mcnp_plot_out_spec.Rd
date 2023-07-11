@@ -32,6 +32,7 @@ Other mcnp tools:
 \code{\link{mcnp_cone_angle}()},
 \code{\link{mcnp_est_nps}()},
 \code{\link{mcnp_matrix_rotations}()},
+\code{\link{mcnp_mesh_bins}()},
 \code{\link{mcnp_scan2plot}()},
 \code{\link{mcnp_scan_save}()},
 \code{\link{mcnp_sdef_erg_hist}()},
