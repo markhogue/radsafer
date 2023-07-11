@@ -56,7 +56,7 @@ dk_correct(half_life = 10,
            date1 = "2010-01-01")
 ```
 
-Use this function to correct for the value needed on dates it was used. Let the function obtain the half-life from the ICRP Pulbication 107 decay data in the `RadData` R package. In the example, we have a disk source with an original count rate of 10000 cpm:
+Use this function to correct for the value needed on dates it was used. Let the function obtain the half-life from the ICRP Publication 107 decay data in the `RadData` R package. In the example, we have a disk source with an original count rate of 10000 cpm:
   
 ```{r warning=FALSE}
 dk_correct(RN_select = "Sr-90",
@@ -238,6 +238,11 @@ If you create MCNP inputs, these functions may be helpful:
 
 ```{r}
 mcnp_matrix_rotations("z", 90)
+```
+
+**mcnp_mesh_bins** This helps identify the x, y, or z parameter of a simple geometric mesh tally. Select a center of interest, the width of this center mesh, then minimum and maximum limits on the extent of the entire mesh. Repeat for the other dimensions. 
+```{r}
+mcnp_mesh_bins(target = 30, width = 10, lowest_less = 0, highest_less = 15, highest_high = 304.8, lowest_high = 250)
 ```
 
 **mcnp_cone_angle** This is just the square of the tangent of the angle in radians, but the argument used here is degree.
