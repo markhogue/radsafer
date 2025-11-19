@@ -25,6 +25,8 @@ mcnp_plot_out_spec <- function(spec.df, title = deparse(substitute(spec.df)), lo
     )
   }
 
+  message("This function is for plotting source or result histograms, e.g. from MCNP outputs. If you want to plot emission by energy from a radionuclide, consider `RN_plot_spectrum`.")
+  
   E_MeV <- prob <- NULL
 
     p <- ggplot2::ggplot(data = spec.df, ggplot2::aes(E_MeV, prob)) +

@@ -1,4 +1,4 @@
-#' Plot radionuclide emission spectra.
+#' Plot radionuclide emission spectra directly from ICRP-107 data.
 #'
 #' Plot emission spectra based on radionuclide and desired radiation type.
 #' Plot on log axes if desired.
@@ -84,19 +84,19 @@ RN_plot_spectrum <- function(desired_RN,
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
   if (!is.null(rad_type)) {
     if (!rad_type %in% rt_allowed) {
-      cat("Invalid specification for rad_type.\n")
-      cat("Please enter one of these: \n")
-      cat(rt_allowed)
-      cat(" (in quotes) or NULL and select photon = TRUE")
+      message("Invalid specification for rad_type.\n")
+      message("Please enter one of these: \n")
+      message(rt_allowed)
+      message(" (in quotes) or NULL and select photon = TRUE")
     }
   }
   # Are both rad_type and photon selected?
   if (!is.null(rad_type) & photon == TRUE) {
-    cat("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
+    message("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
     return()
   }
  if(!is.logical(photon)){
-   cat("photon must be TRUE or FALSE. (T or F also work)")
+   message("photon must be TRUE or FALSE. (T or F also work)")
    return()
  }
   # end of argument checks~~~~~~~~~~~~~~~~
@@ -175,11 +175,6 @@ RN_plot_spectrum <- function(desired_RN,
       ggplot2::xlab("Energy, MeV") + 
       ggplot2::ylab("probability density") 
     
-      # ggplot2::guides( # fill = ggplot2::guide_legend(title = "radionuclide", size = 2),
-      #   color = ggplot2::guide_legend(title = "radionuclide", size = 2),
-      #   shape = ggplot2::guide_legend(title = "radionuclide", size = 2)
-     
-
     if (log_plot == 1) p <- p + ggplot2::scale_y_log10()
     if (log_plot == 2) p <- p + ggplot2::scale_x_log10() + ggplot2::scale_y_log10()
     p
@@ -191,16 +186,13 @@ RN_plot_spectrum <- function(desired_RN,
   if (dat_set == "B") {
     p <- ggplot2::ggplot(
       data = spec_df,
-      ggplot2::aes(E_MeV, A, color = RN, shape = RN)
+      ggplot2::aes(E_MeV, A)
     ) +
-      ggthemes::theme_calc() +
       ggplot2::xlab("Energy, MeV") +
       ggplot2::ylab("probability density") +
-      ggplot2::geom_line(size = 1.5) +
-      ggplot2::scale_colour_hue(l = 80, c = 150) +
-      ggplot2::ggtitle(RadData::rad_codes$description[which(RadData::rad_codes$code_AN == rad_type)])
-    if (log_plot == 1) p <- p + ggplot2::scale_y_log10()
-    if (log_plot == 2) p <- p + ggplot2::scale_x_log10() + ggplot2::scale_y_log10()
+      ggplot2::geom_line(linewidth = 1.5) +
+      ggplot2::ggtitle(RadData::rad_codes$description[which(RadData::rad_codes$code_AN == rad_type)]) +
+      ggplot2::facet_wrap(ggplot2::vars(RN), scales = "free")
   }
   p
 }

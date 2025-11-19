@@ -28,19 +28,25 @@ RN_save_spectrum <- function(desired_RN,
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
   if (!is.null(rad_type)) {
     if (!rad_type %in% rt_allowed) {
-      cat("Invalid specification for rad_type.\n")
-      cat("Please enter one of these: \n")
-      cat(rt_allowed)
-      cat(" (in quotes) or NULL and select photon = TRUE")
+      message("Invalid specification for rad_type.\n")
+      message("Please enter one of these: \n")
+      message(rt_allowed)
+      message(" (in quotes) or NULL and select photon = TRUE")
     }
   }
+  
+  # Are neither photon or rad_type selected?
+  if (is.null(rad_type) && is.null(photon)) {
+      message("Either a `rad_type` or `photon` must be selected.\n")
+    }
+  
   # Are both rad_type and photon selected?
   if (!is.null(rad_type) & photon == TRUE) {
-    cat("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
+    message("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
     return()
   }
   if(!is.logical(photon)){
-    cat("photon must be TRUE or FALSE. (T or F also work)")
+    message("photon must be TRUE or FALSE. (T or F also work)")
     return()
   }
   # end of argument checks~~~~~~~~~~~~~~~~
@@ -67,7 +73,7 @@ RN_save_spectrum <- function(desired_RN,
     
     
     if (photon == FALSE) {
-      spec_df <- spec_df[which(spec_df$code_AN == rad_type), c(1, 3, 4)]
+      spec_df <- spec_df[which(spec_df$code_AN == rad_type), ]
     }
   }
   
@@ -75,7 +81,7 @@ RN_save_spectrum <- function(desired_RN,
   if (photon == TRUE) {
     spec_df <- RadData::ICRP_07.RAD[which(RadData::ICRP_07.RAD$RN %in% desired_RN), ]
     
-    spec_df <- spec_df[which(spec_df$is_photon == TRUE), c(1, 3, 4)]
+    spec_df <- spec_df[which(spec_df$is_photon == TRUE), ]
   }
   
   # check for no matches

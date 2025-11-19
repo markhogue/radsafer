@@ -16,4 +16,8 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Mark Hogue \email{mark.hogue.chp@gmail.com}
+
+}
 \keyword{internal}

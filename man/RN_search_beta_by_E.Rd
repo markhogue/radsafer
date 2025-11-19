@@ -40,6 +40,7 @@ Other radionuclides:
 \code{\link{RN_bin_screen_phot}()},
 \code{\link{RN_index_screen}()},
 \code{\link{RN_info}()},
+\code{\link{RN_plot_df}()},
 \code{\link{RN_plot_search_results}()},
 \code{\link{RN_plot_spectrum}()},
 \code{\link{RN_save_spectrum}()},

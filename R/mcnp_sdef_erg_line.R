@@ -49,15 +49,15 @@ mcnp_sdef_erg_line <- function(desired_RN, rad_type = NULL, photon = FALSE, cut 
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
   if (!is.null(rad_type)) {
     if (!rad_type %in% rt_allowed) {
-      cat("Invalid specification for rad_type.\n")
-      cat("Please enter one of these: \n")
-      cat(rt_allowed)
-      cat(" (in quotes) or NULL and select photon = TRUE")
+      message("Invalid specification for rad_type.\n")
+      message("Please enter one of these: \n")
+      message(rt_allowed)
+      message(" (in quotes) or NULL and select photon = TRUE")
     }
   }
   # Are both rad_type and photon selected?
   if (!is.null(rad_type) & photon == TRUE) {
-    cat("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
+    message("Enter either rad_type = 'a rad_type', or photon = TRUE, but not both.")
     return()
   }
 
@@ -216,12 +216,12 @@ mcnp_sdef_erg_line <- function(desired_RN, rad_type = NULL, photon = FALSE, cut 
     col_names = FALSE,
     append = TRUE
   )
-  cat("\n")
-  cat(paste0(
+  message("\n")
+  message(paste0(
     "The output is appeneded to file, si_sp.txt, in your working directory, ",
     my_dir, "."
   ))
-  cat("\n")
+  message("\n")
 }
   # return a data frame to allow plots, etc.
   si.sp

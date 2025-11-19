@@ -21,15 +21,15 @@ mcnp_sdef_erg_hist <- function(entry_mode = "scan",
                                  write_permit = "n",
                                  log_plot = 0) {
   if (write_permit  != "y") {
-    cat("File will not be written because the write_permit parameter is not \"y\"")
-    cat("\n")
-    cat("But you can copy results from screen. \n \n")
+    message("File will not be written because the write_permit parameter is not \"y\"")
+    message("\n")
+    message("But you can copy results from screen. \n \n")
   }
 
   if(entry_mode == "scan") {
   # scan in energy bins
-  cat("Identify ENERGY bins. \n")
-  cat("Copy and paste a single column of energy bins to screen. \n
+  message("Identify ENERGY bins. \n")
+  message("Copy and paste a single column of energy bins to screen. \n
   Then hit [enter] \n 
   Do not include column header. ")
   E_MeV <- scan()
@@ -38,8 +38,8 @@ mcnp_sdef_erg_hist <- function(entry_mode = "scan",
 
   if(entry_mode == "scan") {
   # scan in bin probabilities
-  cat("Next, identify bin PROBABILITIES.")
-  cat("Copy and paste a single column of energy bin probabilities or emission rates to screen. \n \n
+  message("Next, identify bin PROBABILITIES.")
+  message("Copy and paste a single column of energy bin probabilities or emission rates to screen. \n \n
       Then hit [enter] \n 
       Do not include column header. ")
   bin_prob <- scan()
@@ -50,7 +50,7 @@ mcnp_sdef_erg_hist <- function(entry_mode = "scan",
   if(all(diff(E_MeV) > 0)) sorted <- "increasing"
   if(all(diff(E_MeV) < 0)) sorted <- "decreasing"
   if(is.na(sorted)) {
-    cat("The data does not seem to be sorted. \n A possible cause is data was pasted from a spreadsheet with an insufficient number of digits shown. \n")    
+    message("The data does not seem to be sorted. \n A possible cause is data was pasted from a spreadsheet with an insufficient number of digits shown. \n")    
     stop("Energy data is neither monotonically increasing or decreasing. \n")
     
   } 
@@ -152,14 +152,14 @@ mcnp_sdef_erg_hist <- function(entry_mode = "scan",
     collab = rep("     ", 5),
     quote = FALSE
   )
-  cat("\n")
-  cat(prob_sum)
-  cat("\n")
-  cat(paste0(
+  message("\n")
+  message(prob_sum)
+  message("\n")
+  message(paste0(
     "The output file, si.sp.hist.txt, is going to your working directory, ",
     my_dir, " but you can copy from the screen above instead."
   ))
-  cat("\n")
+  message("\n")
   E.avg <- fraction <- NULL # avoid no visible binding note
   # Make data frame for plotting
   spec.df <- data.frame("E.avg" = E_MeV_raw[1:(length(E_MeV_raw) - 1)] + c(diff(E_MeV_raw)), "fraction" = bin_prob_raw)

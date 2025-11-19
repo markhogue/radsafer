@@ -1,8 +1,8 @@
 ## Revision purpose
-Adding new function and correcting documentation.
+Removed deprecated functions.  Changed all function messages to be identified as messages. Removed deprecated ggplot2 parameter. Updates and streamlines.
 
 ## Test environments
-* local Windows 11 home version 22H2
+* local Windows 11 home version 25H2
 * passed all checks with devtools::rhub::check(
   platform="windows-x86_64-devel",
   env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = "always")

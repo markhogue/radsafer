@@ -32,17 +32,17 @@
 #' # 3.0000000 1.037092e-04 0.7659850
 #' @export
 mcnp_scan2plot <- function(title = "", log_plot = FALSE) {
-  cat("Use this function to copy, paste and save'\n'")
-  cat("four column source histogram distribution '\n'")
-  cat("or three column binned-by-energy tally results'\n'")
+  message("Use this function to copy, paste and save'\n'")
+  message("four column source histogram distribution '\n'")
+  message("or three column binned-by-energy tally results'\n'")
   cols <- readline("Enter number of columns to enter (3 or 4). ")
   if (!cols %in% c(3, 4)) {
     stop("This only works for three or four column energy dists.")
   }
   if (cols == 3) {
-    cat("Copy and paste MCNP three column'\n'")
-    cat("binned-by-energy tally results (no header)'\n'")
-    cat("then hit [enter].'\n'")
+    message("Copy and paste MCNP three column'\n'")
+    message("binned-by-energy tally results (no header)'\n'")
+    message("then hit [enter].'\n'")
     raw_scan <- scan()
     mtrx <- matrix(raw_scan, ncol = 3, byrow = TRUE)
     spec.df <- data.frame(
@@ -51,9 +51,9 @@ mcnp_scan2plot <- function(title = "", log_plot = FALSE) {
     )
   }
   if (cols == 4) {
-    cat("copy and paste MCNP source histogram distribution,'\n'")
-    cat("with no header'\n'")
-    cat("then hit [enter]'\n'")
+    message("copy and paste MCNP source histogram distribution,'\n'")
+    message("with no header'\n'")
+    message("then hit [enter]'\n'")
     raw_scan <- scan()
     mtrx <- matrix(raw_scan, ncol = 4, byrow = TRUE)
     spec.df <- data.frame(

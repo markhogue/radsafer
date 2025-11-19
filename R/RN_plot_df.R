@@ -2,17 +2,11 @@
 #' 
 #' @family radionuclides
 #' 
-#' @seealso  Use [RN_search_alpha_by_E()], [RN_search_beta_by_E()], 
+#' @seealso  Use [RN_save_spectrum()], [RN_search_alpha_by_E()], [RN_search_beta_by_E()], 
 #' or [RN_search_phot_by_E()] and save the results, 
 #' e.g. save_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
 #' 
 #' @description Plots results by radionuclide with E_MeV on x-axis and prob on y-axis. 
-#' `r lifecycle::badge("deprecated")`:
-#' This function is deprecated 
-#' and will be removed in a future package revision. 
-#' For now, it is still usable. 
-#' The replacement, `RN_plot_df` plots saved data frames including those saved 
-#' with search functions.
 #'    
 #' @param discrete_df A data frame results from a `radsafer` search function. 
 #' Columns must include RN, E_MeV, and prob, and code_AN.
@@ -21,11 +15,13 @@
 #' @param log_plot 0 = no log axes (default), 1  = log y-axis, 2 = log both axes.
 #' @examples
 #' search_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-4)
-#' RN_plot_search_results(search_results, title = "example1", log_plot = 0)
+#' RN_plot_df(search_results, title = "example1", log_plot = 0)
+#' search_results <- RN_save_spectrum("In-115m", photon = TRUE)
+#' RN_plot_df(search_results, title = "In-115m", log_plot = 0)
 #' @export
-RN_plot_search_results <- function(discrete_df, 
-                                   title = deparse(substitute(discrete_df)), 
-                                   log_plot = 0) {
+RN_plot_df <- function(discrete_df, 
+                       title = deparse(substitute(discrete_df)), 
+                       log_plot = 0) {
 
     E_MeV <- prob <- RN <- code_AN <- A <-  NULL
     
