@@ -1,3 +1,7 @@
+# radsafer (version 2.4.0)
+***2025-11-05*** 
+Removed deprecated functions. Changed all function messages to be identified as messages, so users can manage them better, for example, by including in a markdown style document, a YAML statement, message=FALSE. Changed beta distribution plots in `RN_plot_spectrum` to use `ggplot2::facet_wrap`. Removed deprecated width option from `ggplot2::geom_line` applications. Replacing `RN_plot_search_results` with `RN_plot_df` which will plot from `RN_save_spectrum` as well as with the search functions.
+
 # radsafer (version 2.3.0)
 ***2023-07-11*** Adding new function to produce geometry parameters for MCNP geometric mesh tallies. Correcting documentation for `RN_plot_spectrum`. Adding argument check for this and `RN_save_spectrum` - the photon argument must be logical.
 
@@ -67,7 +71,7 @@ weeks.
 
 # radsafer (version 2.0.0)
 
-***2019-05-05*** Hurray\! This is the grand opening of radsafer\! The
+***2019-05-05*** Hooray\! This is the grand opening of radsafer\! The
 ICRP 107 data in RadData is now effectively utilized for radionuclide
 screening, plots, and use with MCNP. MCNP utilities have been expanded -
 see the Readme file for details.

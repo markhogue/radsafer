@@ -50,13 +50,13 @@ mcnp_mesh_bins <- function(target,
   middle_box_low <- target - width / 2
   max_blocks_low <- floor((middle_box_low - lowest_less)/width)
   low_set <- middle_box_low - max_blocks_low * width
-  if(low_set > highest_less) cat("minimum range low not met")
+  if(low_set > highest_less) message("minimum range low not met")
   
   # compute maximum numbers of blocks above
   middle_box_high <- target + width / 2
   max_blocks_high <- floor((highest_high - middle_box_high)/width)
   high_set <- middle_box_high +  max_blocks_high * width
-  if(high_set < highest_less) cat("minimum range high not met \n")
+  if(high_set < highest_less) message("minimum range high not met \n")
   numblocks <- max_blocks_low + max_blocks_high + 1
   
   df <- data.frame(low_set, high_set, width, numblocks)

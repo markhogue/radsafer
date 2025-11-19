@@ -35,7 +35,7 @@
 mcnp_est_nps <- function(err_target) {
   n <- as.numeric(readline(prompt = "How many tallies (1, 2 or 3) will you be scanning? "))
   stopifnot(n %in% c(1, 2, 3))
-  cat("Copy and paste MCNP tally fluctuation charts. \n 
+  message("Copy and paste MCNP tally fluctuation charts. \n 
       Then hit [enter] \n 
       Do not include column headers.")
   raw_scan <- scan()
@@ -52,23 +52,23 @@ mcnp_est_nps <- function(err_target) {
   # loop for all 1 through 3 tallies pasted
   for (i in err_loc) {
     counter <- counter + 1
-    cat("\n ")
+    message("\n ")
     if (latter_half[length(latter_half[, 1]), i] <= err_target) {
-      cat(paste0("Error target already achieved in ", tal_num[counter], " tally."))
+      message(paste0("Error target already achieved in ", tal_num[counter], " tally."))
       next
     }
     lm1 <- stats::lm(latter_half[, i] ~ log(latter_half[, 1]))
     if (summary(lm1)$adj.r.squared < 0.8) {
-      cat(paste0("Warning: Not a reliable trend in ", tal_num[counter], " tally. \n"))
+      message(paste0("Warning: Not a reliable trend in ", tal_num[counter], " tally. \n"))
     }
     if (lm1$coefficients[[2]] > 0) {
-      cat(paste0(
+      message(paste0(
         "Error trend is positive in ", tal_num[counter],
         " tally.\nResults will be erroneous.\n"
       ))
     }
     extrap_nps1 <- nps_fn(new_err, stats::coefficients(lm1)[[1]], stats::coefficients(lm1)[[2]])
-    cat("\n ")
+    message("\n ")
     print(data.frame(Tally = tal_num[counter], `Estimated nps needed` = format(extrap_nps1[1],
       digits = 2, scientific = TRUE
     ), `error target` = err_target, row.names = ""))

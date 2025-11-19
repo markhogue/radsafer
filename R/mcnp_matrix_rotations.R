@@ -21,7 +21,7 @@
 #' @export
 mcnp_matrix_rotations <- function(rot.axis, angle_degrees) {
   if (!rot.axis %in% c("x", "y", "z")) {
-    cat("axis of rotation must be either 'x', 'y' or 'z'")
+    message("axis of rotation must be either 'x', 'y' or 'z'")
     return()
   }
   # x, y, z base ('Identity') matrix
@@ -45,10 +45,10 @@ mcnp_matrix_rotations <- function(rot.axis, angle_degrees) {
 
   R <- A # to set up
   ind <- ind_fun(ax.num)
-  R[ind[1], ind[1]] <- round(cos(rot.angle), 8)
-  R[ind[1], ind[2]] <- round(-sin(rot.angle), 8)
-  R[ind[2], ind[1]] <- round(sin(rot.angle), 8)
-  R[ind[2], ind[2]] <- round(cos(rot.angle), 8)
- # print.data.frame(as.data.frame(R), row.names = "")
+  R[ind[1], ind[1]] <- cos(rot.angle)
+  R[ind[1], ind[2]] <- -sin(rot.angle)
+  R[ind[2], ind[1]] <- sin(rot.angle)
+  R[ind[2], ind[2]] <- cos(rot.angle)
+ 
   as.numeric(R)
   }
