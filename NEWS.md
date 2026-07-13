@@ -1,3 +1,7 @@
+# radsafer (version 2.4.1)
+***2026-07-13*** 
+Added minimum energy argument for RN_plot_spectrum to use with photon plots. This is to allow removal of high levels of X-rays that sometimes is present in such plots.
+
 # radsafer (version 2.4.0)
 ***2025-11-05*** 
 Removed deprecated functions. Changed all function messages to be identified as messages, so users can manage them better, for example, by including in a markdown style document, a YAML statement, message=FALSE. Changed beta distribution plots in `RN_plot_spectrum` to use `ggplot2::facet_wrap`. Removed deprecated width option from `ggplot2::geom_line` applications. Replacing `RN_plot_search_results` with `RN_plot_df` which will plot from `RN_save_spectrum` as well as with the search functions.

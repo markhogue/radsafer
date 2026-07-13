@@ -23,10 +23,10 @@ seconds, use this function to estimate tau.
 tau_estimate(pct_eq = 90, t_eq = 22)
 }
 \seealso{
-Other rad measurements: 
-\code{\link{air_dens_cf}()},
-\code{\link{disk_to_disk_solid_angle}()},
-\code{\link{neutron_geom_cf}()},
-\code{\link{scaler_sim}()}
+Other rad measurements:
+\code{\link[=air_dens_cf]{air_dens_cf()}},
+\code{\link[=disk_to_disk_solid_angle]{disk_to_disk_solid_angle()}},
+\code{\link[=neutron_geom_cf]{neutron_geom_cf()}},
+\code{\link[=scaler_sim]{scaler_sim()}}
 }
 \concept{rad measurements}

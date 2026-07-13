@@ -21,14 +21,14 @@ degrees and provides the parameter needed by MCNP.
 mcnp_cone_angle(45)
 }
 \seealso{
-Other mcnp tools: 
-\code{\link{mcnp_est_nps}()},
-\code{\link{mcnp_matrix_rotations}()},
-\code{\link{mcnp_mesh_bins}()},
-\code{\link{mcnp_plot_out_spec}()},
-\code{\link{mcnp_scan2plot}()},
-\code{\link{mcnp_scan_save}()},
-\code{\link{mcnp_sdef_erg_hist}()},
-\code{\link{mcnp_sdef_erg_line}()}
+Other mcnp tools:
+\code{\link[=mcnp_est_nps]{mcnp_est_nps()}},
+\code{\link[=mcnp_matrix_rotations]{mcnp_matrix_rotations()}},
+\code{\link[=mcnp_mesh_bins]{mcnp_mesh_bins()}},
+\code{\link[=mcnp_plot_out_spec]{mcnp_plot_out_spec()}},
+\code{\link[=mcnp_scan2plot]{mcnp_scan2plot()}},
+\code{\link[=mcnp_scan_save]{mcnp_scan_save()}},
+\code{\link[=mcnp_sdef_erg_hist]{mcnp_sdef_erg_hist()}},
+\code{\link[=mcnp_sdef_erg_line]{mcnp_sdef_erg_line()}}
 }
 \concept{mcnp tools}

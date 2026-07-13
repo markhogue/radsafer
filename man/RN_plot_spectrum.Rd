@@ -9,7 +9,8 @@ RN_plot_spectrum(
   rad_type = NULL,
   photon = FALSE,
   log_plot = 0,
-  prob_cut = 0.01
+  prob_cut = 0.01,
+  E_min = NULL
 )
 }
 \arguments{
@@ -61,6 +62,8 @@ photon from pair annihilation).}
 This argument is ignored for B- plots.}
 
 \item{prob_cut}{minimum probability defaults to 0.01}
+
+\item{E_min}{Only applicable if photon = TRUE. Select a minimum energy, in MeV. this is 0 by default, but user may want to consider 0.001 for photon spectra plots to avoid often very high probability X-rays.}
 }
 \value{
 plot of spectrum
@@ -82,7 +85,7 @@ RN_plot_spectrum(
 )
 RN_plot_spectrum(
   desired_RN = c("Co-60", "Ba-137m"), rad_type = NULL,
-  photon = TRUE, log_plot = 0
+  photon = TRUE, log_plot = 0, E_min = 0.001
 )
 RN_plot_spectrum(desired_RN = c("Co-60", "Ba-137m"), rad_type = "G")
 RN_plot_spectrum(
@@ -91,16 +94,16 @@ RN_plot_spectrum(
 )
 }
 \seealso{
-Other radionuclides: 
-\code{\link{RN_Spec_Act}()},
-\code{\link{RN_bin_screen_phot}()},
-\code{\link{RN_index_screen}()},
-\code{\link{RN_info}()},
-\code{\link{RN_plot_df}()},
-\code{\link{RN_plot_search_results}()},
-\code{\link{RN_save_spectrum}()},
-\code{\link{RN_search_alpha_by_E}()},
-\code{\link{RN_search_beta_by_E}()},
-\code{\link{RN_search_phot_by_E}()}
+Other radionuclides:
+\code{\link[=RN_Spec_Act]{RN_Spec_Act()}},
+\code{\link[=RN_bin_screen_phot]{RN_bin_screen_phot()}},
+\code{\link[=RN_index_screen]{RN_index_screen()}},
+\code{\link[=RN_info]{RN_info()}},
+\code{\link[=RN_plot_df]{RN_plot_df()}},
+\code{\link[=RN_plot_search_results]{RN_plot_search_results()}},
+\code{\link[=RN_save_spectrum]{RN_save_spectrum()}},
+\code{\link[=RN_search_alpha_by_E]{RN_search_alpha_by_E()}},
+\code{\link[=RN_search_beta_by_E]{RN_search_beta_by_E()}},
+\code{\link[=RN_search_phot_by_E]{RN_search_phot_by_E()}}
 }
 \concept{radionuclides}

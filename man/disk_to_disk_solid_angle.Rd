@@ -48,10 +48,10 @@ disk_to_disk_solid_angle(r.source = 15, gap = 20, r.detector = 10, plot.opt = "n
 \url{https://en.wikipedia.org/wiki/Algorithms_for_calculating_variance}
 }
 \seealso{
-Other rad measurements: 
-\code{\link{air_dens_cf}()},
-\code{\link{neutron_geom_cf}()},
-\code{\link{scaler_sim}()},
-\code{\link{tau_estimate}()}
+Other rad measurements:
+\code{\link[=air_dens_cf]{air_dens_cf()}},
+\code{\link[=neutron_geom_cf]{neutron_geom_cf()}},
+\code{\link[=scaler_sim]{scaler_sim()}},
+\code{\link[=tau_estimate]{tau_estimate()}}
 }
 \concept{rad measurements}

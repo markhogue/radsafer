@@ -105,8 +105,8 @@ dk_correct(
 )
 }
 \seealso{
-Other decay corrections: 
-\code{\link{dk_pct_to_num_half_life}()},
-\code{\link{dk_time}()}
+Other decay corrections:
+\code{\link[=dk_pct_to_num_half_life]{dk_pct_to_num_half_life()}},
+\code{\link[=dk_time]{dk_time()}}
 }
 \concept{decay corrections}

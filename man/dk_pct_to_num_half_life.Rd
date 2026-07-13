@@ -20,8 +20,8 @@ half-lives have passed.
 dk_pct_to_num_half_life(pct_lost = 93.75)
 }
 \seealso{
-Other decay corrections: 
-\code{\link{dk_correct}()},
-\code{\link{dk_time}()}
+Other decay corrections:
+\code{\link[=dk_correct]{dk_correct()}},
+\code{\link[=dk_time]{dk_time()}}
 }
 \concept{decay corrections}

@@ -66,14 +66,14 @@ mcnp_sdef_erg_line("Am-241", rad_type = "A", cut = 0.01, erg.dist = 23)
 \seealso{
 \code{\link[=mcnp_sdef_erg_hist]{mcnp_sdef_erg_hist()}} if radioactive emission data is available in histogram form and needs formatting for MCNP input.
 
-Other mcnp tools: 
-\code{\link{mcnp_cone_angle}()},
-\code{\link{mcnp_est_nps}()},
-\code{\link{mcnp_matrix_rotations}()},
-\code{\link{mcnp_mesh_bins}()},
-\code{\link{mcnp_plot_out_spec}()},
-\code{\link{mcnp_scan2plot}()},
-\code{\link{mcnp_scan_save}()},
-\code{\link{mcnp_sdef_erg_hist}()}
+Other mcnp tools:
+\code{\link[=mcnp_cone_angle]{mcnp_cone_angle()}},
+\code{\link[=mcnp_est_nps]{mcnp_est_nps()}},
+\code{\link[=mcnp_matrix_rotations]{mcnp_matrix_rotations()}},
+\code{\link[=mcnp_mesh_bins]{mcnp_mesh_bins()}},
+\code{\link[=mcnp_plot_out_spec]{mcnp_plot_out_spec()}},
+\code{\link[=mcnp_scan2plot]{mcnp_scan2plot()}},
+\code{\link[=mcnp_scan_save]{mcnp_scan_save()}},
+\code{\link[=mcnp_sdef_erg_hist]{mcnp_sdef_erg_hist()}}
 }
 \concept{mcnp tools}

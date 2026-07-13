@@ -53,6 +53,8 @@
 #' 
 #' This argument is ignored for B- plots.
 #'
+#' @param E_min Only applicable if photon = TRUE. Select a minimum energy, in MeV. this is 0 by default, but user may want to consider 0.001 for photon spectra plots to avoid often very high probability X-rays.
+#' 
 #' @examples
 #' RN_plot_spectrum(
 #'   desired_RN = c("Sr-90", "Y-90"), rad_type = "B-",
@@ -64,7 +66,7 @@
 #' )
 #' RN_plot_spectrum(
 #'   desired_RN = c("Co-60", "Ba-137m"), rad_type = NULL,
-#'   photon = TRUE, log_plot = 0
+#'   photon = TRUE, log_plot = 0, E_min = 0.001
 #' )
 #' RN_plot_spectrum(desired_RN = c("Co-60", "Ba-137m"), rad_type = "G")
 #' RN_plot_spectrum(
@@ -78,7 +80,8 @@ RN_plot_spectrum <- function(desired_RN,
                              rad_type = NULL,
                              photon = FALSE,
                              log_plot = 0,
-                             prob_cut = 0.01) {
+                             prob_cut = 0.01,
+                             E_min = NULL) {
   rt_allowed <- c("X", "G", "AE", "IE", "A", "AR", "B-", "AQ", "B+", "PG", "DG", "DB", "FF", "N")
   stop_flag <- FALSE
   # Checks for valid arguments~~~~~~~~~~~~~~ Is rad_type valid?
@@ -129,9 +132,11 @@ RN_plot_spectrum <- function(desired_RN,
 
 
   if (photon == TRUE) {
+    if (is.null(E_min)) {E_min <- 0}
     spec_df <- RadData::ICRP_07.RAD[which(RadData::ICRP_07.RAD$RN %in% desired_RN), ]
 
     spec_df <- spec_df[which(spec_df$is_photon == TRUE), ]
+    spec_df <- spec_df[which(spec_df$E_MeV >= E_min), ]
   }
 
   # check for no matches

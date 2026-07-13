@@ -43,14 +43,14 @@ including MCNPX.
 #     360448000   4.1841E+00 0.0641 0.0079  0.0 5.7E-02
 }
 \seealso{
-Other mcnp tools: 
-\code{\link{mcnp_cone_angle}()},
-\code{\link{mcnp_matrix_rotations}()},
-\code{\link{mcnp_mesh_bins}()},
-\code{\link{mcnp_plot_out_spec}()},
-\code{\link{mcnp_scan2plot}()},
-\code{\link{mcnp_scan_save}()},
-\code{\link{mcnp_sdef_erg_hist}()},
-\code{\link{mcnp_sdef_erg_line}()}
+Other mcnp tools:
+\code{\link[=mcnp_cone_angle]{mcnp_cone_angle()}},
+\code{\link[=mcnp_matrix_rotations]{mcnp_matrix_rotations()}},
+\code{\link[=mcnp_mesh_bins]{mcnp_mesh_bins()}},
+\code{\link[=mcnp_plot_out_spec]{mcnp_plot_out_spec()}},
+\code{\link[=mcnp_scan2plot]{mcnp_scan2plot()}},
+\code{\link[=mcnp_scan_save]{mcnp_scan_save()}},
+\code{\link[=mcnp_sdef_erg_hist]{mcnp_sdef_erg_hist()}},
+\code{\link[=mcnp_sdef_erg_line]{mcnp_sdef_erg_line()}}
 }
 \concept{mcnp tools}

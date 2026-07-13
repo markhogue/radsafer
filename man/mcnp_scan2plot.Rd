@@ -42,14 +42,14 @@ In either case, only the maximum energy and bin probability or result values are
 # 3.0000000 1.037092e-04 0.7659850
 }
 \seealso{
-Other mcnp tools: 
-\code{\link{mcnp_cone_angle}()},
-\code{\link{mcnp_est_nps}()},
-\code{\link{mcnp_matrix_rotations}()},
-\code{\link{mcnp_mesh_bins}()},
-\code{\link{mcnp_plot_out_spec}()},
-\code{\link{mcnp_scan_save}()},
-\code{\link{mcnp_sdef_erg_hist}()},
-\code{\link{mcnp_sdef_erg_line}()}
+Other mcnp tools:
+\code{\link[=mcnp_cone_angle]{mcnp_cone_angle()}},
+\code{\link[=mcnp_est_nps]{mcnp_est_nps()}},
+\code{\link[=mcnp_matrix_rotations]{mcnp_matrix_rotations()}},
+\code{\link[=mcnp_mesh_bins]{mcnp_mesh_bins()}},
+\code{\link[=mcnp_plot_out_spec]{mcnp_plot_out_spec()}},
+\code{\link[=mcnp_scan_save]{mcnp_scan_save()}},
+\code{\link[=mcnp_sdef_erg_hist]{mcnp_sdef_erg_hist()}},
+\code{\link[=mcnp_sdef_erg_line]{mcnp_sdef_erg_line()}}
 }
 \concept{mcnp tools}
