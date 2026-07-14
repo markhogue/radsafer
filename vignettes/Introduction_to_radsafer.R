@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -30,13 +30,23 @@ search_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-3)
 ## ----echo = FALSE-------------------------------------------------------------
 knitr::kable(search_results)
 
-## ----out.width = '75%', fig.align='center', warning=FALSE, message=FALSE------
+## ----out.width = '75%', fig.align='center', warning=FALSE, message=FALSE, echo = TRUE----
 RN_plot_spectrum(search_results)
 
-## ----echo = TRUE--------------------------------------------------------------
+## ----out.width = '75%', fig.align='center', warning=FALSE, message=FALSE, echo = TRUE----
+
  RN_plot_spectrum(
    desired_RN = c("Pu-238", "Pu-239", "Am-241"), rad_type = "A",
    photon = FALSE, prob_cut = 0.01, log_plot = 0)
+
+## ----out.width = '75%', fig.align='center', warning=FALSE, message=FALSE, echo = TRUE----
+
+ RN_plot_spectrum(
+   desired_RN = "Ba-137m", photon = TRUE, prob_cut = 0.01, log_plot = 0)
+
+ RN_plot_spectrum(
+   desired_RN = "Ba-137m", photon = TRUE, prob_cut = 0.01, log_plot = 0, E_min = 0.001)
+
 
 ## ----echo = TRUE--------------------------------------------------------------
 RNs_selected <- RN_index_screen(dk_mode = "SF", min_half_life_seconds = 0.5 * 3.153e7, max_half_life_seconds = 2 * 3.153e7)
@@ -96,6 +106,9 @@ hvl(x = mm_Al, y = mR_h)
 
 ## -----------------------------------------------------------------------------
 mcnp_matrix_rotations("z", 90)
+
+## -----------------------------------------------------------------------------
+mcnp_mesh_bins(target = 30, width = 10, lowest_less = 0, highest_less = 15, highest_high = 304.8, lowest_high = 250)
 
 ## -----------------------------------------------------------------------------
 mcnp_cone_angle(30)

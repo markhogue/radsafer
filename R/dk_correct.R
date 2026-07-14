@@ -138,7 +138,7 @@ dk_correct <- function(RN_select = NULL,
 
   # check date formats
   if (!is.null(date1)) {
-    warning("Date mode only provides precision to the day. Use time_lapse mode if more precision is needed.")
+    message("Date mode only provides precision to the day. Use time_lapse mode if more precision is needed.")
     if (anyNA(as.Date(c(date1, date2)))) {
       stop("Error: Dates must be in '%Y-%m-%d' format")
     }
