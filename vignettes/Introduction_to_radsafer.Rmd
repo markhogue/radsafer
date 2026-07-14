@@ -2,7 +2,7 @@
 title: "Introduction to radsafer"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Intro_and_decay_family}
+  %\VignetteIndexEntry{Introduction to radsafer}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -97,16 +97,29 @@ search_results <- RN_search_phot_by_E(0.99, 1.01, 13 * 60, 15 * 60, 1e-3)
 knitr::kable(search_results)
 ```
 
-```{r out.width = '75%', fig.align='center', warning=FALSE, message=FALSE}
+```{r out.width = '75%', fig.align='center', warning=FALSE, message=FALSE, echo = TRUE}
 RN_plot_spectrum(search_results)
 ```
 
 You can also plot a spectrum in one step, skipping the data save:
 
-```{r echo = TRUE}
+```{r out.width = '75%', fig.align='center', warning=FALSE, message=FALSE, echo = TRUE}
+
  RN_plot_spectrum(
    desired_RN = c("Pu-238", "Pu-239", "Am-241"), rad_type = "A",
    photon = FALSE, prob_cut = 0.01, log_plot = 0)
+```
+
+In some photon plots, very low energy X-rays dominate the chart. To avoid this, you can use the E_min parameter. Below are two examples, one with and one without the low energy cutoff.
+
+```{r out.width = '75%', fig.align='center', warning=FALSE, message=FALSE, echo = TRUE}
+
+ RN_plot_spectrum(
+   desired_RN = "Ba-137m", photon = TRUE, prob_cut = 0.01, log_plot = 0)
+
+ RN_plot_spectrum(
+   desired_RN = "Ba-137m", photon = TRUE, prob_cut = 0.01, log_plot = 0, E_min = 0.001)
+
 ```
 
 The `RN_index_screen` function helps find a radionuclide of interest based on decay mode, half-life, and total emission energy.

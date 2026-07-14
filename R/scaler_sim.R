@@ -29,12 +29,12 @@ scaler_sim <- function(true_bkg, true_samp, ct_time, trials = 1e5) {
     ) +
     ggplot2::geom_vline(
       xintercept = true_bkg + true_samp + c(sd_gross, -sd_gross),
-      linetype = 2, color = "limegreen", size = 1.1
+      linetype = 2, color = "limegreen", linewidth = 1.1
     ) +
     ggplot2::geom_vline(
       xintercept = true_bkg + true_samp +
         c(2 * sd_gross, -2 * sd_gross),
-      linetype = 3, color = "darkgreen", size = 1.1
+      linetype = 3, color = "darkgreen", linewidth = 1.1
     ) +
     ggplot2::ggtitle(paste0(
       "gross counts in ", ct_time,
